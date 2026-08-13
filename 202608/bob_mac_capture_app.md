@@ -607,7 +607,30 @@ independently useful even if Phase 3 slips.
 
 ---
 
-## 12. Sources
+## 12. Acceptance Criteria
+
+Measure these on the actual Mac, preferably with signposts rather than perception alone:
+
+- Warm hotkey-to-focused-editor p50 under 50 ms and p95 under 100 ms, with no login
+  shell or WebView construction on the hotkey path.
+- Cached completions appear within 50 ms of a trigger character, while highlighting and
+  typing remain independent of `bob` subprocess latency.
+- The editor provides an unambiguous newline and submit gesture, and Escape never drops
+  a nonempty draft without an explicit discard action.
+- Every current Hammerspoon grammar fixture produces the same final `bob` request or a
+  more specific pre-submit diagnostic.
+- Double submission causes at most one mutation; failed discovery never silently falls
+  back to the inbox; capture failure preserves the full draft and destination.
+- Success and failure always produce visible in-panel feedback. When macOS permits
+  notifications, both also schedule a native notification under the Bob Capture identity.
+- Settings reports notification authorization accurately and offers a test notification.
+- Notification bodies omit captured text by default, and a successful notification can
+  open the returned Obsidian target.
+- All vault mutations remain inside `bob-cli`; the Mac app never edits Markdown directly.
+
+---
+
+## 13. Sources
 
 **Current implementation** (read via `sase repo open chezmoi` and this workspace):
 `home/dot_hammerspoon/init.lua`, `home/dot_hammerspoon/task_capture.lua`,
