@@ -1,0 +1,17 @@
+{
+  "artifact_ref": "research:202608/bob_mac_capture_replacement/bob_mac_capture_replacement__a.md",
+  "rows": [
+    {
+      "created_at": "2026-08-27T14:12:25Z",
+      "created_by": "sase",
+      "description": "research-swarm lineage: bob_mac_capture_replacement__a.md is a consolidation source on disk",
+      "origin": "derived",
+      "relation": "derives-from",
+      "schema_version": 2,
+      "source_ref": "research:202608/bob_mac_capture_replacement/bob_mac_capture_replacement.md",
+      "target_ref": "research:202608/bob_mac_capture_replacement/bob_mac_capture_replacement__a.md",
+      "uses": 1
+    }
+  ],
+  "schema_version": 2
+}
