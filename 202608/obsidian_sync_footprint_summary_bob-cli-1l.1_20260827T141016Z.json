@@ -1,0 +1,1274 @@
+{
+  "athena_eligible_absent_remote_by_root": [
+    {
+      "bytes": 101355,
+      "files": 1,
+      "mib": 0.097,
+      "root": "xlib/"
+    },
+    {
+      "bytes": 7429,
+      "files": 1,
+      "mib": 0.007,
+      "root": ".obsidian/plugins/"
+    },
+    {
+      "bytes": 7055,
+      "files": 1,
+      "mib": 0.007,
+      "root": ".obsidian/"
+    }
+  ],
+  "athena_fs_by_root": [
+    {
+      "bytes": 1731114877,
+      "files": 700,
+      "mib": 1650.92,
+      "root": "old_lib/"
+    },
+    {
+      "bytes": 65263266,
+      "files": 187,
+      "mib": 62.24,
+      "root": "img/"
+    },
+    {
+      "bytes": 10558084,
+      "files": 53,
+      "mib": 10.069,
+      "root": ".obsidian/plugins/"
+    },
+    {
+      "bytes": 6133706,
+      "files": 27,
+      "mib": 5.85,
+      "root": "lib/"
+    },
+    {
+      "bytes": 5667510,
+      "files": 2964,
+      "mib": 5.405,
+      "root": "year-daily-note trees"
+    },
+    {
+      "bytes": 3357215,
+      "files": 1131,
+      "mib": 3.202,
+      "root": "_generated/"
+    },
+    {
+      "bytes": 1693148,
+      "files": 618,
+      "mib": 1.615,
+      "root": "<vault-root files>"
+    },
+    {
+      "bytes": 533338,
+      "files": 393,
+      "mib": 0.509,
+      "root": "ref/"
+    },
+    {
+      "bytes": 263197,
+      "files": 14,
+      "mib": 0.251,
+      "root": "done/"
+    },
+    {
+      "bytes": 246548,
+      "files": 81,
+      "mib": 0.235,
+      "root": "lit/"
+    },
+    {
+      "bytes": 228920,
+      "files": 13,
+      "mib": 0.218,
+      "root": "_meta/"
+    },
+    {
+      "bytes": 175316,
+      "files": 50,
+      "mib": 0.167,
+      "root": "prj/"
+    },
+    {
+      "bytes": 128156,
+      "files": 59,
+      "mib": 0.122,
+      "root": "prompts/"
+    },
+    {
+      "bytes": 101355,
+      "files": 1,
+      "mib": 0.097,
+      "root": "xlib/"
+    },
+    {
+      "bytes": 52698,
+      "files": 92,
+      "mib": 0.05,
+      "root": "eat/"
+    },
+    {
+      "bytes": 41046,
+      "files": 3,
+      "mib": 0.039,
+      "root": "sdd/"
+    },
+    {
+      "bytes": 31700,
+      "files": 15,
+      "mib": 0.03,
+      "root": ".obsidian/"
+    },
+    {
+      "bytes": 25861,
+      "files": 2,
+      "mib": 0.025,
+      "root": "code/"
+    },
+    {
+      "bytes": 25731,
+      "files": 3,
+      "mib": 0.025,
+      "root": "chat/"
+    },
+    {
+      "bytes": 8056,
+      "files": 15,
+      "mib": 0.008,
+      "root": "podcasts/"
+    },
+    {
+      "bytes": 6669,
+      "files": 4,
+      "mib": 0.006,
+      "root": "text/"
+    },
+    {
+      "bytes": 4474,
+      "files": 1,
+      "mib": 0.004,
+      "root": "plans/"
+    },
+    {
+      "bytes": 4201,
+      "files": 6,
+      "mib": 0.004,
+      "root": "_templates/"
+    },
+    {
+      "bytes": 656,
+      "files": 1,
+      "mib": 0.001,
+      "root": "triage/"
+    },
+    {
+      "bytes": 423,
+      "files": 1,
+      "mib": 0.0,
+      "root": "_zorg_templates/"
+    }
+  ],
+  "differences": {
+    "athena_eligible_absent_remote_entries": {
+      "bytes": 115839,
+      "files": 3,
+      "mib": 0.11
+    },
+    "athena_fs_absent_remote_entries": {
+      "bytes": 1731284226,
+      "files": 709,
+      "mib": 1651.081
+    },
+    "macbook_eligible_absent_remote_entries": {
+      "bytes": 10599614,
+      "files": 4,
+      "mib": 10.109
+    },
+    "macbook_fs_absent_remote_entries": {
+      "bytes": 2983916114,
+      "files": 1141,
+      "mib": 2845.684
+    },
+    "remote_files_absent_all_independent_copies": {
+      "bytes": 0,
+      "files": 0,
+      "mib": 0.0
+    },
+    "remote_files_absent_athena": {
+      "bytes": 19985396,
+      "files": 79,
+      "mib": 19.06
+    },
+    "remote_files_absent_both_devices": {
+      "bytes": 0,
+      "files": 0,
+      "mib": 0.0
+    },
+    "remote_files_absent_git": {
+      "bytes": 23864339,
+      "files": 96,
+      "mib": 22.759
+    },
+    "remote_files_absent_macbook": {
+      "bytes": 0,
+      "files": 0,
+      "mib": 0.0
+    },
+    "union_fs_absent_remote_entries": {
+      "bytes": 2984078408,
+      "files": 1149,
+      "mib": 2845.839
+    }
+  },
+  "git_by_root": [
+    {
+      "bytes": 1442502076,
+      "files": 698,
+      "mib": 1375.677,
+      "root": "old_lib/"
+    },
+    {
+      "bytes": 62750431,
+      "files": 186,
+      "mib": 59.843,
+      "root": "img/"
+    },
+    {
+      "bytes": 9186165,
+      "files": 37,
+      "mib": 8.761,
+      "root": ".obsidian/plugins/"
+    },
+    {
+      "bytes": 6133706,
+      "files": 27,
+      "mib": 5.85,
+      "root": "lib/"
+    },
+    {
+      "bytes": 5666927,
+      "files": 2963,
+      "mib": 5.404,
+      "root": "year-daily-note trees"
+    },
+    {
+      "bytes": 3357215,
+      "files": 1131,
+      "mib": 3.202,
+      "root": "_generated/"
+    },
+    {
+      "bytes": 1680863,
+      "files": 616,
+      "mib": 1.603,
+      "root": "<vault-root files>"
+    },
+    {
+      "bytes": 533338,
+      "files": 393,
+      "mib": 0.509,
+      "root": "ref/"
+    },
+    {
+      "bytes": 263197,
+      "files": 14,
+      "mib": 0.251,
+      "root": "done/"
+    },
+    {
+      "bytes": 246548,
+      "files": 81,
+      "mib": 0.235,
+      "root": "lit/"
+    },
+    {
+      "bytes": 228920,
+      "files": 13,
+      "mib": 0.218,
+      "root": "_meta/"
+    },
+    {
+      "bytes": 175316,
+      "files": 50,
+      "mib": 0.167,
+      "root": "prj/"
+    },
+    {
+      "bytes": 128156,
+      "files": 59,
+      "mib": 0.122,
+      "root": "prompts/"
+    },
+    {
+      "bytes": 52698,
+      "files": 92,
+      "mib": 0.05,
+      "root": "eat/"
+    },
+    {
+      "bytes": 25861,
+      "files": 2,
+      "mib": 0.025,
+      "root": "code/"
+    },
+    {
+      "bytes": 25731,
+      "files": 3,
+      "mib": 0.025,
+      "root": "chat/"
+    },
+    {
+      "bytes": 24645,
+      "files": 14,
+      "mib": 0.024,
+      "root": ".obsidian/"
+    },
+    {
+      "bytes": 8056,
+      "files": 15,
+      "mib": 0.008,
+      "root": "podcasts/"
+    },
+    {
+      "bytes": 6669,
+      "files": 4,
+      "mib": 0.006,
+      "root": "text/"
+    },
+    {
+      "bytes": 4474,
+      "files": 1,
+      "mib": 0.004,
+      "root": "plans/"
+    },
+    {
+      "bytes": 4201,
+      "files": 6,
+      "mib": 0.004,
+      "root": "_templates/"
+    },
+    {
+      "bytes": 656,
+      "files": 1,
+      "mib": 0.001,
+      "root": "triage/"
+    },
+    {
+      "bytes": 423,
+      "files": 1,
+      "mib": 0.0,
+      "root": "_zorg_templates/"
+    }
+  ],
+  "git_head": "aedc9f5e7ad01c006b2fa00c9038869bb4d96c4e",
+  "history_pressure": {
+    "git_activity_by_root": [
+      {
+        "file_events": 434,
+        "root": "<vault-root files>",
+        "unique_paths": 67
+      },
+      {
+        "file_events": 117,
+        "root": "year-daily-note trees",
+        "unique_paths": 34
+      },
+      {
+        "file_events": 81,
+        "root": "ref/",
+        "unique_paths": 64
+      },
+      {
+        "file_events": 39,
+        "root": "old_lib/",
+        "unique_paths": 39
+      },
+      {
+        "file_events": 38,
+        "root": "done/",
+        "unique_paths": 6
+      },
+      {
+        "file_events": 18,
+        "root": "lib/",
+        "unique_paths": 18
+      },
+      {
+        "file_events": 15,
+        "root": "podcasts/",
+        "unique_paths": 15
+      },
+      {
+        "file_events": 7,
+        "root": "img/",
+        "unique_paths": 7
+      },
+      {
+        "file_events": 2,
+        "root": ".sase/",
+        "unique_paths": 1
+      },
+      {
+        "file_events": 2,
+        "root": "_templates/",
+        "unique_paths": 1
+      },
+      {
+        "file_events": 1,
+        "root": "prompts/",
+        "unique_paths": 1
+      }
+    ],
+    "git_commit_count": 61,
+    "git_since_utc": "2026-07-28T00:00:00Z",
+    "sync_history_available": false,
+    "sync_history_note": "obsidian-headless state.db contains current live/local/pending metadata only; billed/version-history storage was not available through this read-only DB audit."
+  },
+  "inventory_jsonl": "/tmp/bob-cli-1l-1-inventory.jsonl",
+  "macbook_eligible_absent_remote_by_root": [
+    {
+      "bytes": 10547646,
+      "files": 1,
+      "mib": 10.059,
+      "root": "_meta/"
+    },
+    {
+      "bytes": 36868,
+      "files": 1,
+      "mib": 0.035,
+      "root": "<vault-root files>"
+    },
+    {
+      "bytes": 15100,
+      "files": 2,
+      "mib": 0.014,
+      "root": ".obsidian/"
+    }
+  ],
+  "macbook_fs_by_root": [
+    {
+      "bytes": 1731114877,
+      "files": 700,
+      "mib": 1650.92,
+      "root": "old_lib/"
+    },
+    {
+      "bytes": 1182331186,
+      "files": 276,
+      "mib": 1127.559,
+      "root": "lit_review/"
+    },
+    {
+      "bytes": 65855165,
+      "files": 188,
+      "mib": 62.804,
+      "root": "lib/"
+    },
+    {
+      "bytes": 65263266,
+      "files": 187,
+      "mib": 62.24,
+      "root": "img/"
+    },
+    {
+      "bytes": 26608394,
+      "files": 50,
+      "mib": 25.376,
+      "root": "_meta/"
+    },
+    {
+      "bytes": 10550655,
+      "files": 52,
+      "mib": 10.062,
+      "root": ".obsidian/plugins/"
+    },
+    {
+      "bytes": 5667983,
+      "files": 2964,
+      "mib": 5.405,
+      "root": "year-daily-note trees"
+    },
+    {
+      "bytes": 4138351,
+      "files": 20,
+      "mib": 3.947,
+      "root": "xmind/"
+    },
+    {
+      "bytes": 3357215,
+      "files": 1131,
+      "mib": 3.202,
+      "root": "_generated/"
+    },
+    {
+      "bytes": 1721858,
+      "files": 616,
+      "mib": 1.642,
+      "root": "<vault-root files>"
+    },
+    {
+      "bytes": 533338,
+      "files": 393,
+      "mib": 0.509,
+      "root": "ref/"
+    },
+    {
+      "bytes": 263197,
+      "files": 14,
+      "mib": 0.251,
+      "root": "done/"
+    },
+    {
+      "bytes": 246548,
+      "files": 81,
+      "mib": 0.235,
+      "root": "lit/"
+    },
+    {
+      "bytes": 175316,
+      "files": 50,
+      "mib": 0.167,
+      "root": "prj/"
+    },
+    {
+      "bytes": 128156,
+      "files": 59,
+      "mib": 0.122,
+      "root": "prompts/"
+    },
+    {
+      "bytes": 52698,
+      "files": 92,
+      "mib": 0.05,
+      "root": "eat/"
+    },
+    {
+      "bytes": 39745,
+      "files": 16,
+      "mib": 0.038,
+      "root": ".obsidian/"
+    },
+    {
+      "bytes": 25861,
+      "files": 2,
+      "mib": 0.025,
+      "root": "code/"
+    },
+    {
+      "bytes": 25731,
+      "files": 3,
+      "mib": 0.025,
+      "root": "chat/"
+    },
+    {
+      "bytes": 12475,
+      "files": 23,
+      "mib": 0.012,
+      "root": "_zorg_templates/"
+    },
+    {
+      "bytes": 8056,
+      "files": 15,
+      "mib": 0.008,
+      "root": "podcasts/"
+    },
+    {
+      "bytes": 6669,
+      "files": 4,
+      "mib": 0.006,
+      "root": "text/"
+    },
+    {
+      "bytes": 4474,
+      "files": 1,
+      "mib": 0.004,
+      "root": "plans/"
+    },
+    {
+      "bytes": 4201,
+      "files": 6,
+      "mib": 0.004,
+      "root": "_templates/"
+    },
+    {
+      "bytes": 953,
+      "files": 1,
+      "mib": 0.001,
+      "root": "puml/"
+    },
+    {
+      "bytes": 656,
+      "files": 1,
+      "mib": 0.001,
+      "root": "triage/"
+    }
+  ],
+  "recent_upload_attempts": [
+    {
+      "attempts_in_log": 230,
+      "path": "xlib/chat/AGENTS.pdf"
+    },
+    {
+      "attempts_in_log": 175,
+      "path": ".obsidian/plugins/bob-navigation-hotkeys/main.js"
+    },
+    {
+      "attempts_in_log": 123,
+      "path": ".obsidian/plugins/task-status-cycler/main.js"
+    },
+    {
+      "attempts_in_log": 59,
+      "path": ".obsidian/plugins/bob-navigation-hotkeys/manifest.json"
+    },
+    {
+      "attempts_in_log": 49,
+      "path": "gtd_daily.md"
+    },
+    {
+      "attempts_in_log": 46,
+      "path": ".obsidian/plugins/block-id-prompt/main.js"
+    },
+    {
+      "attempts_in_log": 46,
+      "path": "sase.md"
+    },
+    {
+      "attempts_in_log": 43,
+      "path": "done/gtd_daily_done.md"
+    },
+    {
+      "attempts_in_log": 36,
+      "path": "done/sase_done.md"
+    },
+    {
+      "attempts_in_log": 29,
+      "path": ".obsidian/hotkeys.json"
+    },
+    {
+      "attempts_in_log": 29,
+      "path": ".obsidian/plugins/bob-ledger-tools/main.js"
+    },
+    {
+      "attempts_in_log": 28,
+      "path": "bob.md"
+    },
+    {
+      "attempts_in_log": 25,
+      "path": ".obsidian/plugins/bob-navigation-hotkeys/styles.css"
+    },
+    {
+      "attempts_in_log": 23,
+      "path": ".obsidian/plugins/task-status-cycler/manifest.json"
+    },
+    {
+      "attempts_in_log": 21,
+      "path": "commit_message.md"
+    },
+    {
+      "attempts_in_log": 21,
+      "path": "2026/20260531_day.md"
+    },
+    {
+      "attempts_in_log": 21,
+      "path": ".obsidian/plugins/bob-vim-surround/main.js"
+    },
+    {
+      "attempts_in_log": 20,
+      "path": "2026/20260602_day.md"
+    },
+    {
+      "attempts_in_log": 18,
+      "path": "mac_inbox.md"
+    },
+    {
+      "attempts_in_log": 18,
+      "path": ".obsidian/plugins/block-id-prompt/manifest.json"
+    }
+  ],
+  "reference_analysis": {
+    "ambiguous_ref_sample": [
+      {
+        "candidate_count": 2,
+        "ref": "<person>",
+        "sample": [
+          "_generated/tag_pages/person.md",
+          "_generated/tag_pages/person/person.md"
+        ]
+      },
+      {
+        "candidate_count": 2,
+        "ref": "antlr_ref",
+        "sample": [
+          "lit/antlr_ref.md",
+          "old_lib/books/antlr_ref.pdf"
+        ]
+      },
+      {
+        "candidate_count": 2,
+        "ref": "artifacts_pane_contract",
+        "sample": [
+          "lib/chat/artifacts_pane_contract.pdf",
+          "ref/chat/artifacts_pane_contract.md"
+        ]
+      },
+      {
+        "candidate_count": 2,
+        "ref": "artifacts_pane_contract#^ref",
+        "sample": [
+          "lib/chat/artifacts_pane_contract.pdf",
+          "ref/chat/artifacts_pane_contract.md"
+        ]
+      },
+      {
+        "candidate_count": 2,
+        "ref": "artifacts_query_and_pane_contract#^ref",
+        "sample": [
+          "lib/chat/artifacts_query_and_pane_contract.pdf",
+          "ref/chat/artifacts_query_and_pane_contract.md"
+        ]
+      },
+      {
+        "candidate_count": 2,
+        "ref": "bazbuz",
+        "sample": [
+          "_generated/tag_pages/context/bazbuz.md",
+          "_generated/tag_pages/project/bazbuz.md"
+        ]
+      },
+      {
+        "candidate_count": 2,
+        "ref": "book",
+        "sample": [
+          "_generated/tag_pages/project/book.md",
+          "_generated/tag_pages/topic/book.md"
+        ]
+      },
+      {
+        "candidate_count": 2,
+        "ref": "directed_zettelkasten_first_post#^ref",
+        "sample": [
+          "lib/chat/directed_zettelkasten_first_post.pdf",
+          "ref/chat/directed_zettelkasten_first_post.md"
+        ]
+      },
+      {
+        "candidate_count": 2,
+        "ref": "external_artifact_ingestion#^ref",
+        "sample": [
+          "lib/chat/external_artifact_ingestion.pdf",
+          "ref/chat/external_artifact_ingestion.md"
+        ]
+      },
+      {
+        "candidate_count": 2,
+        "ref": "feel_good_productivity",
+        "sample": [
+          "lit/feel_good_productivity.md",
+          "old_lib/books/feel_good_productivity.pdf"
+        ]
+      },
+      {
+        "candidate_count": 3,
+        "ref": "finalizer_completion_contracts-9c652d326895",
+        "sample": [
+          "lib/chat/finalizer_completion_contracts-9c652d326895.md",
+          "lib/chat/finalizer_completion_contracts-9c652d326895.pdf",
+          "ref/chat/finalizer_completion_contracts-9c652d326895.md"
+        ]
+      },
+      {
+        "candidate_count": 2,
+        "ref": "finalizer_protocol_and_extensibility",
+        "sample": [
+          "lib/chat/finalizer_protocol_and_extensibility.pdf",
+          "ref/chat/finalizer_protocol_and_extensibility.md"
+        ]
+      },
+      {
+        "candidate_count": 7,
+        "ref": "foo",
+        "sample": [
+          "_generated/tag_pages/context/foo.md",
+          "_generated/tag_pages/person/foo.md",
+          "_generated/tag_pages/project/foo.md",
+          "_generated/tag_pages/topic/foo.md",
+          "_generated/tag_pages/topic/lit/foo.md",
+          "_generated/tag_pages/topic/ref/foo.md",
+          "_generated/tag_pages/topic/z/foo.md"
+        ]
+      },
+      {
+        "candidate_count": 7,
+        "ref": "foo#bar",
+        "sample": [
+          "_generated/tag_pages/context/foo.md",
+          "_generated/tag_pages/person/foo.md",
+          "_generated/tag_pages/project/foo.md",
+          "_generated/tag_pages/topic/foo.md",
+          "_generated/tag_pages/topic/lit/foo.md",
+          "_generated/tag_pages/topic/ref/foo.md",
+          "_generated/tag_pages/topic/z/foo.md"
+        ]
+      },
+      {
+        "candidate_count": 2,
+        "ref": "fork_contributor_harness",
+        "sample": [
+          "lib/chat/fork_contributor_harness.pdf",
+          "ref/chat/fork_contributor_harness.md"
+        ]
+      },
+      {
+        "candidate_count": 2,
+        "ref": "fund_of_soft_arch",
+        "sample": [
+          "lit/fund_of_soft_arch.md",
+          "old_lib/books/fund_of_soft_arch.pdf"
+        ]
+      },
+      {
+        "candidate_count": 2,
+        "ref": "gate_input_collection#^ref",
+        "sample": [
+          "lib/chat/gate_input_collection.pdf",
+          "ref/chat/gate_input_collection.md"
+        ]
+      },
+      {
+        "candidate_count": 3,
+        "ref": "glossary_to_memory_webs",
+        "sample": [
+          "lib/chat/glossary_to_memory_webs.md",
+          "lib/chat/glossary_to_memory_webs.pdf",
+          "ref/chat/glossary_to_memory_webs.md"
+        ]
+      },
+      {
+        "candidate_count": 2,
+        "ref": "grok_build_provider",
+        "sample": [
+          "lib/chat/grok_build_provider.pdf",
+          "ref/chat/grok_build_provider.md"
+        ]
+      },
+      {
+        "candidate_count": 2,
+        "ref": "grok_build_provider#^ref",
+        "sample": [
+          "lib/chat/grok_build_provider.pdf",
+          "ref/chat/grok_build_provider.md"
+        ]
+      }
+    ],
+    "apparent_orphan_sample": [
+      "_meta/migration/inventory.json",
+      "_meta/migration/reports/archived_templates.tsv",
+      "_meta/migration/reports/broken_wikilinks.tsv",
+      "_meta/migration/reports/copied_assets.tsv",
+      "_meta/migration/reports/copied_markdown.tsv",
+      "_meta/migration/reports/duplicate_block_ids.tsv",
+      "_meta/migration/reports/duplicate_ids.tsv",
+      "_meta/migration/reports/large_files.tsv",
+      "_meta/migration/reports/malformed_frontmatter.tsv",
+      "_meta/migration/reports/markdown_collisions.tsv",
+      "_meta/migration/reports/marker_index.tsv",
+      "_meta/migration/reports/missing_assets.tsv",
+      "_meta/migration/reports/missing_attachment_links.tsv",
+      "_meta/migration/reports/path_collisions.tsv",
+      "_meta/migration/reports/query_snapshots.tsv",
+      "_meta/migration/reports/search_smoke.tsv",
+      "_meta/migration/reports/task_candidates.tsv",
+      "_meta/migration/reports/template_links.tsv",
+      "_meta/migration/reports/unresolved_links.tsv",
+      "_meta/migration/reports/unsupported_syntax.tsv",
+      "_meta/migration/selected_sources.txt",
+      "_meta/migration/skipped_sources.txt",
+      "_meta/migration/tools/__pycache__/active_workflow_pilot.cpython-310.pyc",
+      "_meta/migration/tools/__pycache__/build_inventory.cpython-310.pyc",
+      "_meta/migration/tools/__pycache__/convert_zorg_core.cpython-310.pyc",
+      "_meta/migration/tools/__pycache__/migrate_phase4_existing_markdown_templates_assets.cpython-310.pyc",
+      "_meta/migration/tools/__pycache__/migrate_phase5_query_tag_task_dashboard.cpython-310.pyc",
+      "_meta/migration/tools/__pycache__/validate_obsidian_vault.cpython-310.pyc",
+      "_meta/migration/tools/active_workflow_pilot.py",
+      "_meta/migration/tools/build_inventory.py",
+      "_meta/migration/tools/convert_zorg_core.py",
+      "_meta/migration/tools/migrate_phase4_existing_markdown_templates_assets.py",
+      "_meta/migration/tools/migrate_phase5_query_tag_task_dashboard.py",
+      "_meta/migration/tools/validate_obsidian_vault.py",
+      "_zorg_templates/zot/now.zot",
+      "img/20260715_182458.png",
+      "img/20260715_203105.png",
+      "img/20260814_122025.png",
+      "img/20260814_122458.png",
+      "ref/docs/gastown_readme.assets/h-4fd51316d81e.jpg"
+    ],
+    "apparent_orphans_by_root": [
+      {
+        "bytes": 15828043,
+        "files": 34,
+        "mib": 15.095,
+        "root": "_meta/"
+      },
+      {
+        "bytes": 2770380,
+        "files": 4,
+        "mib": 2.642,
+        "root": "img/"
+      },
+      {
+        "bytes": 38163,
+        "files": 1,
+        "mib": 0.036,
+        "root": "ref/"
+      },
+      {
+        "bytes": 248,
+        "files": 1,
+        "mib": 0.0,
+        "root": "_zorg_templates/"
+      }
+    ],
+    "apparent_remote_attachment_orphans": {
+      "bytes": 18636834,
+      "files": 40,
+      "mib": 17.773
+    },
+    "athena_ref_count": 15783,
+    "macbook_ref_count": 15788,
+    "remote_attachment_paths": {
+      "bytes": 91487688,
+      "files": 291,
+      "mib": 87.249
+    },
+    "resolved_path_count": 5438
+  },
+  "remote_eligibility_counts": {
+    "eligible_on_athena_only": 27,
+    "eligible_on_both_current_devices": 5698,
+    "eligible_on_macbook_only": 79
+  },
+  "remote_files_absent_all_independent_copies_sample": [],
+  "remote_presence_counts": {
+    "(False, True, False)": 79,
+    "(True, True, False)": 17,
+    "(True, True, True)": 5708
+  },
+  "server_live_files_by_root": [
+    {
+      "bytes": 65268502,
+      "files": 187,
+      "mib": 62.245,
+      "root": "img/"
+    },
+    {
+      "bytes": 16062120,
+      "files": 49,
+      "mib": 15.318,
+      "root": "_meta/"
+    },
+    {
+      "bytes": 10552111,
+      "files": 52,
+      "mib": 10.063,
+      "root": ".obsidian/plugins/"
+    },
+    {
+      "bytes": 6134462,
+      "files": 27,
+      "mib": 5.85,
+      "root": "lib/"
+    },
+    {
+      "bytes": 5750502,
+      "files": 2964,
+      "mib": 5.484,
+      "root": "year-daily-note trees"
+    },
+    {
+      "bytes": 4138911,
+      "files": 20,
+      "mib": 3.947,
+      "root": "xmind/"
+    },
+    {
+      "bytes": 3388883,
+      "files": 1131,
+      "mib": 3.232,
+      "root": "_generated/"
+    },
+    {
+      "bytes": 1697792,
+      "files": 615,
+      "mib": 1.619,
+      "root": "<vault-root files>"
+    },
+    {
+      "bytes": 544342,
+      "files": 393,
+      "mib": 0.519,
+      "root": "ref/"
+    },
+    {
+      "bytes": 263589,
+      "files": 14,
+      "mib": 0.251,
+      "root": "done/"
+    },
+    {
+      "bytes": 248816,
+      "files": 81,
+      "mib": 0.237,
+      "root": "lit/"
+    },
+    {
+      "bytes": 176716,
+      "files": 50,
+      "mib": 0.169,
+      "root": "prj/"
+    },
+    {
+      "bytes": 129808,
+      "files": 59,
+      "mib": 0.124,
+      "root": "prompts/"
+    },
+    {
+      "bytes": 55274,
+      "files": 92,
+      "mib": 0.053,
+      "root": "eat/"
+    },
+    {
+      "bytes": 25917,
+      "files": 2,
+      "mib": 0.025,
+      "root": "code/"
+    },
+    {
+      "bytes": 25815,
+      "files": 3,
+      "mib": 0.025,
+      "root": "chat/"
+    },
+    {
+      "bytes": 25037,
+      "files": 14,
+      "mib": 0.024,
+      "root": ".obsidian/"
+    },
+    {
+      "bytes": 13119,
+      "files": 23,
+      "mib": 0.013,
+      "root": "_zorg_templates/"
+    },
+    {
+      "bytes": 8476,
+      "files": 15,
+      "mib": 0.008,
+      "root": "podcasts/"
+    },
+    {
+      "bytes": 6781,
+      "files": 4,
+      "mib": 0.006,
+      "root": "text/"
+    },
+    {
+      "bytes": 4502,
+      "files": 1,
+      "mib": 0.004,
+      "root": "plans/"
+    },
+    {
+      "bytes": 4369,
+      "files": 6,
+      "mib": 0.004,
+      "root": "_templates/"
+    },
+    {
+      "bytes": 981,
+      "files": 1,
+      "mib": 0.001,
+      "root": "puml/"
+    },
+    {
+      "bytes": 684,
+      "files": 1,
+      "mib": 0.001,
+      "root": "triage/"
+    }
+  ],
+  "server_live_folder_markers_by_root": [
+    {
+      "bytes": 0,
+      "files": 23,
+      "mib": 0.0,
+      "root": "<vault-root files>"
+    },
+    {
+      "bytes": 0,
+      "files": 40,
+      "mib": 0.0,
+      "root": "_generated/"
+    },
+    {
+      "bytes": 0,
+      "files": 4,
+      "mib": 0.0,
+      "root": "_meta/"
+    },
+    {
+      "bytes": 0,
+      "files": 1,
+      "mib": 0.0,
+      "root": "_zorg_templates/"
+    },
+    {
+      "bytes": 0,
+      "files": 1,
+      "mib": 0.0,
+      "root": "code/"
+    },
+    {
+      "bytes": 0,
+      "files": 1,
+      "mib": 0.0,
+      "root": "done/"
+    },
+    {
+      "bytes": 0,
+      "files": 3,
+      "mib": 0.0,
+      "root": "lib/"
+    },
+    {
+      "bytes": 0,
+      "files": 8,
+      "mib": 0.0,
+      "root": "prj/"
+    },
+    {
+      "bytes": 0,
+      "files": 13,
+      "mib": 0.0,
+      "root": "ref/"
+    },
+    {
+      "bytes": 0,
+      "files": 1,
+      "mib": 0.0,
+      "root": "sdd/"
+    },
+    {
+      "bytes": 0,
+      "files": 1,
+      "mib": 0.0,
+      "root": "xlib/"
+    },
+    {
+      "bytes": 0,
+      "files": 4,
+      "mib": 0.0,
+      "root": "year-daily-note trees"
+    }
+  ],
+  "settings": {
+    "athena": {
+      "allow_special": [
+        "appearance",
+        "appearance-data",
+        "community-plugin",
+        "community-plugin-data",
+        "hotkey"
+      ],
+      "allow_types": [
+        "audio",
+        "image",
+        "pdf",
+        "video"
+      ],
+      "ignore_folders": [
+        "old_lib"
+      ]
+    },
+    "macbook": {
+      "allow_special": [
+        "app",
+        "appearance",
+        "appearance-data",
+        "community-plugin",
+        "community-plugin-data",
+        "core-plugin",
+        "hotkey"
+      ],
+      "allow_types": [
+        "audio",
+        "image",
+        "pdf",
+        "unsupported",
+        "video"
+      ],
+      "ignore_folders": [
+        "lib",
+        "lit_review",
+        "old_lib"
+      ]
+    }
+  },
+  "source_errors": {
+    "athena_fs": [],
+    "macbook_fs": []
+  },
+  "sources": {
+    "athena_filesystem": {
+      "bytes": 1825666151,
+      "files": 6434,
+      "mib": 1741.091
+    },
+    "athena_state_local_files": {
+      "bytes": 1825656953,
+      "files": 6544,
+      "mib": 1741.082
+    },
+    "git_remote_head": {
+      "bytes": 1533006272,
+      "files": 6407,
+      "mib": 1461.989
+    },
+    "macbook_filesystem": {
+      "bytes": 3098137024,
+      "files": 6945,
+      "mib": 2954.614
+    },
+    "pending_files": {
+      "bytes": 0,
+      "files": 0,
+      "mib": 0.0
+    },
+    "server_live_entries": {
+      "bytes": 114527509,
+      "files": 5904,
+      "mib": 109.222
+    },
+    "server_live_files": {
+      "bytes": 114527509,
+      "files": 5804,
+      "mib": 109.222
+    },
+    "server_live_folders": {
+      "bytes": 0,
+      "files": 100,
+      "mib": 0.0
+    }
+  },
+  "state_db_meta": {
+    "initial": "false",
+    "schema_version": "1",
+    "version": "39179"
+  },
+  "timestamp_utc": "2026-08-27T14:10:16Z"
+}
