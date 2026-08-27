@@ -249,11 +249,11 @@ The Mac daemon fetches, merges, and hits a conflict on adjacent lines.
 Default git behaviour writes this into the file you are typing in:
 
 ```markdown
-    <<<<<<< HEAD
+<<<<<<< HEAD
 - [ ] 🍅 Review the capture grammar ^p3
-    =======
+=======
 - [ ] 🍅 Draft the sync design doc ^p3
-    >>>>>>> origin/master
+>>>>>>> origin/master
 ```
 
 Obsidian reconciles external on-disk changes into open notes through its normal update
@@ -276,13 +276,6 @@ halt.**
 ### 5.1 One reconcile cycle
 
 Idempotent, lock-protected, safe to invoke at any time from any trigger.
-
-Before staging anything, the command must refuse to proceed if a merge, rebase,
-cherry-pick, or unresolved index is already present. It should report the exact state
-and recovery command rather than layering a second operation over an interrupted one.
-That guard is distinct from the conflict-copy policy below: the daemon may resolve a
-conflict that *it* creates during the current cycle, but it must not guess at a human's
-or another tool's unfinished Git operation.
 
 ```
 1.  flock ${XDG_RUNTIME_DIR:-/tmp}/bob_sync.lock  (non-blocking; exit 0 if held)
@@ -434,12 +427,6 @@ repacks). Expect a substantial shrink, and do it before any fresh clone on the M
 | `.git` is already 1.3 GB | GitHub recommends keeping repos **under 1 GB** for good performance and reaches out above **5 GB** |
 | `old_lib/docs/nvim_help_lua_intro.pdf` and `old_lib/docs/vim_help_netrw.pdf` are `.gitignore`d for exceeding **100 MiB** | GitHub's hard per-file limit; warnings start at 50 MiB |
 
-Add a staged-object preflight to `bob vault-sync`: warn on any new object above 50 MiB
-and refuse one at or above 95 MiB, leaving margin below GitHub's 100 MiB hard limit.
-The error must name the path and leave the local commit untouched so the user can move,
-ignore, compress, or intentionally route the file through LFS. This catches the problem
-before a long upload and rejected push.
-
 Since GitHub becomes the *only* channel, **those two PDFs become permanently
 athena-only**. They are not in the repo and cannot be pushed without Git LFS. Today that
 is invisible because `old_lib` is excluded from Obsidian Sync too, but it means "the
@@ -566,34 +553,6 @@ Two structural mitigations worth having:
 2. **Move athena's cron work away from Mac working hours.** `bob nightly` at 03:30
    already achieves this. Keep it there.
 
-### 8.1 Acceptance tests and operational visibility
-
-Exercise the transaction against two temporary clones and a local bare remote before
-letting it touch the live vault. At minimum, verify:
-
-- edits from either device arrive on the other within the latency budget;
-- changes to different files and non-overlapping regions of one Markdown file merge;
-- a same-hunk conflict produces two intact notes, no marker text, and a notification;
-- delete-versus-edit, rename-versus-edit, and binary conflicts preserve both versions;
-- a rejected push is fetched, merged, and retried without force;
-- offline edits reconcile after reconnecting;
-- a 96 MiB staged object is rejected locally with its path reported;
-- a no-change cycle creates no commit; and
-- service restart and Mac sleep/wake resume polling cleanly.
-
-Record the last successful sync time, local and remote commit IDs, retry count,
-duration, files committed, and current conflict/error state. Expose them through
-`bob vault-sync status` so "are my notes current?" has an answer without reading system
-journals or Git internals.
-
-GitHub as the only sync transport is also a privacy and recovery policy change. A
-private repository is access-controlled, but it is not equivalent to Obsidian Sync's
-client-held end-to-end encryption. Audit newly tracked plugin settings for credentials
-and machine-local paths, keep two-factor authentication and repository membership
-tight, and retain independent versioned backups on both machines. Backup copies do not
-create a competing live sync channel because they never write changes back into the
-working vault.
-
 ---
 
 ## 9. Open Questions
@@ -671,8 +630,6 @@ vault, simply not true.
 - [Synchronization and Conflict Resolution — obsidianmd/obsidian-help (DeepWiki)](https://deepwiki.com/obsidianmd/obsidian-help/2.3-synchronization-and-conflict-resolution)
 - [Troubleshoot Obsidian Sync](https://retypeapp.github.io/obsidian/sync/troubleshoot/)
 - [GitHub Docs — Repository limits](https://docs.github.com/en/repositories/creating-and-managing-repositories/repository-limits)
-- [GitHub Docs — About repositories and private-repository access](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories)
-- [Git — `git pull` integration strategies](https://git-scm.com/docs/git-pull)
 - [simonthum/git-sync](https://github.com/simonthum/git-sync)
 - [Vault File Refresh — Obsidian plugin (on chokidar watcher gaps)](https://community.obsidian.md/plugins/vault-file-refresh)
 - [Simple guide to setting up git sync in Obsidian — Andrew Morris](https://ahmorris.org/posts/obsidian-git/)
