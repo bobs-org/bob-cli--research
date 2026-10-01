@@ -1,0 +1,69 @@
+Tool: built-in image_gen
+
+Initial generation prompt
+
+Use case: infographic-diagram.
+Create a polished, highly legible portrait infographic summarizing the supplied research recommendations for Bob / Obsidian task management. This is a proposed feature, not a screenshot of shipped software. Large high-resolution portrait canvas, approximately 1536 x 2304 pixels. Editorial information design with generous margins, orderly modular panels, warm off-white background, ink-colored text, restrained red for over-cap states, neutral gray for full/room, teal only for constructive actions. Clean typography, precise labels, accessible text alongside colors. Simple line icons, no decoration competing with information. No watermark. All text below must be spelled accurately, with clear reading hierarchy; avoid adding claims.
+
+TOP: Title in large type "When a note gets crowded"
+Subtitle "A soft Ready-lane cap for Bob + Obsidian"
+A prominent "5" with label "Default ready tasks per note" and adjacent copy "Configurable • Advisory • Computed live"
+Small config line "plan.max_ready_per_note: 5"
+Below it: "Per-note override: ready_cap • Inbox exemption: ready_cap: off"
+
+SECTION 1: "Count the whole Ready lane"
+Use a clean equation or grouped task pills:
+"Visible + unblocked + not future-scheduled [ ] tasks"
+"Include READY + NEW + ROTTEN"
+"Exclude recurring and project lifecycle tasks; exempt inboxes."
+"Count by the file holding each task."
+Contrast evidence in one very readable mini-panel, not a complex chart:
+"Why freshness alone fails"
+"With no review, sase's gated READY count falls:"
+"60 → 34 → 22 → 12 → 0"
+"Oct 1 → Oct 8 • Nothing was resolved."
+"Whole-lane counts keep neglected work visible."
+Clearly label that sequence as the simulation, not the recommended total.
+
+SECTION 2: "The concentration problem"
+Small date line "Vault snapshot • October 1, 2026"
+Three large metric tiles: "51" / "eligible notes"; "4" / "crowded notes"; "66" / "excess tasks".
+Show a compact table with well-aligned columns:
+"NOTE" "READY / CAP" "EXCESS"
+"sase" "61 / 5" "+56"
+"sase_remote" "11 / 5" "+6"
+"sase_pager" "7 / 5" "+2"
+"sase_usage" "7 / 5" "+2"
+Red excess chips. Optional proportional background bars, if used, MUST scale accurately to 61, 11, 7, 7. No chart required.
+Callout "85% of excess is in sase."
+Footnote "N = 3 flags 9 notes • N = 5 flags 4 • N = 7 flags 2"
+A compact three-state legend using equally sized sample pills:
+"4/5 · ROOM" neutral, "5/5 · FULL" neutral, "6/5 · CROWDED +1" red.
+Do not color FULL amber or red.
+
+SECTION 3: "One signal, wherever you work"
+Three balanced conceptual UI cards (clearly presented as proposed design):
+Card "CLI" with command "bob ready" and support line "Ranked bars • Per-note worklist • JSON"
+Card "Obsidian" with a clickable-looking "CROWDED 4 ↗" chip, arrow to "crowded.md", and sample note-heading badge "ready 11/5 · +6"
+Card "Move picker" with "Ctrl+Shift+M" and projected count "5/5 → 6/5" red.
+Below all three, one slim notification strip:
+"One notice when a Bob command makes a crowded note worse."
+Examples "5 → 6: warn" and "7 → 8: warn" and "6 → 5: celebrate".
+Small copy "Review stamps and hand edits stay silent. Unavailable counts show —."
+
+SECTION 4: "Four useful decisions"
+Four simple matching icons with short labels and explanations:
+"Split" / "A distinct outcome"
+"Sequence" / "Wait for a dependency"
+"Defer" / "Revisit later"
+"Drop" / "No longer wanted"
+
+BOTTOM RECOMMENDATION BAND: "Build it as a soft concentration signal."
+"CLI → Live dashboard + note badges → Picker + notices"
+"Triage sase first; ship gesture feedback after the freshness trial."
+Very small but readable source credit "Source: Per-note Ready cap research • 2026-10-01"
+Keep the infographic readable and beautiful: prioritize the title, default 5, counting rule, metrics, surfaces, and four remedies. Do not invent logos, add charts with misleading scaling, or imply enforcement/blocking.
+
+Final correction prompt
+
+Edit this infographic with one precise correction only: in section 3, the middle Obsidian card, the bottom example badge currently reads 'ready 11/5 · +6 # sase'. The note associated with 11/5 is sase_remote, not sase. Remove the trailing '# sase' text entirely, leaving only the badge 'ready 11/5 · +6' in this card. Do not replace it with another note name. Keep every other word, number, icon, table, color, position, proportion, and the overall dimensions unchanged. This is a text correction; preserve the rest of the infographic exactly.
