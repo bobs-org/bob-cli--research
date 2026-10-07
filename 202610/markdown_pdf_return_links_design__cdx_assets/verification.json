@@ -1,0 +1,36 @@
+{
+  "pages": 2,
+  "labels": 23,
+  "semantic_forward_links": 23,
+  "semantic_reverse_links": 23,
+  "semantic_toc_links": 4,
+  "physical_link_annotations": 51,
+  "all_actions": "GoTo",
+  "all_destinations_resolve": true,
+  "after_bob_stamping_links": 51,
+  "after_stamping_outline_entries": 4,
+  "marker_is_first_annotation": true,
+  "tagged_pdf": false,
+  "source_anchor_examples": [
+    [
+      "bob-return-R1",
+      "section*.2"
+    ],
+    [
+      "bob-return-R2",
+      "section*.3"
+    ],
+    [
+      "bob-return-R3",
+      "section*.4"
+    ],
+    [
+      "bob-return-R4",
+      "section*.5"
+    ],
+    [
+      "bob-return-R5",
+      "section*.8"
+    ]
+  ]
+}
