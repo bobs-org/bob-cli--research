@@ -1,0 +1,76 @@
+diff --git a/src/native/task_status_groups/emit.rs b/src/native/task_status_groups/emit.rs
+index 7bec905..bf52a12 100644
+--- a/src/native/task_status_groups/emit.rs
++++ b/src/native/task_status_groups/emit.rs
+@@ -152,6 +152,9 @@ pub(super) fn emit_grouped_body(
+ 
+     if emit_decorations {
+         for kind in GroupKind::ALL {
++            if plan.groups.get(&kind).is_none_or(Vec::is_empty) {
++                continue;
++            }
+             let group = emit_group(node.level + 1, kind, plan, newline);
+             push_block(&mut body, &group, newline);
+         }
+@@ -188,7 +191,7 @@ fn render_badges(
+         .zip(counts.iter())
+         .map(|((emoji, label), (count, group))| {
+             let label = format!("`{emoji} {count} {label}`");
+-            if !linked {
++            if !linked || (group.is_some() && *count == 0) {
+                 return label;
+             }
+             let anchor = match group {
+@@ -290,11 +293,7 @@ fn emit_group(
+     newline: &str,
+ ) -> String {
+     let hashes = "#".repeat(level);
+-    let mut buf = format!(
+-        "{hashes} {title}{newline}{marker}{newline}",
+-        title = kind.title(),
+-        marker = kind.marker()
+-    );
++    let mut buf = format!("{hashes} {title}{newline}", title = kind.title());
+     let leading = plan.group_leading.get(&kind).copied().unwrap_or("");
+     let trailing = plan.group_trailing.get(&kind).copied().unwrap_or("");
+     let tasks = plan.groups.get(&kind).map_or(&[][..], Vec::as_slice);
+diff --git a/src/native/task_status_groups/mod.rs b/src/native/task_status_groups/mod.rs
+index f1c2ef8..e5ddf76 100644
+--- a/src/native/task_status_groups/mod.rs
++++ b/src/native/task_status_groups/mod.rs
+@@ -497,8 +497,9 @@ fn rewrite_container(
+     warnings.extend(parsed.item_warnings.iter().cloned());
+ 
+     let newline = section_newline(node, ctx.lines);
+-    let should_decorate = parsed.has_groupable() || classified.has_groups();
+-    let should_rewrite = should_decorate || parsed.has_badges;
++    let should_decorate = parsed.has_groupable();
++    let should_rewrite =
++        should_decorate || parsed.has_badges || classified.has_groups();
+     if !should_rewrite {
+         let mut section = original;
+         apply_child_rewrites(&mut section, node, &child_rewrites);
+@@ -665,7 +666,9 @@ fn classify_children<'a>(
+             }
+             match group_marker_state(child, ctx.lines) {
+                 MarkerState::Valid(found) if found == kind => {
+-                    if seen_groups.insert(kind, child.heading_line).is_some() {
++                    if !adoptable_group_body(child, ctx) {
++                        fail = Some(GroupingSkipCode::OwnershipCollision);
++                    } else if seen_groups.insert(kind, child.heading_line).is_some() {
+                         fail = Some(GroupingSkipCode::DuplicateGroupHeading);
+                     }
+                     items.push(ClassifiedChild::Group { kind, node: child });
+diff --git a/src/native/task_status_groups/parse.rs b/src/native/task_status_groups/parse.rs
+index 32ca077..b4df4cb 100644
+--- a/src/native/task_status_groups/parse.rs
++++ b/src/native/task_status_groups/parse.rs
+@@ -165,7 +165,7 @@ pub(super) fn adoptable_group_body(
+     }
+     let Ok(pieces) = parse_direct_pieces(
+         ctx,
+-        node.body_span.clone(),
++        group_body_start(node, ctx.lines)..node.body_span.end,
+         node,
+         &mut Vec::new(),
+         false,
