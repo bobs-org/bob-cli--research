@@ -1,0 +1,61 @@
+Mode: built-in image_gen tool
+
+Use case: infographic-diagram
+Create one polished editorial infographic summarizing a research report titled "Retiring sase_blog_0: one blog post, one project". Portrait format, generous resolution and very readable text. Use a precise, restrained, high-contrast editorial style with clean typography, spacious panels, simple document icons, and clear connecting arrows. Make this a professional designed infographic, not a screenshot or a long page of paragraphs. No decorative characters, invented data, logos or watermark. All filenames and keyboard shortcuts must be spelled exactly. Render only the quoted display copy below, not these instructions.
+
+Layout and exact display copy:
+
+Top hero:
+"ONE POST. ONE PROJECT."
+"Fold sase_blog_0 into sase_blog."
+"Two projects now describe the same finish line."
+
+Main visual: a compact before/after document diagram, with a visible merge arrow.
+Before label "NOW"
+Two nested document cards: "sase_blog" with subtitle "Series planning" and "sase_blog_0" with subtitle "Single-post planning".
+After label "RECOMMENDED"
+One central document card "sase_blog.md" with subtitle "Tasks • Requirements • Outline".
+Connect it with thin lines to two distinct supporting cards:
+"sase_blog_contents.md" / "The draft"
+"done/sase_blog_done.md" / "The archive"
+The draft and archive must look like supporting documents, not additional projects.
+Small design-rule caption: "Keep a sub-project only when it can finish while its parent stays open."
+
+A prominent goal strip:
+"REDEFINE DONE"
+"My SASE post, in my own voice, is live on sase.sh."
+"An earlier post is already live. The goal is your own version."
+
+A numbered four-stage migration path, left-to-right across the page or in a clear 2 by 2 grid:
+"1  MOVE THE TASKS"
+"Use Ctrl+Shift+M"
+"6 open tasks • 20 links • 11 files"
+"Let the move update links, IDs and dependencies."
+
+"2  MERGE THE PLANNING"
+"Combine requirements and outline."
+"Keep the prose in the draft; update parent links."
+
+"3  RETIRE THE CHILD"
+"Rename the archive in Obsidian."
+"Clean old references, then delete sase_blog_0.md."
+
+"4  VERIFY AND TRIAGE"
+"Dry-run project sync and task reconcile."
+"Check links, then prune stalled work."
+
+A compact cautions panel, visually distinct but not alarmist:
+"WATCH OUT"
+"No future date on ^prj: it blocks every resident task."
+"Avoid reverse conversion, manual task rebuilding and alias redirects."
+"Check vault sync before migrating."
+
+A strong closing strip:
+"TIMEBOX THE CLEANUP. THEN WRITE."
+"About 25 minutes for the merge. Simplifying the notes will not write the post."
+
+Small footer:
+"Research synthesis • 15 Oct 2026"
+"Proposed workflow — no vault changes made"
+
+Preserve hierarchy: headline largest, topology next, goal visually prominent, numbered steps scannable, cautions compact. Keep all copy legible with ample spacing. Do not add any extra claims, duplicate text, or additional steps.
