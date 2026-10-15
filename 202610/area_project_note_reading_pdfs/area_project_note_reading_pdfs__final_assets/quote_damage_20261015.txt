@@ -1,0 +1,29 @@
+chrome/Type3   T3= 60 CID=  2 tok=  38 bad=  1 blogs/harness_for_rsi.md ['generamechanisms']
+chrome/Type3   T3= 17 CID=  0 tok= 307 bad=  3 blogs/introducing_omnigent_meta_harness_combine_control_and_share_your_agents.md ['ap', 'decisionsfor', 'pushor']
+chrome/Type3   T3= 46 CID=  4 tok= 998 bad= 65 blogs/steve_kinney_agent_memory.md ['ublished', 'spectru', 'spectru', 'uery', 'retrievapipeline', 'rapto', 'stru', 'ctures']
+chrome/CID     T3=  0 CID=  9 tok=   0 bad=  0 chat/apollo_remote_agents_workspace_topology.md []
+chrome/CID     T3=  0 CID=  8 tok=  66 bad=  0 chat/blog00_launch_post_review_consolidated.md []
+chrome/CID     T3=  0 CID= 14 tok= 139 bad=  2 chat/dynamic_agent_families_note_critique.md ['withis', 'nchildren']
+chrome/CID     T3=  0 CID= 16 tok= 134 bad=  0 chat/dynamic_agent_families_user_manual_research.md []
+chrome/CID     T3=  0 CID= 10 tok=  17 bad=  0 chat/highlights-ref-sync.md []
+chrome/CID     T3=  0 CID= 15 tok= 197 bad=  4 chat/lumberjack_chop_config_improvements.md ['intervalmust', 'honorenv', 'levelenv', 'passdiscovery']
+chrome/CID     T3=  0 CID= 10 tok=   5 bad=  0 chat/obsidian_improvements_consolidated.md []
+chrome/CID     T3=  0 CID=  8 tok=  14 bad=  0 chat/remote_sase_agents_consolidated.md []
+chrome/CID     T3=  0 CID=  9 tok=  77 bad=  0 chat/sase_ace_demo_video_tooling_consolidated.md []
+chrome/CID     T3=  0 CID=  9 tok= 244 bad=  0 chat/sase_hacker_news_popularity_strategy_consolidated.md []
+xelatex/pandoc/CID T3=  0 CID=  6 tok=  86 bad=  1 chat/sase_listen_antennapod_setup.md ['statuscurl']
+chrome/CID     T3=  0 CID= 17 tok=  44 bad=  1 chat/sase_sites_hub_and_pages.md ['nooragent']
+xelatex/pandoc/CID T3=  0 CID=  8 tok=  97 bad=  2 chat/task_bead_type_registry.md ['unction', 'sourc']
+chrome/Type3   T3= 53 CID=  7 tok= 275 bad= 19 docs/gastown_readme.md ['ultiple', 'ulti', 'form', 'ulas', 'ueue', 'uests', 'ueue', 'rs']
+chrome/CID     T3=  0 CID= 14 tok= 308 bad=  8 docs/sase_AGENTS.md ['files', 'workflow', 'files', 'files', 'workflow', 'runtimespecific', 'configuredproject', 'notifications']
+chrome/CID     T3=  0 CID= 13 tok= 343 bad=  3 docs/sase_AGENTS_v2.md ['callsase', 'anopen', 'fieldvalues']
+chrome/CID     T3=  0 CID= 12 tok=  52 bad=  0 docs/sase_AGENTS_v3.md []
+chrome/CID     T3=  0 CID= 11 tok=   3 bad=  0 docs/sase_INSTALL.md []
+chrome/Type3   T3= 12 CID=  2 tok=  13 bad=  0 docs/sase_blog_260708.md []
+
+?/other                  docs=  1 tokens=   598 not-in-pdf-text=   0 rate=0.00%
+LaTeX with hyperre/other docs=  3 tokens=   214 not-in-pdf-text=   0 rate=0.00%
+arXiv GenPDF (tex2/CID   docs=  3 tokens=   341 not-in-pdf-text=   0 rate=0.00%
+chrome/CID               docs= 15 tokens=  1643 not-in-pdf-text=  18 rate=1.10%
+chrome/Type3             docs=  5 tokens=  1631 not-in-pdf-text=  88 rate=5.40%
+xelatex/pandoc/CID       docs= 49 tokens=  1558 not-in-pdf-text=   3 rate=0.19%
