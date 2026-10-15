@@ -1,0 +1,85 @@
+Generated with the built-in image_gen tool.
+
+Use case: infographic-diagram.
+Asset type: a polished, self-contained infographic accompanying an engineering research report.
+Primary request: illustrate the main recommendations in the research "bob ref create with several URLs: one reference, one PDF". These are PROPOSED changes, not already shipped features. Produce one high-resolution portrait PNG, ideally 1800 x 2700 or a similar portrait ratio. Opaque background.
+
+Style and composition: beautifully typeset editorial information design, generous whitespace, very legible text, precise simple line icons and flow arrows, no photorealism, no decorative robot, no 3D mockup. Use a warm off-white background, ink-dark typography, teal for the recommended workflow, amber for constraints. Strong typographic hierarchy: large title, distinct short section headings, clear mono type for commands and flags. A cohesive grid with a large top diagram and balanced cards underneath. Readable, uncluttered, professional. All text below is deliberate and must be spelled correctly, preserving uppercase/lowercase CLI flags. Do not add arbitrary claims or invented product features.
+
+Layout and exact text:
+
+TOP KICKER:
+"RESEARCH RECOMMENDATION • 15 OCT 2026"
+TITLE:
+"Several URLs. One reference."
+SUBTITLE:
+"bob ref create • Read a complete series as one unit"
+
+HERO DIAGRAM: two or three ordered article cards marked "1", "2", "3", flowing to a handsome single document with a visible contents page, then a note/task pair. Label the flow using exactly:
+"2–20 web articles"
+"One PDF"
+"One note + one reading task"
+Small sentence below:
+"Argument order is reading order. Add -L for one narration."
+
+EVIDENCE STRIP: two compact numeric callouts:
+"23 / 635" with caption "external reference notes already bundle URLs"
+"10 / 28" with caption "observed create commands use -L"
+
+CARD 1 heading:
+"Keep the familiar flags"
+Three rows, each with a monospace flag and explanation:
+"-N, --name"  "Already names the PDF and reference note"
+"-o, --output"  "Keep a PDF file path"
+"-n, --no-audio"  "Keep its existing meaning"
+Small footnote:
+"No output-directory option in v1. -N and -o remain alternatives."
+
+CARD 2, wider or prominent, heading:
+"Name only when the URLs tell a clear story"
+A sequence of five clearly separated boxes, arrows reading left to right (or top to bottom if needed), indicating fallback priority:
+"-N" → "-o filename" → "Shared slug words" → "-T" → "Error + hint"
+Caption:
+"Resolve the name before any network call."
+An illustrated example with matching prefix highlighted:
+"tokio-internals-part-1"
+"tokio-internals-part-2"
+arrow to:
+"tokio_internals"
+Three succinct bullet lines:
+"Same site; at least two meaningful shared words"
+"Fallback: a shared multi-word folder"
+"One word only for an explicit numbered series"
+Small bottom note:
+"Otherwise, name the collection explicitly."
+
+CARD 3 heading:
+"Make one beautiful document"
+Three linked stages:
+"Capture each part" → "Compose together" → "Print once"
+Four short labels with appropriate icons:
+"Linked contents"
+"Fresh page per part"
+"Part bookmarks"
+"Continuous page numbers"
+
+CARD 4 heading:
+"Reliable from the first release"
+Four concise lines, visually separated:
+"All or nothing: a failed part writes nothing"
+"Fix list-aware URL deduplication first"
+"Store source_url as an ordered list"
+"Refuse overlap with captured or queued PDFs"
+
+BOTTOM SCOPE STRIP:
+"v1: web articles only"
+"PDFs, arXiv, local files and -H are excluded from collections."
+
+BOTTOM TAKEAWAY in a distinct band:
+"Build it for complete reading packets."
+"Collections are immutable snapshots. Keep ongoing series as separate references."
+
+TINY SOURCE FOOTER:
+"Source: ref_create_multi_url_collections__final.md"
+
+Constraints: This image summarizes a proposal, not a live product. Preserve exact flag case (-N differs from -n, -T and -L and -H uppercase). Do not label the note as already created by the capture step; the hero represents the eventual full workflow. Do not draw TOC page numbers, which the report excludes for v1. Do not add any recommendation to overwrite existing references. Ensure every line fits, with no cropped text. Prioritize legibility over ornament.
