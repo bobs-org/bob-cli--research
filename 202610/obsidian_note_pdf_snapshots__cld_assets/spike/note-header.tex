@@ -1,0 +1,57 @@
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
+\usepackage{tikz}
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=1.4em,itemsep=2pt,topsep=3pt,parsep=0pt}
+\setlist[itemize,1]{label={\color{BobMute}\textbullet}}
+\setlist[itemize,2]{label={\color{BobMute}\textendash}}
+\setlist[itemize,3]{label={\color{BobMute}\textperiodcentered}}
+\usepackage{fontspec}
+\setmainfont{SourceSerifPro}[Extension=.otf,UprightFont=*-Regular,ItalicFont=*-RegularIt,BoldFont=*-Semibold,BoldItalicFont=*-SemiboldIt,Ligatures=NoCommon]
+\setsansfont{Inter}[Extension=.otf,UprightFont=*-Regular,BoldFont=*-SemiBold,ItalicFont=*-Italic,BoldItalicFont=*-SemiBoldItalic]
+\setmonofont{SourceCodePro}[Extension=.otf,UprightFont=*-Regular,BoldFont=*-Semibold,Scale=0.86]
+\newfontfamily\BobEmoji{NotoEmoji-Regular.ttf}[Scale=0.9]
+\definecolor{BobInk}{HTML}{1F2328}
+\definecolor{BobMute}{HTML}{6E7781}
+\definecolor{BobLinkInk}{HTML}{2F5E96}
+\definecolor{BobChipFill}{HTML}{EEF1F4}
+\definecolor{BobBlue}{HTML}{3B6EA8}
+\definecolor{BobRed}{HTML}{B4443C}
+\definecolor{BobGreen}{HTML}{2E7D4F}
+\color{BobInk}
+\usepackage{titlesec}
+\titleformat{\section}{\sffamily\Large\bfseries}{}{0pt}{}[\vspace{-2pt}{\color{BobChipFill}\titlerule[1.2pt]}]
+\titleformat{\subsection}{\sffamily\normalsize\bfseries\color{BobMute}\MakeUppercase}{}{0pt}{}
+\titleformat{\subsubsection}{\sffamily\normalsize\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{16pt}{6pt}
+\titlespacing*{\subsection}{0pt}{12pt}{4pt}
+\raggedright
+\setlength{\parskip}{4pt}
+\newcommand{\BobChip}[1]{\kern2pt{\setlength{\fboxsep}{1.2pt}\colorbox{BobChipFill}{\sffamily\scriptsize\color{BobMute}\strut\,#1\,}}}
+\newcommand{\BobLabel}[1]{{\sffamily\scriptsize\bfseries\color{BobBlue}\MakeUppercase{#1}}\enspace}
+\newcommand{\BobMuted}[1]{{\color{BobMute}\small #1}}
+\newcommand{\BobSt}[1]{\csname BobSt@#1\endcsname}
+\makeatletter
+\newcommand{\BobSt@open}{\tikz[baseline=-0.6ex]\draw[BobMute,line width=0.7pt] (0,0) circle (0.42em);}
+\newcommand{\BobSt@next}{\tikz[baseline=-0.6ex]{\draw[BobBlue,line width=0.9pt] (0,0) circle (0.42em);\fill[BobBlue] (0,0) circle (0.16em);}}
+\newcommand{\BobSt@wip}{\tikz[baseline=-0.6ex]{\draw[BobBlue,line width=0.8pt] (0,0) circle (0.42em);\fill[BobBlue] (0,-0.42em) arc (-90:90:0.42em) -- cycle;}}
+\newcommand{\BobSt@blocked}{\tikz[baseline=-0.6ex]{\draw[BobRed,line width=0.8pt] (0,0) circle (0.42em);\draw[BobRed,line width=0.8pt] (-0.3em,-0.3em) -- (0.3em,0.3em);}}
+\newcommand{\BobSt@done}{\tikz[baseline=-0.6ex]{\fill[BobGreen] (0,0) circle (0.45em);\draw[white,line width=0.9pt] (-0.22em,0) -- (-0.05em,-0.18em) -- (0.25em,0.2em);}}
+\newcommand{\BobSt@canceled}{\tikz[baseline=-0.6ex]{\draw[BobMute,line width=0.7pt] (0,0) circle (0.42em);\draw[BobMute,line width=0.7pt] (-0.2em,-0.2em) -- (0.2em,0.2em) (-0.2em,0.2em) -- (0.2em,-0.2em);}}
+\makeatother
+\newcommand{\BobKicker}[1]{{\sffamily\scriptsize\bfseries\color{BobBlue}\addfontfeature{LetterSpace=8}#1}\par\smallskip}
+\newcommand{\BobTitle}[1]{{\sffamily\fontsize{26}{30}\selectfont\bfseries #1}\par\medskip}
+\newcommand{\BobGoal}[1]{{\large\itshape #1}\par\smallskip}
+\newcommand{\BobGoalMeta}[1]{{\sffamily\footnotesize\color{BobMute}#1}\par\smallskip}
+\newcommand{\BobStats}[1]{{\sffamily\footnotesize #1}\par\smallskip}
+\newcommand{\BobNav}[1]{{\sffamily\footnotesize\color{BobMute}In this note:\enspace}{\sffamily\footnotesize #1}\par\smallskip}
+\newcommand{\BobDot}{\enspace{\color{BobMute}·}\enspace}
+\newcommand{\BobSnapshot}[1]{{\sffamily\scriptsize\color{BobMute}#1}\par}
+\newcommand{\BobRule}{\par\medskip{\color{BobChipFill}\hrule height 1.2pt}\medskip}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\sffamily\scriptsize\color{BobMute}\BobShortTitle}
+\fancyfoot[R]{\sffamily\scriptsize\color{BobMute}\thepage\,/\,\pageref*{LastPage}}
+\usepackage{lastpage}
