@@ -1,0 +1,13 @@
+{
+ "purpose": "Reproducible, read-only evaluation of tokenizer and bar variants against the labeled census state.",
+ "vault_commit": "6af37e5eb8f786b275e838e380b92da778edb1af (2026-10-21 07:48:42 -0400, last vault commit before the 11:50:47Z census; 66 later commits had drifted 44 notes by evaluation time)",
+ "snapshot": "git archive of that commit, text files under 2 MB only (binary media excluded), extracted outside the vault into a scratch directory, then given a separate throwaway git repository so the sampler's status guard works. The live vault and its .git were only read.",
+ "mtimes": "Each snapshot file got the live file's mtime when the file was unchanged since the census commit (6474 files), else the committer time of its last change at or before that commit (41 files). No done/ archive had changed, so the closed-window archive mtimes match the census.",
+ "reproduction_check": "The unmodified working-tree binary reproduced all 496 retained census responses (calibration_queries.jsonl) exactly, ignoring only the absolute target path.",
+ "binaries_sha256": {
+  "baseline (pre-calibration working tree)": "26adf176b81a188c92e1bc6df5c3202e043d70aa689184a93d0243445a0c67a2",
+  "final": "fb00d7e3f61539dc181f7eb05b9e76e1e0c7ea992b32a1387a149e0f1287a5dc"
+ },
+ "live_cross_check": "The final binary was also run by scripts/dev/capture_related_calibrate against the live ~/bob (read-only, vault status unchanged): 489 queries, 0 errors, 55 fired (11.2%). Joined to labels by note and title, the live visible rows carried the same label counts as the snapshot (possible_duplicate 6 D; similar 2 D / 37 U / 15 N; closed 2 D / 2 U; same_title 2 U).",
+ "scratch_removed": "The snapshot and experiment copies live under the agent temp area and are not evidence; this file and the JSONL/analysis files are."
+}
