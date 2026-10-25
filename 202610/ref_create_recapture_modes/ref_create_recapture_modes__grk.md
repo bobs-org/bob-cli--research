@@ -19,7 +19,7 @@ Bare `-f` / `--force` should mean **reread** on a library hit, and should keep t
 
 The stated plan is directionally right and under-specified in the places that would desync Highlights, Today, and `bob ref find`. The adjustments below are the difference between a lovely command and a second copy of the “delete it to recapture” footgun.
 
-![Two recapture gestures on one existing flag: reread keeps the old bundle and mints `__vN`; overwrite archives the live note and recreates the same stem.](bob_ref_create_force_reread_overwrite__grk.jpg)
+![Two recapture gestures on one existing flag: reread keeps the old bundle and mints `__vN`; overwrite archives the live note and recreates the same stem.](ref_create_recapture_modes__grk.jpg)
 
 ## Recommended solution in one page
 
