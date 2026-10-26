@@ -1,0 +1,29 @@
+---
+title: "Where should copied code bytes come from?"
+accTitle: "Code-copy source of truth"
+accDescr: "Two decisions route code-copy bytes to the render-input companion or an honest absence. PDF text extraction is rejected."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 220
+---
+flowchart TD
+  Q1{{"`**Rendered from Markdown?**`"}}
+  Q2{{"`**Companion still on disk?**`"}}
+  COMP["`**Companion source.md**<br/>Exact pre-swap bytes`"]
+  NONE["`**Hide C**<br/>No code copy`"]
+  PDF["`**PDF text layer**<br/>Rejected: wrap damage`"]
+  Q1 ==>|Yes| Q2
+  Q1 -->|No| NONE
+  Q2 -->|Yes| COMP
+  Q2 -->|No| NONE
+  Q1 -.->|do not extract| PDF
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef proposed stroke-dasharray:5 3
+  class Q1,Q2 decision
+  class COMP outcome
+  class NONE,PDF risk
+  class PDF proposed
