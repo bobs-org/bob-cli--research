@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="920" viewBox="0 0 1080 920" role="img" aria-labelledby="title desc">
+<title id="title">Day strip: a quiet reference beneath each number</title>
+<desc id="desc">Design study with synthetic values. Completed days use neutral direction marks beside seven-day averages. Today displays the same averages without direction marks. An incomplete history reads history 5/7 instead of inventing a comparison.</desc>
+<rect width="1080" height="920" fill="#f3f1ec"/>
+<style>text { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; } .value { font-size:25px; font-weight:600; font-variant-numeric:tabular-nums; } .label { font-size:10px; font-weight:600; letter-spacing:1px; } .ref { font-size:12px; font-variant-numeric:tabular-nums; } .caption {font-size:14px;} </style>
+<text x="52" y="53" font-size="12" font-weight="650" letter-spacing="2" fill="#5c6170">BOB · DAY STRIP · DESIGN STUDY</text>
+<text x="52" y="98" font-size="33" font-weight="600" fill="#262521">A little context. A quiet reference.</text>
+<text x="52" y="131" font-size="16" fill="#62605c">Keep the day's numbers first. Let the previous week explain them.</text>
+<text x="52" y="181" fill="#5c5953" class="caption">COMPLETED DAY · direction is factual, never success or failure</text>
+<rect x="52" y="197" width="976" height="143" rx="9" fill="#ffffff"/>
+<text x="76" y="227" fill="#65625c" class="label">WORKED</text>
+<text x="76" y="258" fill="#262521" class="value">4h 50m</text>
+<text x="76" y="281" fill="#65625c" class="ref">↑ 7d avg 4h 10m</text>
+<line x1="251" x2="251" y1="215" y2="284" stroke="#dfdcd5"/>
+<text x="266" y="227" fill="#65625c" class="label">REVIEWED</text>
+<text x="266" y="258" fill="#262521" class="value">42</text>
+<text x="266" y="281" fill="#65625c" class="ref">= 7d avg 42</text>
+<line x1="441" x2="441" y1="215" y2="284" stroke="#dfdcd5"/>
+<text x="456" y="227" fill="#65625c" class="label">DONE</text>
+<text x="456" y="258" fill="#262521" class="value">6</text>
+<text x="456" y="281" fill="#65625c" class="ref">↓ 7d avg 7</text>
+<line x1="631" x2="631" y1="215" y2="284" stroke="#dfdcd5"/>
+<text x="646" y="227" fill="#65625c" class="label">CREATED</text>
+<text x="646" y="258" fill="#262521" class="value">8</text>
+<text x="646" y="281" fill="#65625c" class="ref">↑ 7d avg 6.3</text>
+<line x1="821" x2="821" y1="215" y2="284" stroke="#dfdcd5"/>
+<text x="836" y="227" fill="#65625c" class="label">REVIEW CLOSED</text>
+<circle cx="850" cy="250" r="12" fill="none" stroke="#61a775" stroke-width="1.5"/><path d="M 844 250 l 4 4 l 8 -9" fill="none" stroke="#61a775" stroke-width="2"/>
+<circle cx="79" cy="308" r="3" fill="#3979c5"/>
+<text x="89" y="312" fill="#65625c" class="ref">bob 2h 40m</text>
+<circle cx="230" cy="308" r="3" fill="#d66d36"/>
+<text x="240" y="312" fill="#65625c" class="ref">life 1h 20m</text>
+<circle cx="381" cy="308" r="3" fill="#268d97"/>
+<text x="391" y="312" fill="#65625c" class="ref">GTD 50m</text>
+<rect x="76" y="328" width="508.6896551724138" height="4" rx="2" fill="#3979c5"/>
+<rect x="587.6896551724137" y="328" width="254.3448275862069" height="4" rx="2" fill="#d66d36"/>
+<rect x="845.0344827586206" y="328" width="158.9655172413793" height="4" rx="2" fill="#268d97"/>
+<text x="52" y="384" fill="#5c5953" class="caption">TODAY · the average stays visible; arrows wait until the day is complete</text>
+<rect x="52" y="400" width="976" height="143" rx="9" fill="#ffffff"/>
+<text x="76" y="430" fill="#65625c" class="label">WORKED</text>
+<text x="76" y="461" fill="#262521" class="value">2h 00m</text>
+<text x="76" y="484" fill="#65625c" class="ref">7d avg 4h 10m</text>
+<line x1="251" x2="251" y1="418" y2="487" stroke="#dfdcd5"/>
+<text x="266" y="430" fill="#65625c" class="label">REVIEWED</text>
+<text x="266" y="461" fill="#262521" class="value">42</text>
+<text x="266" y="484" fill="#65625c" class="ref">7d avg 42</text>
+<line x1="441" x2="441" y1="418" y2="487" stroke="#dfdcd5"/>
+<text x="456" y="430" fill="#65625c" class="label">DONE</text>
+<text x="456" y="461" fill="#262521" class="value">2</text>
+<text x="456" y="484" fill="#65625c" class="ref">7d avg 7</text>
+<line x1="631" x2="631" y1="418" y2="487" stroke="#dfdcd5"/>
+<text x="646" y="430" fill="#65625c" class="label">CREATED</text>
+<text x="646" y="461" fill="#262521" class="value">8</text>
+<text x="646" y="484" fill="#65625c" class="ref">7d avg 6.3</text>
+<line x1="821" x2="821" y1="418" y2="487" stroke="#dfdcd5"/>
+<text x="836" y="430" fill="#65625c" class="label">REVIEW CLOSED</text>
+<circle cx="850" cy="453" r="12" fill="none" stroke="#9d7b20" stroke-width="1.5"/><path d="M 850 441 A 12 12 0 0 1 850 465 Z" fill="#9d7b20"/>
+<circle cx="79" cy="511" r="3" fill="#3979c5"/>
+<text x="89" y="515" fill="#65625c" class="ref">bob 1h</text>
+<circle cx="230" cy="511" r="3" fill="#d66d36"/>
+<text x="240" y="515" fill="#65625c" class="ref">life 40m</text>
+<circle cx="381" cy="511" r="3" fill="#268d97"/>
+<text x="391" y="515" fill="#65625c" class="ref">GTD 20m</text>
+<text x="817" y="515" fill="#65625c" class="ref">so far · 14:50</text>
+<rect x="76" y="531" width="461.0" height="4" rx="2" fill="#3979c5"/>
+<rect x="540.0" y="531" width="307.3333333333333" height="4" rx="2" fill="#d66d36"/>
+<rect x="850.3333333333333" y="531" width="153.66666666666666" height="4" rx="2" fill="#268d97"/>
+<text x="52" y="587" fill="#5c5953" class="caption">DARK THEME + MISSING HISTORY · keep the fact, withhold an unreliable reference</text>
+<rect x="52" y="603" width="976" height="143" rx="9" fill="#202124"/>
+<text x="76" y="633" fill="#b4b3af" class="label">WORKED</text>
+<text x="76" y="664" fill="#e7e6e2" class="value">4h 50m</text>
+<text x="76" y="687" fill="#b4b3af" class="ref">↑ 7d avg 4h 10m</text>
+<line x1="251" x2="251" y1="621" y2="690" stroke="#45464c"/>
+<text x="266" y="633" fill="#b4b3af" class="label">REVIEWED</text>
+<text x="266" y="664" fill="#e7e6e2" class="value">42</text>
+<text x="266" y="687" fill="#b4b3af" class="ref">history 5/7</text>
+<line x1="441" x2="441" y1="621" y2="690" stroke="#45464c"/>
+<text x="456" y="633" fill="#b4b3af" class="label">DONE</text>
+<text x="456" y="664" fill="#e7e6e2" class="value">6</text>
+<text x="456" y="687" fill="#b4b3af" class="ref">↓ 7d avg 7</text>
+<line x1="631" x2="631" y1="621" y2="690" stroke="#45464c"/>
+<text x="646" y="633" fill="#b4b3af" class="label">CREATED</text>
+<text x="646" y="664" fill="#e7e6e2" class="value">8</text>
+<text x="646" y="687" fill="#b4b3af" class="ref">↑ 7d avg 6.3</text>
+<line x1="821" x2="821" y1="621" y2="690" stroke="#45464c"/>
+<text x="836" y="633" fill="#b4b3af" class="label">REVIEW CLOSED</text>
+<circle cx="850" cy="656" r="12" fill="none" stroke="#61a775" stroke-width="1.5"/><path d="M 844 656 l 4 4 l 8 -9" fill="none" stroke="#61a775" stroke-width="2"/>
+<circle cx="79" cy="714" r="3" fill="#68a4ee"/>
+<text x="89" y="718" fill="#b4b3af" class="ref">bob 2h 40m</text>
+<circle cx="230" cy="714" r="3" fill="#e17a4a"/>
+<text x="240" y="718" fill="#b4b3af" class="ref">life 1h 20m</text>
+<circle cx="381" cy="714" r="3" fill="#55b8c3"/>
+<text x="391" y="718" fill="#b4b3af" class="ref">GTD 50m</text>
+<rect x="76" y="734" width="508.6896551724138" height="4" rx="2" fill="#68a4ee"/>
+<rect x="587.6896551724137" y="734" width="254.3448275862069" height="4" rx="2" fill="#e17a4a"/>
+<rect x="845.0344827586206" y="734" width="158.9655172413793" height="4" rx="2" fill="#55b8c3"/>
+<text x="52" y="803" fill="#262521" font-size="15">On hover or focus</text>
+<text x="52" y="831" fill="#65625c" font-size="14">Worked: 4h 50m. Previous 7 full days: 4h 10m per day. 40m above average.</text>
+<text x="52" y="854" fill="#65625c" font-size="14">Oct 18–24 · 7 of 7 days recorded. An average is context, not a target.</text>
+<text x="52" y="895" fill="#65625c" font-size="12">Illustrative composition · synthetic values · not a production screenshot or measured layout</text>
+</svg>
