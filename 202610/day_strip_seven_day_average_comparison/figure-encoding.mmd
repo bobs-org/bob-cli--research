@@ -1,0 +1,29 @@
+---
+title: "How should a Day strip fact show the last seven days?"
+accTitle: "Day strip seven-day comparison routing"
+accDescr: "Boolean facts get a week of met or missed dots. Numeric facts with fewer than four complete prior days stay a bare number. Numeric facts with enough history get an eight-bar spark and a median hairline, with today's bar hollow while the day is still in progress."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Is the fact a boolean?**`"}}
+  Q2{{"`**Are four prior days real?**`"}}
+  DOTS["`**Week of met or missed dots**<br/>No numeric grade`"]
+  BARE["`**Bare number only**<br/>No comparison marks`"]
+  SPARK["`**Eight-bar spark**<br/>Median hairline of D-7 to D-1`"]
+  Q1 -->|Yes| DOTS
+  Q1 -->|No| Q2
+  Q2 -->|No| BARE
+  Q2 -->|Yes| SPARK
+  SPARK -.->|"D still in progress"| HOLLOW["`**Hollow last bar**<br/>No below-typical ink`"]
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class Q1,Q2 decision
+  class DOTS,BARE,SPARK outcome
+  class HOLLOW muted
+  class HOLLOW proposed

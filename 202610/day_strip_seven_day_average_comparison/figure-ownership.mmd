@@ -1,0 +1,23 @@
+---
+title: "Who computes the seven-day typical, and who paints it?"
+accTitle: "Day strip comparison ownership"
+accDescr: "bob-cli owns the previous-seven-day median, its display string, and the comparison words. The plugin turns already-fetched daily points into bar heights and a hairline, and puts bob's words in the tooltip."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 18
+    nodeSpacing: 28
+    wrappingWidth: 260
+---
+flowchart LR
+  PTS["`**Daily points**<br/>D-7 through D already fetched`"]
+  BASE["`**vs_prev7 object**<br/>Median, display, words`"]
+  SPARK["`**Bar heights and hairline**<br/>Plugin layout only`"]
+  TIP["`**Tooltip and aria**<br/>Bob's words, no plugin math`"]
+  PTS ==> BASE
+  PTS --> SPARK
+  BASE --> TIP
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class PTS,BASE focus
+  class SPARK,TIP outcome
