@@ -198,7 +198,7 @@ Decide the kind before starting the block. Do not relabel mid-session because a 
 
 **Caption:** Ask about the block's activity in this order: defining work, personal admin, prose, input, restore, then new capability. Career and project purpose stay on homes.
 
-![Which kind-of-work theme does this Pomodoro get?](kind_of_work_pomodoro_themes_six_month_audit__grk_route.png)
+![Which kind-of-work theme does this Pomodoro get?](work_kind_pomodoro_theme_set__grk_route.png)
 
 Rendered size: 816.7 × 1132 px; fit scale: 78.9% (Mermaid CLI 12.0.0, PDF-mirroring config).
 
