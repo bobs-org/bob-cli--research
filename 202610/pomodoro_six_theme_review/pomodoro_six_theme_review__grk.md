@@ -54,7 +54,7 @@ Bob already separates three layers that the literature also separates:
 
 Today's plan is **4/5 themes, 6/15 links**, status `ok`. Running: JOB. Later: BUILD, FIX, HOME. GTD already closed (3 done, 55m). Capture homes on those open rows: JOB → `dev.md` (gmail reauth), BUILD → `sase.md`, FIX → `sase.md`, HOME → `love.md` plus `dev_plex_hack_patch.md`.
 
-![What job does each of today's six themes do?](pomodoro_theme_usage_and_best_practices__grk_roles.png)
+![What job does each of today's six themes do?](pomodoro_six_theme_review__grk_roles.png)
 
 *Caption: The six visible names already split into four jobs: a review ritual, three work modes, one area of focus, and a parking column.*
 
@@ -266,7 +266,7 @@ Highest expected value first. Each item is a change to the *themes currently in 
 
 **Cost.** A day that honestly needs JOB + BUILD + READ + a FIX interrupt will go `over` unless FIX is closed or merged. That warning is useful.
 
-![How many work themes should stay open in a day?](pomodoro_theme_usage_and_best_practices__grk_wip.png)
+![How many work themes should stay open in a day?](pomodoro_six_theme_review__grk_wip.png)
 
 *Caption: Close GTD after review, run one maker theme, keep at most one Next theme, and open HOME or FIX only when that work is queued.*
 
