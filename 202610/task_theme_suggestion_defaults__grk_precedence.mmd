@@ -1,0 +1,30 @@
+---
+title: "Which theme should this task suggest?"
+accTitle: "Task theme suggestion precedence"
+accDescr: "A task override wins, then a reference task suggests READ, then the nearest area or project theme frontmatter, else there is no suggestion."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Has a theme field?**`"}}
+  Q2{{"`**Is it a ref task?**`"}}
+  Q3{{"`**Any ancestor theme?**`"}}
+  OVERRIDE["`**Task override**<br/>Use the [theme::] value`"]
+  READ["`**READ**<br/>Reference-task rule`"]
+  NOTE["`**Note default**<br/>Nearest theme: frontmatter`"]
+  NONE["`**No suggestion**<br/>Today and Recent only`"]
+  Q1 -->|Yes| OVERRIDE
+  Q1 -->|No| Q2
+  Q2 -->|Yes| READ
+  Q2 -->|No| Q3
+  Q3 -->|Yes| NOTE
+  Q3 -->|No| NONE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class OVERRIDE,READ,NOTE outcome
+  class NONE muted

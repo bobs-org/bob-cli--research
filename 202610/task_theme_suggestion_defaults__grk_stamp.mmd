@@ -1,0 +1,30 @@
+---
+title: "When does linking write [theme::]?"
+accTitle: "Theme override stamp rules"
+accDescr: "With no suggestion, linking writes nothing. A matching choice clears a stale field or writes nothing. A different choice writes the chosen component."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 260
+---
+flowchart TD
+  Q0{{"`**Is there a suggestion?**`"}}
+  Q1{{"`**Choice matches it?**`"}}
+  Q2{{"`**Task has a field?**`"}}
+  SKIP["`**Write nothing**`"]
+  CLEAR["`**Clear the field**`"]
+  WRITE["`**Write [theme:: chosen]**`"]
+  Q0 -->|No| SKIP
+  Q0 -->|Yes| Q1
+  Q1 -->|No| WRITE
+  Q1 -->|Yes| Q2
+  Q2 -->|Yes| CLEAR
+  Q2 -->|No| SKIP
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  class Q0,Q1,Q2 decision
+  class WRITE,CLEAR outcome
+  class SKIP muted
