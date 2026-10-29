@@ -1,0 +1,30 @@
+---
+title: "Which layout does bob print for a table?"
+accTitle: "Table layout routing in bob ref create"
+accDescr: "Tables in PDFs bob does not typeset are left alone. Otherwise a forced layout wins; in auto mode a table with a 12-word cell outside the first column prints as row records and every other table prints as an improved grid."
+config:
+  flowchart:
+    rankSpacing: 18
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Does bob typeset it?**`"}}
+  Q2{{"`**Is a layout forced?**`"}}
+  Q3{{"`**Long prose in a cell?**`"}}
+  SKIP["`**Leave the PDF as is**<br/>only a reader-side fix helps`"]
+  REC["`**Row records**<br/>one text column, highlightable`"]
+  GRID["`**Improved grid**<br/>content-aware widths, row air`"]
+  Q1 -->|"No: local PDF, arXiv, PDF URL"| SKIP
+  Q1 -->|"Yes: Markdown, snapshot, web clip"| Q2
+  Q2 -->|"records"| REC
+  Q2 -->|"grid"| GRID
+  Q2 -->|"no, auto"| Q3
+  Q3 -->|"Yes: 12+ words past column 1"| REC
+  Q3 -->|"No"| GRID
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class REC,GRID outcome
+  class SKIP muted
