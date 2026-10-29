@@ -1,0 +1,31 @@
+---
+title: "Which wiki-link projects a mention reverse?"
+accTitle: "Mention reverse eligibility"
+accDescr: "A wiki-link projects a mention reverse only when it is a task-to-task block link in prose, not a managed or Pomodoro link, and not already a structured edge."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Block link to a task?**`"}}
+  Q2{{"`**Inside a task tree?**`"}}
+  Q3{{"`**Managed or Pomodoro?**`"}}
+  Q4{{"`**Already a structured edge?**`"}}
+  NO["`**No reverse**<br/>Leave the link alone`"]
+  YES["`**Project MENTIONED IN**<br/>On the target task`"]
+  Q1 -->|No| NO
+  Q1 -->|Yes| Q2
+  Q2 -->|No| NO
+  Q2 -->|Yes| Q3
+  Q3 -->|Yes| NO
+  Q3 -->|No| Q4
+  Q4 -->|Yes| NO
+  Q4 -->|No| YES
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3,Q4 decision
+  class YES outcome
+  class NO muted

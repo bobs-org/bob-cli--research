@@ -1,0 +1,40 @@
+---
+title: "How do incoming task edges differ by kind?"
+accTitle: "Three incoming task edge kinds"
+accDescr: "Dependencies, relations, and mentions each have one authored source and one generated reverse. Mentions are reverse-only because the inline wiki-link is already the forward edge."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  subgraph DEP["Scheduling"]
+    direction LR
+    D1["`**DEPENDS ON**<br/>Authored on dependent`"]
+    D2["`**BLOCKS**<br/>Generated reverse`"]
+    D1 -->|"projects"| D2
+  end
+  subgraph REL["Relation"]
+    direction LR
+    R1["`**LINKS**<br/>Authored on source`"]
+    R2["`**LINKED FROM**<br/>Generated reverse`"]
+    R1 -->|"projects"| R2
+  end
+  subgraph MEN["Mention"]
+    direction LR
+    M1["`**Inline wiki-link**<br/>Authored in prose`"]
+    M2["`**MENTIONED IN**<br/>Generated reverse only`"]
+    M1 -.->|"never writes LINKS"| M2
+  end
+  DEP ~~~ REL
+  REL ~~~ MEN
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef proposed stroke-dasharray:5 3
+  class D1,R1,M1 focus
+  class D2,R2,M2 outcome
+  class M1,M2 proposed
+  style DEP fill:none,stroke:#3B78C2
+  style REL fill:none,stroke:#3B78C2
+  style MEN fill:none,stroke:#2E7D4F
