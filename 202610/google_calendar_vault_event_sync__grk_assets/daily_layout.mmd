@@ -1,0 +1,34 @@
+---
+title: "What does the daily note look like after sync?"
+accTitle: "Daily note Events section and MEET Pomodoro"
+accDescr: "A managed Events heading sits above Pomodoros. Accepted timed meetings become Task Links under one exempt MEET session, after the morning PLAN entry."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TB
+  subgraph DAY["Canonical daily note"]
+    direction TB
+    TITLE["`**# 2026-10-29**<br/>bob-plan block`"]
+    EVH["`**## Events**<br/>managed schedule ledger`"]
+    ROWS["`**0900-0930 Standup**<br/>1400-1500 Review`"]
+    PH["`**## Pomodoros**`"]
+    PLAN["`**() — PLAN**<br/>morning review`"]
+    MEET["`**() — MEET**<br/>exempt meeting bucket`"]
+    LINKS["`**[[meet#^standup]]**<br/>[[sase#^review]]`"]
+    TITLE --> EVH
+    EVH --> ROWS
+    ROWS --> PH
+    PH --> PLAN
+    PH --> MEET
+    MEET --> LINKS
+  end
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class TITLE,PH muted
+  class EVH,ROWS,MEET,LINKS outcome
+  class PLAN focus
+  style DAY fill:none,stroke:#3B78C2

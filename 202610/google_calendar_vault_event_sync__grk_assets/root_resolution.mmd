@@ -1,0 +1,30 @@
+---
+title: "How is an event's root parent chosen?"
+accTitle: "Calendar event root parent resolution"
+accDescr: "Root parent is the vault journal, then an organizer-only description hint, then the calendar-to-note map, then meet."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Vault journal hit?**`"}}
+  Q2{{"`**Organizer bob:root?**`"}}
+  Q3{{"`**Calendar mapped?**`"}}
+  J["`**Journal stem**<br/>bob gcal root`"]
+  H["`**Description stem**<br/>private to organizer`"]
+  C["`**Calendar default**<br/>config map`"]
+  D["`**meet**<br/>area default`"]
+  Q1 -->|Yes| J
+  Q1 -->|No| Q2
+  Q2 -->|Yes| H
+  Q2 -->|No| Q3
+  Q3 -->|Yes| C
+  Q3 -->|No| D
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class J,H,C outcome
+  class D muted

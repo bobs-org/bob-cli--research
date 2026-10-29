@@ -1,0 +1,37 @@
+---
+title: "Where does an accepted calendar event land?"
+accTitle: "Calendar event routing into Bob"
+accDescr: "An expanded Google Calendar occurrence is RSVP-filtered, then written to the daily Events ledger, a durable task in the resolved root note, and a Task Link under today's MEET Pomodoro."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 260
+---
+flowchart TD
+  EV["`**Google occurrence**<br/>singleEvents expanded`"]
+  Q1{{"`**Accepted RSVP?**`"}}
+  SKIP["`**Skip**<br/>declined or unanswered`"]
+  Q2{{"`**Timed default?**`"}}
+  DAY["`**Events row only**<br/>all-day or out of office`"]
+  ROOT["`**Resolve root parent**<br/>journal then calendar then meet`"]
+  SEC["`**Daily Events**<br/>managed schedule ledger`"]
+  TASK["`**Durable #task**<br/>lives in the root note`"]
+  POMO["`**MEET Pomodoro**<br/>Task Link for Today`"]
+  EV ==> Q1
+  Q1 -->|No| SKIP
+  Q1 -->|Yes| Q2
+  Q2 -->|No| DAY
+  Q2 -->|Yes| ROOT
+  DAY --> SEC
+  ROOT --> SEC
+  ROOT --> TASK
+  TASK --> POMO
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class EV focus
+  class Q1,Q2 decision
+  class SKIP risk
+  class DAY,ROOT,SEC,TASK,POMO outcome
