@@ -1,0 +1,26 @@
+---
+title: "What should a click on each half do?"
+accTitle: "Footer click actions"
+accDescr: "The Keep half drains with command-mode preview-first pull when notes wait, else refreshes. The inbox half opens gkeep_inbox.md."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  KEEP{{"`**Clicked Keep half?**`"}}
+  WAIT{{"`**Actionable<br/>count above zero?**`"}}
+  PULL["`**gkeep-pull**<br/>preview first`"]
+  REFRESH["`**gkeep status**<br/>refresh Keep cache`"]
+  OPEN["`**Open gkeep_inbox.md**<br/>at first open task`"]
+  KEEP -->|Yes| WAIT
+  KEEP -->|No, inbox half| OPEN
+  WAIT -->|Yes| PULL
+  WAIT -->|No| REFRESH
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  class KEEP,WAIT decision
+  class PULL,REFRESH outcome
+  class OPEN focus

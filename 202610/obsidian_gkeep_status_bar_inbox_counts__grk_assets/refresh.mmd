@@ -1,0 +1,35 @@
+---
+title: "Which clock drives each footer count?"
+accTitle: "Two clocks for Keep drain and vault inbox counts"
+accDescr: "Vault inbox counts update from gkeep_inbox.md events. Keep drain counts update only on focus with a 15 minute TTL, after a pull, or on click."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 18
+    wrappingWidth: 240
+---
+flowchart TB
+  subgraph VAULT["Vault inbox"]
+    direction TB
+    FILE["`**gkeep_inbox.md**<br/>vault file`"]
+    COUNT["`**Open-task count**<br/>in the plugin`"]
+    FILE -->|"modify, create,<br/>delete, rename"| COUNT
+  end
+  subgraph KEEP["Keep drain"]
+    direction TB
+    TRIG["`**Focus, TTL,<br/>pull, or click**`"]
+    STATUS["`**bob gkeep status**<br/>no pinentry`"]
+    CACHE["`**Host cache**<br/>status.json`"]
+    TRIG ==> STATUS
+    STATUS -->|"snapshot when stale"| CACHE
+    CACHE -->|"paint Keep half"| CHIP["`**Keep chip**`"]
+  end
+  COUNT -->|"paint inbox half"| CHIP2["`**Inbox chip**`"]
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class FILE,COUNT,CHIP2 focus
+  class TRIG,STATUS decision
+  class CACHE,CHIP outcome
+  style VAULT fill:none,stroke:#3B78C2
+  style KEEP fill:none,stroke:#C77C02

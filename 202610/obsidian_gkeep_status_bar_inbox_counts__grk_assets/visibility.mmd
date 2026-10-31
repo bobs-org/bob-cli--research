@@ -1,0 +1,30 @@
+---
+title: "When does the Keep drain chip appear?"
+accTitle: "Keep chip visibility"
+accDescr: "The Keep half shows only after a successful no-prompt snapshot. Auth failure hides it. Network failure keeps a stale count."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  Q1{{"`**Config and token<br/>look present?**`"}}
+  Q2{{"`**Token readable<br/>without pinentry?**`"}}
+  Q3{{"`**Last snapshot<br/>succeeded?**`"}}
+  HIDE["`**Hide Keep half**<br/>inbox chip may remain`"]
+  STALE["`**Show stale count**<br/>dim age in tooltip`"]
+  SHOW["`**Show Keep count**<br/>actionable notes`"]
+  Q1 -->|No| HIDE
+  Q1 -->|Yes| Q2
+  Q2 -->|No| HIDE
+  Q2 -->|Yes| Q3
+  Q3 -->|Never, or auth error| HIDE
+  Q3 -->|Network error| STALE
+  Q3 -->|Yes, cache fresh or refreshed| SHOW
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class Q1,Q2,Q3 decision
+  class SHOW,STALE outcome
+  class HIDE risk
