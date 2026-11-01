@@ -1,0 +1,32 @@
+---
+title: "When does a starts-after link offer its task?"
+accTitle: "Starts-after successor offer rule"
+accDescr: "A gesture on target T looks for starts-after sources only when T is parked off today's plan or completed. Each source S is offered only if it has not started, is not planned or blocked, and every one of its starts-after targets is released; otherwise it is held and reported but never selectable."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**How did T leave the plan?**`"}}
+  SILENT["`**Silence**<br/>no offer, nothing written`"]
+  FIND["`**Find each S**<br/>S's LINKS: starts after T`"]
+  Q2{{"`**Can S start now?**`"}}
+  Q3{{"`**All S's targets released?**`"}}
+  HOLD["`**Held**<br/>reported, never selectable`"]
+  OFFER["`**Offer S**<br/>group: Starts after T`"]
+  Q1 -->|"parked: Pending,<br/>no live link left"| FIND
+  Q1 -->|"managed Done"| FIND
+  Q1 -->|"still planned, cancel,<br/>drop, release, or edit"| SILENT
+  FIND --> Q2
+  Q2 -->|"no: started, planned,<br/>blocked, or hidden"| HOLD
+  Q2 -->|"yes: Ready or Next,<br/>not planned today"| Q3
+  Q3 -->|"no: another target<br/>still waiting"| HOLD
+  Q3 ==>|"yes"| OFFER
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class FIND,OFFER outcome
+  class SILENT,HOLD muted
