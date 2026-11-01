@@ -1,0 +1,20 @@
+---
+title: "Which stored edge makes S the successor of T?"
+accTitle: "Two authoring directions for starts-after"
+accDescr: "Successor S may store starts after T, or predecessor T may store starts before S. Both name the same start order, and both offer S when T leaves today's plan."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 14
+    wrappingWidth: 260
+---
+flowchart TD
+  A["`**On successor S**<br/>LINKS: starts after T`"]
+  B["`**On predecessor T**<br/>LINKS: starts before S`"]
+  C["`**When T leaves today's plan**<br/>offer S as Start next`"]
+  A -->|"or"| B
+  B ==> C
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class A,B focus
+  class C outcome

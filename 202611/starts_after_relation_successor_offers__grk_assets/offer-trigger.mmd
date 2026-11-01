@@ -1,0 +1,28 @@
+---
+title: "When should Bob offer the starts-after successor?"
+accTitle: "Starts-after successor trigger"
+accDescr: "Bob offers successor S when predecessor T leaves today's live plan as Pending or Done. T still planned, dropped unstarted, released to Ready, or cancelled stays silent."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 220
+---
+flowchart TD
+  Q1{{"`**Did T leave today's live plan?**`"}}
+  Q2{{"`**What is T now?**`"}}
+  STILL["`**Stay silent**<br/>T is still planned today`"]
+  PARK["`**Offer S · Start next**<br/>T is Pending, parked`"]
+  DONE["`**Offer S · Start next**<br/>T is Done`"]
+  OTHER["`**Stay silent**<br/>drop, release, or cancel`"]
+  Q1 -->|"No"| STILL
+  Q1 -->|"Yes"| Q2
+  Q2 -->|"Pending"| PARK
+  Q2 -->|"Done"| DONE
+  Q2 -->|"Anything else"| OTHER
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2 decision
+  class PARK,DONE outcome
+  class STILL,OTHER muted
