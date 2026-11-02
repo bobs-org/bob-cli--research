@@ -1,0 +1,27 @@
+---
+title: "Which visual channel should carry blocked reason?"
+accTitle: "Three visual channels on a Bob task line"
+accDescr: "The stored checkbox keeps the Blocked lane, the inner glyph shows why, and existing marks keep priority, date, and dependency detail."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TB
+  subgraph LINE["One blocked task line"]
+    direction TB
+    Q{{"`**What question?**`"}}
+    LANE["`**Stored checkbox**<br/>Lane stays Blocked`"]
+    WHY["`**Inner glyph**<br/>Why it cannot move`"]
+    DETAIL["`**Existing marks**<br/>Hourglass, bars, chips`"]
+    Q -->|"Is it blocked?"| LANE
+    Q -->|"Why, at a glance?"| WHY
+    Q -->|"When, who, how far?"| DETAIL
+  end
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  class Q decision
+  class LANE,WHY,DETAIL outcome
+  style LINE fill:none,stroke:#3B78C2
