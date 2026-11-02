@@ -1,0 +1,32 @@
+---
+title: "How does a task pick its clock?"
+accTitle: "Effective clock resolution"
+accDescr: "A task line tag wins first, then the nearest area or project off_clock field on the residence chain started at root if set, else the task stays on the clock."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Line has #on?**`"}}
+  Q2{{"`**Line has #off?**`"}}
+  Q3{{"`**Nearest note declares?**`"}}
+  ON["`**On-clock**<br/>explicit override`"]
+  OFFTAG["`**Off-clock**<br/>Google or hand tag`"]
+  OFFNOTE["`**Off-clock**<br/>inherited default`"]
+  ONNOTE["`**On-clock**<br/>child override`"]
+  DEFAULT["`**On-clock**<br/>no default`"]
+  Q1 -->|Yes| ON
+  Q1 -->|No| Q2
+  Q2 -->|Yes aliases too| OFFTAG
+  Q2 -->|No| Q3
+  Q3 -->|off_clock true| OFFNOTE
+  Q3 -->|off_clock false| ONNOTE
+  Q3 -->|absent end of walk| DEFAULT
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  class Q1,Q2,Q3 decision
+  class ON,ONNOTE,DEFAULT focus
+  class OFFTAG,OFFNOTE outcome

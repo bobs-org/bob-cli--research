@@ -1,0 +1,30 @@
+---
+title: "What should bob gcal sync write on the Event Task?"
+accTitle: "Google stamp versus inherited clock"
+accDescr: "Google-owned #off and #on are written onto the Event Task. An inherited off-clock root is computed at write time and is not stamped into the Google badge run."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Google has #on?**`"}}
+  Q2{{"`**Google has #off?**`"}}
+  Q3{{"`**Root inherits off?**`"}}
+  STAMPON["`**Write #on**<br/>Google-owned on-clock`"]
+  STAMPOFF["`**Write #off**<br/>Google-owned off-clock`"]
+  COMPUTE["`**Stamp no clock tag**<br/>compute off-clock from root`"]
+  WORKED["`**Stamp no clock tag**<br/>on-clock Event Task`"]
+  Q1 -->|Yes| STAMPON
+  Q1 -->|No| Q2
+  Q2 -->|Yes deprecated too| STAMPOFF
+  Q2 -->|No| Q3
+  Q3 -->|Yes| COMPUTE
+  Q3 -->|No| WORKED
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  class Q1,Q2,Q3 decision
+  class STAMPOFF,COMPUTE outcome
+  class STAMPON,WORKED focus
