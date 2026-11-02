@@ -1,0 +1,34 @@
+---
+title: "How does a Google description become vault notes?"
+accTitle: "Description to notes pipeline"
+accDescr: "HTML is normalized, directive lines and conferencing boilerplate are dropped, remaining text becomes at most two levels of escaped note bullets under the Event Task."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 14
+    wrappingWidth: 240
+---
+flowchart TD
+  SRC["`**Google description**<br/>HTML or plain text`"]
+  HTML["`**Normalize HTML**<br/>Breaks, links, lists`"]
+  DIR["`**Drop directive lines**<br/>@route #offclock -N +M`"]
+  DUP["`**Drop duplicates**<br/>Join URL and location`"]
+  BOIL["`**Drop boilerplate**<br/>Meet Zoom Teams blocks`"]
+  OUTL["`**Build outline**<br/>Paragraphs and lists`"]
+  ESC["`**Escape as notes**<br/>Keep child-text rules`"]
+  VAULT["`**Vault sub-bullets**<br/>Two levels, tab indent`"]
+  EMPTY["`**Write nothing**<br/>Empty after stripping`"]
+  SRC ==> HTML
+  HTML ==> DIR
+  DIR ==> DUP
+  DUP ==> BOIL
+  BOIL --> OUTL
+  BOIL -.->|nothing left| EMPTY
+  OUTL ==> ESC
+  ESC ==> VAULT
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class SRC,HTML,DIR,DUP,BOIL,OUTL,ESC focus
+  class VAULT outcome
+  class EMPTY muted
