@@ -1,0 +1,47 @@
+---
+title: "Who writes each part of a period note?"
+accTitle: "Live, authored, and frozen layers"
+accDescr: "Bob paints the stats strip and child index at read time. A Monday review fills narrative sections. Frontmatter, fences, and the agent brief stay frozen."
+config:
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 12
+    wrappingWidth: 240
+---
+flowchart TB
+  subgraph LIVE["Bob paints, never writes the note"]
+    direction TB
+    STRIP["`**Stats strip**<br/>Five facts, prior period, mix bars`"]
+    KIDS["`**Child index**<br/>Days of the week, weeks of the quarter`"]
+    DASH["`**Click a fact**<br/>Opens dash_stats pinned`"]
+    CHILD["`**Click a child**<br/>Opens that period note`"]
+    STRIP --> DASH
+    KIDS --> CHILD
+  end
+  subgraph AUTH["Human or agent, Monday review"]
+    direction TB
+    SENT["`**One sentence**<br/>What the period was`"]
+    MOVE["`**Moved / slipped**<br/>Grounded in the dailies`"]
+    BET["`**Next bet**<br/>One outcome`"]
+    SENT --> MOVE --> BET
+  end
+  subgraph FROZEN["Template owns, nobody rewrites"]
+    direction TB
+    FM["`**Frontmatter**<br/>parent, type, date, id`"]
+    FENCE["`**Empty fences**<br/>bob-stats-strip and index`"]
+    BRIEF["`**Agent brief**<br/>HTML comment in the file`"]
+    FM --> FENCE --> BRIEF
+  end
+  LIVE -->|"numbers inform"| AUTH
+  BRIEF -.->|"prompt for"| SENT
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class STRIP,KIDS,DASH,CHILD focus
+  class SENT,MOVE,BET outcome
+  class FM,FENCE,BRIEF muted
+  class SENT,MOVE,BET proposed
+  style LIVE fill:none,stroke:#3B78C2
+  style AUTH fill:none,stroke:#2E7D4F
+  style FROZEN fill:none,stroke:#6B7280

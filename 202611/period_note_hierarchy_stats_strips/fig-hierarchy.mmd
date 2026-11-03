@@ -1,0 +1,50 @@
+---
+title: "What should parent a daily note?"
+accTitle: "Period-note parent hierarchy"
+accDescr: "Today daily notes parent to monthly files that often do not exist, then yearly, journal, and log. The proposal parents daily notes to ISO weekly files, then quarter, year, all_time, and org, with bob creating missing files."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TB
+  subgraph NOW["Today"]
+    direction TB
+    D1["`**Daily**<br/>YYYY/YYYYMMDD.md`"]
+    M1["`**Monthly**<br/>YYYY/YYYYMM.md`"]
+    MISS["`**Dangling parent**<br/>258 of 295 dailies in 2026`"]
+    Y1["`**Yearly**<br/>YYYY.md`"]
+    J["`**journal.md**`"]
+    L["`**log.md**`"]
+    D1 -->|"parent"| M1
+    M1 -->|"file missing"| MISS
+    M1 -->|"when present"| Y1
+    Y1 -->|"parent"| J
+    J -->|"parent"| L
+  end
+  subgraph NEXT["Proposed"]
+    direction TB
+    D2["`**Daily**<br/>YYYY/YYYYMMDD.md`"]
+    W["`**Weekly**<br/>YYYY/YYYY-Www.md`"]
+    Q["`**Quarter**<br/>YYYY/YYYY-Qn.md`"]
+    Y2["`**Yearly**<br/>YYYY.md`"]
+    A["`**all_time.md**`"]
+    O["`**org.md**`"]
+    D2 ==>|"parent"| W
+    W ==>|"parent"| Q
+    Q ==>|"parent"| Y2
+    Y2 ==>|"parent"| A
+    A ==>|"parent"| O
+  end
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class D1,M1,Y1,J,L focus
+  class MISS risk
+  class D2,W,Q,Y2,A,O outcome
+  class D2,W,Q,Y2,A,O proposed
+  style NOW fill:none,stroke:#3B78C2
+  style NEXT fill:none,stroke:#2E7D4F,stroke-dasharray:5 3
