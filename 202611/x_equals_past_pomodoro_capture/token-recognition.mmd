@@ -1,0 +1,28 @@
+---
+title: "How does Bob tell these x spellings apart?"
+accTitle: "x token recognition"
+accDescr: "A leading x becomes a close, a close-then-start chain, a past log, or prose, depending on the next byte and on spacing."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 220
+---
+flowchart TD
+  Q1{{"`**What follows the leading x?**`"}}
+  Q2{{"`**Is there a space?**`"}}
+  CLOSE["`**Bare close**<br/>x, x1!2, x*3`"]
+  CHAIN["`**Close then start**<br/>x =build, x =`"]
+  PAST["`**Past log**<br/>x=build, x=3!`"]
+  PROSE["`**Task prose**<br/>xx, xylophone, X=`"]
+  Q1 -->|"digit or ! * ~ @"| CLOSE
+  Q1 -->|"equals sign"| Q2
+  Q1 -->|"letter, dot, dash"| PROSE
+  Q2 -->|yes| CHAIN
+  Q2 -->|"no, glued"| PAST
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  class Q1,Q2 decision
+  class CLOSE,CHAIN,PAST outcome
+  class PROSE focus

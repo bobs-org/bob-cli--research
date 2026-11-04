@@ -1,0 +1,24 @@
+---
+title: "How do packed x= tokens get their time ranges?"
+accTitle: "Packed past-pomodoro lookback"
+accDescr: "At 09:21 the clock ceils to 09:25. Later x= tokens take blocks next to that end; earlier tokens shift back by later durations."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 240
+---
+flowchart TD
+  NOW["`**Now 09:21**<br/>ceil to 09:25`"]
+  PACK["`**One pack**<br/>x=build@2 x=fix@3`"]
+  FIX["`**FIX, 3 blocks**<br/>09:10 to 09:25`"]
+  BUILD["`**BUILD, 2 blocks**<br/>09:00 to 09:10`"]
+  NOW ==> PACK
+  PACK -->|"later token, nearest now"| FIX
+  PACK -->|"earlier token, shifted 15 min"| BUILD
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class NOW focus
+  class PACK muted
+  class FIX,BUILD outcome
