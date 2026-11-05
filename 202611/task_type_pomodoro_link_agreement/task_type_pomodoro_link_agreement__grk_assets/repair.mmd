@@ -1,0 +1,34 @@
+---
+title: "When a live Task Link and its Pomodoro name disagree, what should Bob write?"
+accTitle: "Repair policy for type and Pomodoro disagreement"
+accDescr: "Gestures restore the other side in the same write. Reconcile merges a missing type onto an open typed non-MEET name. Containers, MEET, labels, planned extras, frontmatter drift, and closed history stay lint-only."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 14
+    wrappingWidth: 220
+---
+flowchart TD
+  G{{"`**Did a Bob gesture change one side?**`"}}
+  SAME["`**Same write**<br/>Land, relocate, retype, or shed`"]
+  MISS{{"`**Task type missing from the name?**`"}}
+  KIND{{"`**Open typed non-MEET name?**`"}}
+  MERGE["`**Reconcile merges T**<br/>Catalog spelling, labels kept`"]
+  LINT["`**Lint and ledger mark**<br/>No silent write`"]
+  LEFT{{"`**Extra type after a known leave?**`"}}
+  SHED["`**Shed that type**<br/>Keep labels and the base`"]
+  G -->|Yes| SAME
+  G -->|No| MISS
+  MISS -->|Yes| KIND
+  KIND -->|Yes| MERGE
+  KIND -->|No| LINT
+  MISS -->|No| LEFT
+  LEFT -->|Yes| SHED
+  LEFT -->|No| LINT
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class G,MISS,KIND,LEFT decision
+  class SAME,MERGE,SHED outcome
+  class LINT muted

@@ -1,0 +1,32 @@
+---
+title: "Which type/link mismatch is a bug?"
+accTitle: "Coverage holes versus leftover types"
+accDescr: "A missing task type on a Pomodoro name is a coverage hole Bob should merge. An extra type is a leftover only after a link of that type left; a planned slot stays."
+config:
+  flowchart:
+    rankSpacing: 18
+    nodeSpacing: 18
+    wrappingWidth: 240
+---
+flowchart TD
+  Q1{{"`**Is the task type in the name?**`"}}
+  HOLE["`**Coverage hole**<br/>Merge T into the open name`"]
+  Q2{{"`**Does the name hold extra types?**`"}}
+  Q3{{"`**Did a T link leave this write?**`"}}
+  SHED["`**Leftover**<br/>Shed T, keep labels and base`"]
+  PLAN["`**Planned slot**<br/>Keep the name`"]
+  OK["`**Agrees**<br/>Nothing to write`"]
+  Q1 -->|No| HOLE
+  Q1 -->|Yes| Q2
+  Q2 -->|No| OK
+  Q2 -->|Yes| Q3
+  Q3 -->|Yes| SHED
+  Q3 -->|No| PLAN
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class HOLE,SHED outcome
+  class PLAN muted
+  class OK outcome
