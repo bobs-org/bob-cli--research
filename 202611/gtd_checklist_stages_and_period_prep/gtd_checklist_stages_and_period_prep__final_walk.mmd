@@ -1,0 +1,41 @@
+---
+title: "How does a review Monday walk under checklist stages?"
+accTitle: "Recommended review-Monday walk"
+accDescr: "PRE walks its terminal, periods, and browser stages, then unstaged chores; the commitment tiers follow; POST walks the staged Weekly review and ends with the unstaged Morning review. The period agent drafts in the background between launch and the Weekly review."
+config:
+  flowchart:
+    rankSpacing: 26
+    nodeSpacing: 24
+    wrappingWidth: 320
+---
+flowchart TD
+  subgraph PRE["PRE · opening checklist, top to bottom"]
+    direction TB
+    T["`**TERMINAL stage**<br/>SASE cleanup and update, reconcile`"]
+    P["`**PERIODS stage**<br/>Launch the due period-draft agents`"]
+    B["`**BROWSER stage**<br/>Weather, email, calendar`"]
+    R["`**Unstaged PRE**<br/>Teeth, pills, stretches`"]
+    T --> P
+    P --> B
+    B --> R
+  end
+  MID["`**NEW through ROTTEN**<br/>Quarterly or yearly review walks in RECURRING`"]
+  subgraph POST["POST · closing checklist, top to bottom"]
+    direction TB
+    W["`**PERIODS stage**<br/>Weekly review corrects the draft`"]
+    M["`**Morning review**<br/>Unstaged, so always the closeout`"]
+    W --> M
+  end
+  AG["`**Period agent**<br/>Brief, then draft the Review`"]
+  R -->|"then"| MID
+  MID -->|"]S"| W
+  P -.->|"starts in background"| AG
+  AG -.->|"draft ready for"| W
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class T,P,B focus
+  class R,MID,AG muted
+  class W,M outcome
+  style PRE fill:none,stroke:#3B78C2
+  style POST fill:none,stroke:#2E7D4F
