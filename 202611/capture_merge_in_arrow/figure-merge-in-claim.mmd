@@ -1,0 +1,31 @@
+---
+title: "What does a spaced less-than do on a capture line?"
+accTitle: "Merge-in claim rule"
+accDescr: "A spaced, unescaped less-than claims a merge-in only when complete task sources follow it and the left side creates exactly one open task. Prose stays prose, partial input waits for a pick, and other claimed lines refuse with teaching copy."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 12
+    wrappingWidth: 170
+---
+flowchart TD
+  Q1{{"`**Unescaped, outside code?**`"}}
+  Q2{{"`**What follows it?**`"}}
+  Q3{{"`**Left creates one open task?**`"}}
+  PROSE["`**Prose, unchanged**<br/>comparisons, autolinks`"]
+  PEND["`**Pending pick**<br/>picker opens; Submit refused`"]
+  REFUSE["`**Refuse and teach**<br/>existing task: offer the reversed arrow`"]
+  GO["`**Create T, merge sources**<br/>one explicit-merge transaction`"]
+  Q1 -->|No| PROSE
+  Q1 -->|Yes| Q2
+  Q2 -->|"word or number"| PROSE
+  Q2 -->|"nothing or partial source"| PEND
+  Q2 -->|"complete @route+id run"| Q3
+  Q3 -->|No| REFUSE
+  Q3 -->|Yes| GO
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class GO,PEND outcome
+  class PROSE,REFUSE muted
