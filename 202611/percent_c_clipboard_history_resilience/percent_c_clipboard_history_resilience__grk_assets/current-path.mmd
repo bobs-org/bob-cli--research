@@ -1,0 +1,34 @@
+---
+title: "Why is only the first %cN entry correct?"
+accTitle: "Current counted clipboard capture path"
+accDescr: "A single %c read uses pbpaste. A count above one prepends that live value to Clipy SQLite rows with no check that Clipy is running or that those rows are recent."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  Q{{"`**Count greater than 1?**`"}}
+  LIVE["`**pbpaste**<br/>live general pasteboard`"]
+  CMD{{"`**HISTORY_CMD set?**`"}}
+  CLIPY["`**Clipy sqlite.db**<br/>read-only WAL open`"]
+  MERGE["`**Merge live plus history**`"]
+  ONE["`**One live value**`"]
+  MIX["`**Live first, then Clipy rows**`"]
+  Q -->|No| LIVE
+  LIVE --> ONE
+  Q -->|Yes| CMD
+  CMD -->|Yes| MERGE
+  CMD -->|No| CLIPY
+  CLIPY --> MERGE
+  LIVE -.->|"always first"| MERGE
+  MERGE --> MIX
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class Q,CMD decision
+  class LIVE,CLIPY,MERGE focus
+  class ONE outcome
+  class MIX risk

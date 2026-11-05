@@ -1,0 +1,33 @@
+---
+title: "Where should %cN history come from?"
+accTitle: "Recommended counted clipboard history providers"
+accDescr: "Prefer the capture app's recent-copy ring, then an override, then a clipboard manager whose newest row is fresh. Refuse a stale database rather than mixing it with the live pasteboard."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 18
+    wrappingWidth: 240
+---
+flowchart TD
+  LIVE["`**Live pasteboard**<br/>always the first entry`"]
+  RING{{"`**Mac ring ready?**`"}}
+  CMD{{"`**Override set?**`"}}
+  FRESH{{"`**Manager DB fresh?**`"}}
+  BOB["`**bob classifies and writes**`"]
+  FAIL["`**Refuse with diagnosis**`"]
+  LIVE ==> RING
+  RING -->|Yes| BOB
+  RING -->|No| CMD
+  CMD -->|Yes| BOB
+  CMD -->|No| FRESH
+  FRESH -->|Yes| BOB
+  FRESH -->|No| FAIL
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class RING,CMD,FRESH decision
+  class LIVE focus
+  class BOB outcome
+  class FAIL risk
