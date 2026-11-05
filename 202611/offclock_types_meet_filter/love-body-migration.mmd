@@ -1,0 +1,41 @@
+---
+title: "What happens to love and body tasks after the MEET filter?"
+accTitle: "love.md and body.md clock migration"
+accDescr: "Today offclock true sends every task off the work clock. After offclock_types lists MEET, calendar rows stay off-clock and CHORE tasks become Worked."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 12
+    wrappingWidth: 240
+---
+flowchart TD
+  subgraph TODAY["Today"]
+    direction TD
+    TNOTE["`**love.md and body.md**<br/>offclock true`"]
+    TMEET["`**MEET events**<br/>Off-clock`"]
+    TCHORE["`**CHORE and other tasks**<br/>Off-clock`"]
+    TNOTE --> TMEET
+    TNOTE --> TCHORE
+  end
+  subgraph NEXT["Proposed"]
+    direction TD
+    PNOTE["`**love.md and body.md**<br/>offclock_types MEET`"]
+    PMEET["`**MEET events**<br/>Off-clock`"]
+    PCHORE["`**CHORE and other tasks**<br/>On-clock`"]
+    PNOTE --> PMEET
+    PNOTE --> PCHORE
+  end
+  TCHORE -.->|"replace boolean"| PNOTE
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef proposed stroke-dasharray:5 3
+  class TNOTE,PNOTE focus
+  class TMEET,PMEET,PCHORE outcome
+  class TCHORE risk
+  class PNOTE proposed
+  class PMEET proposed
+  class PCHORE proposed
+  style TODAY fill:none,stroke:#C0392B
+  style NEXT fill:none,stroke:#2E7D4F,stroke-dasharray:5 3

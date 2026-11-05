@@ -1,0 +1,32 @@
+---
+title: "How is a task's clock decided with offclock_types?"
+accTitle: "Clock resolution with offclock_types"
+accDescr: "Tags win first. The nearest area or project then applies a boolean or a type list. A type miss is on-clock at that note."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 10
+    wrappingWidth: 220
+---
+flowchart TD
+  TAG{{"`**Line tag?**`"}}
+  POL{{"`**Nearest note policy?**`"}}
+  KIND{{"`**Note declaration?**`"}}
+  MATCH{{"`**Type in the list?**`"}}
+  ON["`**On-clock**`"]
+  OFF["`**Off-clock**`"]
+  TAG -->|"#on"| ON
+  TAG -->|"#off or alias"| OFF
+  TAG -->|None| POL
+  POL -->|None| ON
+  POL -->|Found| KIND
+  KIND -->|"true"| OFF
+  KIND -->|"false or invalid"| ON
+  KIND -->|"type list"| MATCH
+  MATCH -->|Yes| OFF
+  MATCH -->|No| ON
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class TAG,POL,KIND,MATCH decision
+  class ON,OFF outcome
