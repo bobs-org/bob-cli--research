@@ -1,0 +1,33 @@
+---
+title: "Both arrows send source notes into T"
+accTitle: "Capture merge arrow dual"
+accDescr: "Greater-than is source-first into an existing destination. Less-than is title-first into a newly created task. Both run the same merge engine and write merged into."
+config:
+  flowchart:
+    rankSpacing: 18
+    nodeSpacing: 18
+    wrappingWidth: 240
+---
+flowchart LR
+  subgraph GT["Source-first refactor"]
+    direction LR
+    Sgt["`**Existing S**<br/>@inbox+bench`"]
+    Tgt["`**Existing T**<br/>@db+upgrade`"]
+    Sgt -->|"S > T"| Tgt
+  end
+  subgraph LT["Title-first capture"]
+    direction LR
+    Slt["`**Existing S**<br/>@foo+f @bar+b`"]
+    Tlt["`**New T**<br/>title @foo^great`"]
+    Slt -->|"T < S"| Tlt
+  end
+  Tgt -.->|"same engine"| ENG["`**Merge engine**<br/>notes move<br/>S cancelled<br/>merged into`"]
+  Tlt -.->|"same engine"| ENG
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Sgt,Slt focus
+  class Tgt,Tlt outcome
+  class ENG muted
+  style GT fill:none,stroke:#3B78C2
+  style LT fill:none,stroke:#2E7D4F

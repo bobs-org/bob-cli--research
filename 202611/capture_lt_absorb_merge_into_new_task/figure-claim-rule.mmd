@@ -1,0 +1,33 @@
+---
+title: "When does a less-than become absorb?"
+accTitle: "Absorb claim decision"
+accDescr: "A standalone less-than claims absorb only when the right-hand side looks like merge sources and the left-hand side would create a new task. Other less-thans stay prose."
+config:
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 10
+    wrappingWidth: 200
+---
+flowchart TD
+  Q1{{"`**Standalone less-than?**`"}}
+  Q2{{"`**Right side source-like?**`"}}
+  Q3{{"`**Left creates a task?**`"}}
+  UNCLAIM["`**Unclaimed prose**`"]
+  TEACH["`**Teach greater-than**`"]
+  NEED["`**Incomplete absorb**`"]
+  CLAIM["`**Create T, merge S**`"]
+  Q1 -->|No| UNCLAIM
+  Q1 -->|Yes| Q2
+  Q2 -->|No| UNCLAIM
+  Q2 -->|Partial| NEED
+  Q2 -->|"complete sources"| Q3
+  Q3 -->|Existing owner| TEACH
+  Q3 -->|New titled task| CLAIM
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class Q1,Q2,Q3 decision
+  class CLAIM,NEED outcome
+  class UNCLAIM muted
+  class TEACH risk
