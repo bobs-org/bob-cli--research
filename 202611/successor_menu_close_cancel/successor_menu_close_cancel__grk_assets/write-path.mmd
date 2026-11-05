@@ -1,0 +1,36 @@
+---
+title: "When do successor close and cancel write?"
+accTitle: "Successor outcome write path"
+accDescr: "Enter re-plans marked outcomes into the original close. Obsidian Escape and Mac Skip write the close with every offer left. Mac Escape aborts and writes nothing."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  G["`**Managed Done gesture**<br/>Ctrl+Enter, !, or x close`"]
+  P["`**Plan offers**<br/>recovery already decided`"]
+  K{{"`**Picker open?**`"}}
+  M["`**Mark outcomes**<br/>Leave, Pull in, Done, Cancel`"]
+  E{{"`**Which commit?**`"}}
+  W["`**One atomic write**<br/>close plus marked outcomes`"]
+  NONE["`**Close only**<br/>every offer left`"]
+  ABORT["`**Mac Escape**<br/>draft unchanged`"]
+  G ==> P
+  P ==> K
+  K -->|no offers| NONE
+  K -->|yes| M
+  M --> E
+  E -->|Enter| W
+  E -->|Obsidian Esc or Skip| NONE
+  E -->|Mac Esc| ABORT
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class G,P,M focus
+  class K,E decision
+  class W,NONE outcome
+  class ABORT risk

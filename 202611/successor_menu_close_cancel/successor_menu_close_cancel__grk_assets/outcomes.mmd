@@ -1,0 +1,33 @@
+---
+title: "What can one successor offer become?"
+accTitle: "Successor offer row outcomes"
+accDescr: "Each selectable successor offer is Leave, Pull in, Done, or Cancel. Those marks are exclusive. Enter writes every marked outcome with the original close."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  OFFER["`**Selectable offer**<br/>recovered, still open`"]
+  Q{{"`**Which mark?**`"}}
+  LEAVE["`**Leave**<br/>Ready, no Task Link`"]
+  PULL["`**Pull in**<br/>Next plus Task Link`"]
+  DONE["`**Done**<br/>completed, no link`"]
+  CANCEL["`**Cancel**<br/>cancelled, no link`"]
+  APPLY["`**Enter writes all marks**<br/>one pass with the close`"]
+  OFFER ==> Q
+  Q -->|none| LEAVE
+  Q -->|"Tab or Space"| PULL
+  Q -->|"Ctrl+X or !"| DONE
+  Q -->|"Ctrl+Shift+X or x"| CANCEL
+  LEAVE --> APPLY
+  PULL --> APPLY
+  DONE --> APPLY
+  CANCEL --> APPLY
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class OFFER focus
+  class Q decision
+  class LEAVE,PULL,DONE,CANCEL,APPLY outcome
