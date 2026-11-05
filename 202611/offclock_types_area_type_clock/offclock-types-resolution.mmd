@@ -1,0 +1,36 @@
+---
+title: "Which note policy decides an untagged task's clock?"
+accTitle: "offclock_types note policy resolution"
+accDescr: "For a task without a clock tag, the root walk stops at the nearest area or project note that declares a clock key. A valid offclock_types list makes only listed effective types off-clock; every other type is on-clock and the walk stops there."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 18
+    wrappingWidth: 220
+---
+flowchart TD
+  NOTE{{"`**Note's clock key?**`"}}
+  NEXT["`**Parent note**<br/>same root walk`"]
+  VALID{{"`**List valid?**`"}}
+  MATCH{{"`**Effective type listed?**`"}}
+  ON["`**On-clock**<br/>stamps [t::]`"]
+  OFF["`**Off-clock**<br/>stamps [off::]`"]
+  NOTE -->|"neither key,<br/>blank, or []"| NEXT
+  NEXT -->|"walk continues"| NOTE
+  NEXT -->|"chain ends"| ON
+  NOTE -->|"offclock: true"| OFF
+  NOTE -->|"offclock: false<br/>or invalid"| ON
+  NOTE -.->|"offclock_types<br/>(shadows offclock)"| VALID
+  VALID -.->|"valid"| MATCH
+  VALID -.->|"invalid: lint"| ON
+  MATCH -.->|"yes"| OFF
+  MATCH -.->|"no: walk stops"| ON
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef proposed stroke-dasharray:5 3
+  class NOTE,VALID,MATCH decision
+  class VALID,MATCH proposed
+  class ON,OFF outcome
+  class NEXT focus
