@@ -1,0 +1,31 @@
+---
+title: "What does each key do to one successor row?"
+accTitle: "Successor row verdict states"
+accDescr: "Every offer row holds exactly one verdict. From Leave, the pull-in mark key sets Pull in, Ctrl+X sets Done, and Ctrl+Shift+X opens an optional inline reason before setting Cancel. Pressing the same key again returns the row to Leave. Nothing is written until the card is applied."
+config:
+  state:
+    nodeSpacing: 34
+    rankSpacing: 30
+---
+stateDiagram-v2
+  direction TB
+  state "Leave<br/>default; recovers only" as LEAVE
+  state "Pull in<br/>link, raise to Next" as PULL
+  state "Done<br/>will complete" as DONE
+  state "Why cancel?<br/>optional reason" as REASON
+  state "Cancel<br/>will cancel" as CANCEL
+  [*] --> LEAVE
+  LEAVE --> PULL: Tab / Space
+  PULL --> LEAVE: again
+  LEAVE --> DONE: Ctrl+X
+  DONE --> LEAVE: again
+  LEAVE --> REASON: Ctrl+Shift+X
+  REASON --> CANCEL: Return
+  REASON --> LEAVE: Esc
+  CANCEL --> LEAVE: again
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class PULL focus
+  class DONE outcome
+  class CANCEL muted
