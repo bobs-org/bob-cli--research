@@ -1,0 +1,30 @@
+---
+title: "When do period-note agents start?"
+accTitle: "Monday launch versus POST closeout"
+accDescr: "SASE cleanup runs first so it cannot dismiss new agents. Period launches come next so drafts cook during browser and body chores. POST weekly review reads and corrects the draft."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  SASE["`**sase band**<br/>cleanup, then reconcile`"]
+  LAUNCH["`**launch band**<br/>start week or quarter agent`"]
+  WEB["`**web band**<br/>weather, email, calendar`"]
+  BODY["`**unbanded**<br/>teeth, pills, stretches`"]
+  MID["`**NEW through TICKLER**`"]
+  POSTM["`**POST close**<br/>Morning review`"]
+  POSTW["`**POST period**<br/>correct draft, reflect`"]
+  SASE ==> LAUNCH
+  LAUNCH ==> WEB
+  WEB --> BODY
+  BODY --> MID
+  MID --> POSTM
+  POSTM --> POSTW
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class SASE,LAUNCH focus
+  class WEB,POSTW outcome
+  class BODY,MID,POSTM muted

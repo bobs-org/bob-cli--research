@@ -1,0 +1,38 @@
+---
+title: "What order should PRE chores walk?"
+accTitle: "PRE checklist walk order"
+accDescr: "Today the walk follows file order and splits the browser chores. Named bands walk SASE prep, then period launches, then the browser cluster, then body chores."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 20
+    wrappingWidth: 260
+---
+flowchart LR
+  subgraph NOW["Today: file order"]
+    direction TB
+    TA["`**Calendar, weather**`"]
+    TB["`**Teeth**`"]
+    TC["`**Email**`"]
+    TD["`**SASE, reconcile, pills**`"]
+    TA --> TB
+    TB --> TC
+    TC --> TD
+  end
+  subgraph NEXT["Proposed: named bands"]
+    direction TB
+    PA["`**sase**<br/>cleanup then vault prep`"]
+    PB["`**launch**<br/>period agents when due`"]
+    PC["`**web**<br/>weather, email, calendar`"]
+    PD["`**unbanded**<br/>teeth, pills, stretches`"]
+    PA ==> PB
+    PB ==> PC
+    PC --> PD
+  end
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class TA,TB,TC,TD muted
+  class PA,PB,PC,PD outcome
+  style NOW fill:none,stroke:#6B7280
+  style NEXT fill:none,stroke:#2E7D4F

@@ -1,0 +1,32 @@
+---
+title: "How does a PRE row pick its place?"
+accTitle: "PRE band comparator"
+accDescr: "Checklist membership stays the #gtd and #pre tags. A band field only orders inside PRE. Known bands use the catalog rank; missing or unknown bands sort last, then path and line."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 14
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Is it #gtd #pre?**`"}}
+  Q2{{"`**Has [band::]?**`"}}
+  Q3{{"`**Name in catalog?**`"}}
+  OUT["`**Not PRE**<br/>other walk rules`"]
+  RANK["`**Catalog rank**<br/>sase, launch, web`"]
+  LAST["`**After the catalog**<br/>unbanded and unknown`"]
+  TIE["`**Then path, then line**`"]
+  Q1 -->|No| OUT
+  Q1 -->|Yes| Q2
+  Q2 -->|No| LAST
+  Q2 -->|Yes| Q3
+  Q3 -->|Yes| RANK
+  Q3 -->|No| LAST
+  RANK --> TIE
+  LAST --> TIE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class RANK,TIE outcome
+  class OUT,LAST muted
