@@ -1,0 +1,41 @@
+---
+title: "Review Monday: why launch rows open the walk"
+accTitle: "Staged PRE walk on a review Monday"
+accDescr: "PRE rows walk in configured stages: launch, terminal, browser, then unstaged chores. The launch row starts a period-note agent that drafts in the background while the commitment tiers and upkeep run, so the draft is ready when the Weekly review comes due in POST, before the Morning review closeout."
+config:
+  flowchart:
+    rankSpacing: 18
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  subgraph PRE["PRE, in configured stage order"]
+    direction TB
+    L["`**1 · launch**<br/>start period-note agents`"]
+    T["`**2 · terminal**<br/>SASE cleanup, reconcile`"]
+    B["`**3 · browser**<br/>weather, email, calendar`"]
+    U["`**Unstaged rows**<br/>teeth, pills, stretches`"]
+    L ==> T --> B --> U
+  end
+  AG["`**Period agent**<br/>drafts the Review in background`"]
+  MID["`**Commitment tiers**<br/>NEW through TICKLER`"]
+  ROT["`**ROTTEN**<br/>optional upkeep`"]
+  subgraph POST["POST, closeout last"]
+    direction TB
+    W["`**Weekly review**<br/>correct draft, reflect`"]
+    M["`**Morning review**<br/>closes the walk`"]
+    W --> M
+  end
+  U --> MID --> ROT --> W
+  L -.->|"launches"| AG
+  AG -.->|"draft ready for"| W
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class L,T,B,U focus
+  class W,M outcome
+  class MID,ROT,AG muted
+  class AG proposed
+  style PRE fill:none,stroke:#3B78C2
+  style POST fill:none,stroke:#2E7D4F
