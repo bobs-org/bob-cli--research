@@ -1,0 +1,43 @@
+---
+title: "How does a place suffix become a recorded window?"
+accTitle: "Place suffix window routing"
+accDescr: "No place packs from T. Bare tilde starts at the now-gap and clips at T. Double tilde pins the end at the first session. Tilde n pins the start or, with plus, the end of that block, and refuses a window that does not fit."
+config:
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 10
+    wrappingWidth: 220
+---
+flowchart TD
+  Q1{{"`**Place typed?**`"}}
+  PACK["`**Pack from T**<br/>current x= lookback`"]
+  Q2{{"`**Which form?**`"}}
+  NOW["`**~ start of now-gap**<br/>clip at T`"]
+  MORN["`**~~ pin end**<br/>at first session`"]
+  Q3{{"`**Plus typed?**`"}}
+  START["`**Pin start**<br/>of block n`"]
+  END["`**Pin end**<br/>of block n`"]
+  Q4{{"`**Window fits?**`"}}
+  REC["`**Record window**<br/>reuse trim guard`"]
+  REF["`**Refuse**<br/>teach roster rewrite`"]
+  Q1 -->|No| PACK
+  Q1 -->|Yes| Q2
+  Q2 -->|~| NOW
+  Q2 -->|~~| MORN
+  Q2 -->|~n| Q3
+  Q3 -->|No| START
+  Q3 -->|Yes| END
+  START --> Q4
+  END --> Q4
+  MORN --> Q4
+  NOW --> REC
+  Q4 -->|Yes| REC
+  Q4 -->|No| REF
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class Q1,Q2,Q3,Q4 decision
+  class PACK,NOW,MORN,START,END focus
+  class REC outcome
+  class REF risk

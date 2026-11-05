@@ -1,0 +1,30 @@
+---
+title: "Which ~ spelling selects which slice of the example day?"
+accTitle: "Past place index walking backward from now"
+accDescr: "From T at 0915, tilde is the now-gap, tilde 1 is the last completed session, tilde 2 is the gap before it, tilde 3 is the earlier completed session, and double tilde is the morning before the first session."
+config:
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 12
+    wrappingWidth: 240
+---
+flowchart TD
+  T["`**T 0915**<br/>next five-minute bound`"]
+  N0["`**~ now-gap**<br/>0900–0915 · type 4`"]
+  N1["`**~1 last completed**<br/>0830–0900 · type 2`"]
+  N2["`**~2 gap**<br/>0800–0830 · type 3`"]
+  N3["`**~3 earlier completed**<br/>0730–0800 · type 2`"]
+  NM["`**~~ morning**<br/>0000–0730 · type 1`"]
+  T ==>|"walk back"| N0
+  N0 ==>|"n = 1"| N1
+  N1 ==>|"n = 2"| N2
+  N2 ==>|"n = 3"| N3
+  N3 -.->|"not numbered"| NM
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class T focus
+  class N0,N1 outcome
+  class N2,N3 decision
+  class NM muted

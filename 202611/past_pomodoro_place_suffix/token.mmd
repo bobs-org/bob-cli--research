@@ -1,0 +1,34 @@
+---
+title: "Which side of the second equals owns a tilde?"
+accTitle: "Past token anatomy for place versus drop"
+accDescr: "Before the second equals, tilde is a time-range place and bang repairs a closed edge. After it, tilde drops links and bang completes tasks."
+config:
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 12
+    wrappingWidth: 200
+---
+flowchart TD
+  subgraph TIME["Before second equals"]
+    direction LR
+    E["`**E**<br/>name · duration`"]
+    P["`**e place**<br/>~ ~n ~n+ ~~`"]
+    R["`**! repair**`"]
+    E --> P --> R
+  end
+  subgraph TASKS["After second equals"]
+    direction LR
+    D["`**~K drop**`"]
+    C["`**!M complete**`"]
+    K["`***P park**`"]
+    D --> C --> K
+  end
+  R ==>|"second ="| D
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class E,P focus
+  class R decision
+  class D,C,K outcome
+  style TIME fill:none,stroke:#3B78C2
+  style TASKS fill:none,stroke:#2E7D4F
