@@ -1,0 +1,37 @@
+---
+title: "When may counted %c trust clipboard history?"
+accTitle: "Proposed counted clipboard read path"
+accDescr: "The live clipboard is read first. For a count of two or more, each candidate history provider is read and trusted only when its newest row equals the live clipboard, after a short bounded wait. Otherwise the next automatic provider is tried, and the capture refuses with a diagnosis when none agrees."
+config:
+  flowchart:
+    rankSpacing: 22
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  LIVE["`**Read live clipboard**<br/>pbpaste; plain %c stops here`"]
+  PICK["`**Next history provider**<br/>env, then config, then auto`"]
+  READ["`**Read newest N rows**<br/>read-only, bounded`"]
+  Q1{{"`**Newest row equals live?**`"}}
+  Q2{{"`**Still inside 1.5 s?**`"}}
+  Q3{{"`**Another auto provider?**`"}}
+  Q4{{"`**All N rows text?**`"}}
+  OK["`**Capture rows 1..N**<br/>show provider and ages`"]
+  NO["`**Refuse, write nothing**<br/>name each provider and why`"]
+  LIVE ==>|"count of two or more"| PICK
+  PICK --> READ
+  READ --> Q1
+  Q1 -->|Yes| Q4
+  Q1 -->|No| Q2
+  Q2 -->|"Yes: wait 150 ms"| READ
+  Q2 -->|No| Q3
+  Q3 -->|Yes| PICK
+  Q3 -->|No| NO
+  Q4 -->|Yes| OK
+  Q4 -->|No| NO
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class Q1,Q2,Q3,Q4 decision
+  class OK outcome
+  class NO risk
