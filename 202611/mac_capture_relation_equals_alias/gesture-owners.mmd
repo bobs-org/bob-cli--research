@@ -1,0 +1,31 @@
+---
+title: "Who owns each relation-equals gesture?"
+accTitle: "Ownership of relation equals gestures"
+accDescr: "bob capture-rewrite owns draft transforms; Mac Capture owns the fast-escape arm, picker keys, and the label-card toggle."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TB
+  subgraph BOB["bob-cli capture-rewrite"]
+    direction TB
+    A1["`**Space then =**<br/>becomes ~ when Links To would open`"]
+    A2["`**Glued = or ~**<br/>toggles ~note:id and ~~note:id`"]
+    A3["`**Bare ~=**<br/>becomes ~~; ~~= becomes ~`"]
+    A4["`**x=2-**<br/>past-segment ~ stays on dash`"]
+  end
+  subgraph MAC["Bob Mac Capture"]
+    direction TB
+    B1["`**Fast == arm**<br/>restores literal = before the picker`"]
+    B2["`**Picker ~ or =**<br/>flips in place, keeps the filter`"]
+    B3["`**Label-card ~ or =**<br/>flips the token, keeps the query`"]
+    B4["`**Escape on armed =**<br/>restores = and closes Links To`"]
+  end
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class A1,A2,A3,A4 focus
+  class B1,B2,B3,B4 outcome
+  style BOB fill:none,stroke:#3B78C2
+  style MAC fill:none,stroke:#2E7D4F

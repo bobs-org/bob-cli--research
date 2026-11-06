@@ -1,0 +1,38 @@
+---
+title: "Where should a typed equals sign go?"
+accTitle: "Equals sign routing for capture relations"
+accDescr: "Five decisions send equals to a direction flip, a fast literal restore, a Links To alias, a Pomodoro start, or a literal equals."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 14
+    wrappingWidth: 240
+---
+flowchart TD
+  Q1{{"`**Card or picker open?**`"}}
+  Q2{{"`**Equals arm still live?**`"}}
+  Q3{{"`**Glued to a relation?**`"}}
+  Q4{{"`**Space where ~ would open?**`"}}
+  Q5{{"`**Whole-item start?**`"}}
+  FLIP["`**Flip direction**<br/>~ becomes ~~ and back`"]
+  ESC["`**Restore literal =**<br/>fast second equals`"]
+  OPEN["`**Alias to ~**<br/>open Links To`"]
+  START["`**Pomodoro start**<br/>bare = stays =`"]
+  LIT["`**Stay literal**`"]
+  Q1 -->|Yes| FLIP
+  Q1 -->|No| Q2
+  Q2 -->|Yes| ESC
+  Q2 -->|No| Q3
+  Q3 -->|Yes| FLIP
+  Q3 -->|No| Q4
+  Q4 -->|Yes| OPEN
+  Q4 -->|No| Q5
+  Q5 -->|Yes| START
+  Q5 -->|No| LIT
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  class Q1,Q2,Q3,Q4,Q5 decision
+  class FLIP,OPEN,START outcome
+  class ESC,LIT focus
