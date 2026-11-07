@@ -1,0 +1,34 @@
+---
+title: "How does Bob read a plus after = ?"
+accTitle: "Reading a plus inside a Pomodoro start token"
+accDescr: "A spaced plus is a separate session operator. A plus inside a hash name is a name byte. A glued plus before a letter joins theme components. A glued plus before digits, a tilde, or the token end is the later offset, unless the name left before it still ends in a plus, which is refused with a hash-spelling hint."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 14
+    wrappingWidth: 200
+---
+flowchart TD
+  Q1{{"`**Where is the plus?**`"}}
+  Q3{{"`**What follows it?**`"}}
+  Q4{{"`**Name ends in plus?**`"}}
+  OP["`**Session operator**<br/>=fix2 ++ is two steps`"]
+  HASH["`**Name byte**<br/>=3#c++`"]
+  JOIN["`**Theme joiner**<br/>=bob+decks`"]
+  LATER["`**Later offset (new)**<br/>=fix2+ · =fix+3 · =+3`"]
+  REFUSE["`**Refused with a hint**<br/>=c++ teaches =#c++`"]
+  Q1 -->|"after a space"| OP
+  Q1 -->|"glued, no #"| Q3
+  Q1 -->|"inside a # name"| HASH
+  Q3 -->|"digits, ~, or end"| Q4
+  Q3 -->|"a letter"| JOIN
+  Q4 -->|"no"| LATER
+  Q4 -->|"yes"| REFUSE
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class OP,HASH,JOIN muted
+  class LATER outcome
+  class LATER proposed
+  class REFUSE risk
