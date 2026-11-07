@@ -1,0 +1,18 @@
+---
+title: "What happens to a watched Gmail task?"
+accTitle: "Watch lifecycle for a Gmail-backed task"
+accDescr: "Labelling with bob files a task. Bryan's reply snoozes it as waiting. Their reply or a lapsed snooze returns it to review. Closing the task ends the watch."
+---
+stateDiagram-v2
+  state "Untracked thread" as Untracked
+  state "Filed open task" as Filed
+  state "Waiting on reply" as Waiting
+  state "Due for review" as Due
+  state "Closed task" as Closed
+  Untracked --> Filed: bob label plus sync
+  Filed --> Waiting: Bryan sends a reply
+  Waiting --> Due: they reply, or snooze arrives
+  Due --> Waiting: Bryan replies again
+  Due --> Closed: complete or cancel
+  Filed --> Closed: complete or cancel
+  Waiting --> Closed: complete or cancel
