@@ -1,0 +1,29 @@
+---
+title: "Can a link start shift with a spaced plus-plus?"
+accTitle: "Link starts cannot chain with a session shift"
+accDescr: "A whole-item start can chain into a shift. Extra text after a link start becomes the task body, so a link that should start later has to glue plus onto X."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  subgraph WHOLE["Whole-item start"]
+    direction TB
+    W1["`**Spaced chain**<br/>equals-fix2 space plus-plus`"]
+    W2["`**Glued later**<br/>equals-fix2-plus`"]
+    W1 -->|"same written span"| W2
+  end
+  subgraph LINK["Link start"]
+    direction TB
+    L1["`**Spaced plus-plus**<br/>task body is plus-plus-3`"]
+    L2["`**Glued later**<br/>at-route colon-id equals-plus-3`"]
+    L1 -.->|"does not shift"| L2
+  end
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class W1,W2,L2 outcome
+  class L1 risk
+  style WHOLE fill:none,stroke:#3B78C2
+  style LINK fill:none,stroke:#2E7D4F

@@ -1,0 +1,30 @@
+---
+title: "When is a plus later-offset?"
+accTitle: "Plus classification in a Pomodoro start"
+accDescr: "A plus is later-offset when it is the whole X or follows a duration digit. After a letter it stays in the Pomodoro name. A spaced plus is a second gesture."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Where is the plus?**`"}}
+  Q2{{"`**Is it the whole X?**`"}}
+  Q3{{"`**Digit immediately before?**`"}}
+  LATER["`**Later-offset**<br/>start N times 5 min later`"]
+  NAME["`**Pomodoro name**<br/>C++ and BUGS+`"]
+  RESIZE["`**Second gesture**<br/>space then plus-N`"]
+  Q1 -->|"glued after equals"| Q2
+  Q1 -->|"after a letter"| NAME
+  Q1 -->|"after a space"| RESIZE
+  Q2 -->|"equals-plus forms"| LATER
+  Q2 -->|"inside a longer X"| Q3
+  Q3 -->|"fix2-plus, 3-plus"| LATER
+  Q3 -->|"BUGS-plus-2, C++"| NAME
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class LATER outcome
+  class NAME,RESIZE muted
