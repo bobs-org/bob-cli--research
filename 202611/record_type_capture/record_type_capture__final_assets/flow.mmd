@@ -1,0 +1,33 @@
+---
+title: "How does a capture draft become a restaurant note?"
+accTitle: "Restaurant record capture flow"
+accDescr: "bob parses a record item, fills missing required fields as draft bullets, previews the note, and creates the file only if its path is still free."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  DRAFT["`**Draft**<br/>Ninja Sushi @eat/`"]
+  PARSE["`**capture-parse**<br/>record item and missing fields`"]
+  NEED{{"`**Required fields set?**`"}}
+  FILL["`**Completion or Record Card**<br/>inserts key:: value bullets`"]
+  PREVIEW["`**Dry-run preview**<br/>note, path, similar records`"]
+  FREE{{"`**Path still free?**`"}}
+  WRITE["`**bob capture**<br/>creates eat/ninja_sushi.md`"]
+  KEEP["`**Refuse, keep draft**<br/>offer the existing note`"]
+  DRAFT ==> PARSE
+  PARSE --> NEED
+  NEED -->|No| FILL
+  FILL -->|"edits the draft"| PARSE
+  NEED -->|Yes| PREVIEW
+  PREVIEW -->|"Return submits"| FREE
+  FREE -->|Yes| WRITE
+  FREE -->|No| KEEP
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class DRAFT,PARSE,FILL,PREVIEW focus
+  class NEED,FREE decision
+  class WRITE,KEEP outcome

@@ -1,0 +1,30 @@
+---
+title: "Where does each part of a record type live?"
+accTitle: "Record type anatomy"
+accDescr: "The schema lives in shared bob config; the record folder, type note, collection note, and Base live in the vault."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 14
+    wrappingWidth: 200
+---
+flowchart TB
+  SCHEMA["`**config.yml records.restaurant**<br/>schema, shared by chezmoi`"]
+  BOB["`**bob**<br/>capture, records new, check`"]
+  subgraph VAULT["Vault notes, shared by git sync"]
+    direction TB
+    DIR["`**eat/**<br/>one note per restaurant`"]
+    TYPE["`**restaurant.md**<br/>type note, docs`"]
+    COLL["`**eat.md**<br/>collection note`"]
+    BASE["`**eat.base**<br/>dashboard views`"]
+  end
+  SCHEMA -->|"read by"| BOB
+  BOB -->|"writes and checks"| DIR
+  DIR -->|"type: links to"| TYPE
+  DIR -->|"parent: links to"| COLL
+  DIR -->|"rows shown in"| BASE
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class SCHEMA,BOB focus
+  class DIR,TYPE,COLL,BASE outcome
+  style VAULT fill:none,stroke:#2E7D4F
