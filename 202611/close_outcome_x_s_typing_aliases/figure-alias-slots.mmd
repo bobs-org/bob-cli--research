@@ -1,0 +1,39 @@
+---
+title: "When does a typed x or s become ! or *?"
+accTitle: "Close-outcome letter alias eligibility"
+accDescr: "A plain lowercase x or s keystroke is swapped only when it ends a close selection in one of three slots and Bob's close lexer still accepts the result; every other position keeps the letter."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 14
+    wrappingWidth: 260
+---
+flowchart TD
+  K{{"`**Plain lowercase keystroke?**`"}}
+  W{{"`**Which slot ends here?**`"}}
+  CLOSE["`**Whole-item close**<br/>x… item, or chain lead`"]
+  PAST["`**Past close part**<br/>after the second =`"]
+  LINK["`**Link close suffix**<br/>=x… with lowercase x`"]
+  V{{"`**Close lexer accepts?**`"}}
+  ALIAS["`**Swap the one byte**<br/>x types !, s types *`"]
+  LIT["`**Keep the letter**<br/>names, logs, prose`"]
+  K -->|"no: paste, IME,<br/>modifier, uppercase"| LIT
+  K -->|yes| W
+  W --> CLOSE
+  W --> PAST
+  W -.->|"proposed;<br/>Bryan decides"| LINK
+  W -->|"anything else"| LIT
+  CLOSE --> V
+  PAST --> V
+  LINK -.-> V
+  V ==>|"valid, incomplete,<br/>or competing wildcards"| ALIAS
+  V -->|"duplicate group,<br/>dangling , or @"| LIT
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class K,W,V decision
+  class CLOSE,PAST,ALIAS outcome
+  class LINK outcome
+  class LINK proposed
+  class LIT muted
