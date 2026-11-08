@@ -1,0 +1,28 @@
+---
+title: "Who owns each close-outcome alias step?"
+accTitle: "Bob versus Mac ownership for x and s aliases"
+accDescr: "Mac Capture routes x and s into capture-rewrite. Bob swaps and lexes. Mac applies the edit with native undo and restores a literal letter on a second press of the same key. bob capture keeps typed xx, and capture-parse sees the rewritten close."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  KEY["`**Mac routes x and s**<br/>rewrite lane`"]
+  RW["`**Bob capture-rewrite**<br/>swap and lex`"]
+  APPLY["`**Mac applies the edit**<br/>native undo`"]
+  ARM["`**Second same key**<br/>restores the letter`"]
+  PARSE["`**capture-parse**<br/>sees x! and x*`"]
+  CLI["`**bob capture**<br/>keeps typed xx`"]
+  KEY ==> RW
+  RW ==> APPLY
+  APPLY --> ARM
+  APPLY --> PARSE
+  CLI -.->|"pasted or CLI draft"| PARSE
+  class KEY,APPLY,ARM focus
+  class RW,PARSE outcome
+  class CLI muted
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
