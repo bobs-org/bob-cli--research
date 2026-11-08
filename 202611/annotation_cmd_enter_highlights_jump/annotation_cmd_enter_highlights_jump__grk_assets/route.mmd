@@ -1,0 +1,26 @@
+---
+title: "What does Cmd+Enter do from this line?"
+accTitle: "Cmd+Enter Highlights routing"
+accDescr: "Cursor context sends Cmd+Enter to open a PDF, open a quote page, or keep Obsidian's new-tab link."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Reading task or embed?**`"}}
+  Q2{{"`**Quote, page, or follow-up?**`"}}
+  PDF["`**Open the PDF**<br/>last Highlights position`"]
+  PAGE["`**Open that page**<br/>Highlights at the quote`"]
+  LINK["`**Open the link**<br/>Obsidian new tab`"]
+  Q1 -->|Yes| PDF
+  Q1 -->|No| Q2
+  Q2 -->|Yes| PAGE
+  Q2 -->|No| LINK
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2 decision
+  class PDF,PAGE outcome
+  class LINK muted

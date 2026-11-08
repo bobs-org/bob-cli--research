@@ -1,0 +1,28 @@
+---
+title: "How should Highlights open on a page?"
+accTitle: "Highlights page-open attempt chain"
+accDescr: "Try the documented highlights page URL first; if that launch fails, fall back to today's file open and say so in the toast."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  URL["`**Page URL**<br/>highlights:// path #page`"]
+  Q{{"`**Did open succeed?**`"}}
+  FILE["`**File-open fallback**<br/>bundle plus PDF path`"]
+  TOASTP["`**Toast names the page**`"]
+  TOASTF["`**Toast: last page**`"]
+  URL ==> Q
+  Q -->|Yes| TOASTP
+  Q -->|No| FILE
+  FILE --> TOASTF
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  class URL focus
+  class Q decision
+  class TOASTP outcome
+  class FILE,TOASTF muted
