@@ -1,0 +1,42 @@
+---
+title: "Where does a notebook sit among Bob note types?"
+accTitle: "Notebook type taxonomy"
+accDescr: "Areas and projects hold tasks. Notebooks hold parented note bullets under those work notes. Articles, references, and records stay separate engines."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  subgraph WORK["Work notes"]
+    direction TB
+    AREA["`**Area**<br/>ongoing sphere`"]
+    PRJ["`**Project**<br/>finite ^prj outcome`"]
+  end
+  subgraph NOTEBOOKS["Notebooks"]
+    direction TB
+    NB["`**Notebook**<br/>note bullets only`"]
+    CHILD["`**Child notebook**<br/>same type, nested parent`"]
+  end
+  subgraph OTHER["Other engines"]
+    direction TB
+    ART["`**Article**<br/>long-form prose`"]
+    REF["`**Reference**<br/>external source`"]
+    REC["`**Record**<br/>catalog instance`"]
+  end
+  AREA -->|"parent of"| NB
+  PRJ -->|"parent of"| NB
+  NB -->|"parent of"| CHILD
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class AREA,PRJ focus
+  class NB,CHILD outcome
+  class ART,REF,REC muted
+  class NB proposed
+  class CHILD proposed
+  style WORK fill:none,stroke:#3B78C2
+  style NOTEBOOKS fill:none,stroke:#2E7D4F
+  style OTHER fill:none,stroke:#6B7280

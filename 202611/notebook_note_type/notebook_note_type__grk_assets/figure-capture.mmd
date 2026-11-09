@@ -1,0 +1,38 @@
+---
+title: "How should capture route a notebook draft?"
+accTitle: "Notebook capture routing"
+accDescr: "A sealed parent marker plus percent-n creates a notebook. Unrouted percent-n stays a Pomodoro note. A local or global route writes a task or a note bullet from the destination type."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 8
+    nodeSpacing: 6
+    wrappingWidth: 140
+---
+flowchart TD
+  Q1{{"`**Sealed marker?**`"}}
+  Q2{{"`**Percent-n too?**`"}}
+  Q3{{"`**Percent-n?**`"}}
+  Q4{{"`**Route type?**`"}}
+  CREATE["`**Create notebook**`"]
+  PROJECT["`**Create project**`"]
+  POM["`**Pomodoro note**`"]
+  TASK["`**Write a task**`"]
+  NOTE["`**Write a note**`"]
+  Q1 -->|Yes| Q2
+  Q1 -->|No| Q3
+  Q2 -->|Yes| CREATE
+  Q2 -->|No| PROJECT
+  Q3 -->|Yes| POM
+  Q3 -->|No| Q4
+  Q4 -->|Area / project| TASK
+  Q4 -->|Notebook| NOTE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef proposed stroke-dasharray:5 3
+  class Q1,Q2,Q3,Q4 decision
+  class PROJECT,POM,TASK focus
+  class CREATE,NOTE outcome
+  class CREATE proposed
+  class NOTE proposed
