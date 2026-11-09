@@ -1,0 +1,22 @@
+---
+title: "Who owns each copy of a guest event?"
+accTitle: "Guest event ownership layers"
+accDescr: "Google keeps the shared invite. Bob's overlay holds private directives. Sync projects both onto the daily-note Event Task."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  GOOGLE["`**Google invite**<br/>title and description stay the organizer's`"]
+  OVERLAY["`**Bob overlay**<br/>@route, #off, −30m, walk-home reason`"]
+  ROW["`**Event Task**<br/>daily note projection of both copies`"]
+  GOOGLE -->|"sync copies shared bullets"| ROW
+  OVERLAY ==>|"private fields win"| ROW
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class GOOGLE muted
+  class OVERLAY focus
+  class ROW outcome

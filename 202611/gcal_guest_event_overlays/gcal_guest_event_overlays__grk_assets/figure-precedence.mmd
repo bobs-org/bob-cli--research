@@ -1,0 +1,34 @@
+---
+title: "What supplies @body and the buffer?"
+accTitle: "Overlay precedence for root and buffer"
+accDescr: "First match wins: a later row edit, then this-occurrence overlay, then series overlay, then a Google directive, then colour, calendar, and default."
+config:
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 10
+    wrappingWidth: 200
+---
+flowchart TD
+  Q1{{"`**Row field edited?**`"}}
+  Q2{{"`**Occurrence overlay?**`"}}
+  Q3{{"`**Series overlay?**`"}}
+  Q4{{"`**Google directive?**`"}}
+  EDIT["`**Keep vault edit**<br/>refresh overlay`"]
+  OCC["`**This invite's overlay**`"]
+  SERIES["`**Whole-series overlay**`"]
+  GOOGLE["`**Title or description**`"]
+  FALLBACK["`**Colour, calendar, default**`"]
+  Q1 -->|Yes| EDIT
+  Q1 -->|No| Q2
+  Q2 -->|Yes| OCC
+  Q2 -->|No| Q3
+  Q3 -->|Yes| SERIES
+  Q3 -->|No| Q4
+  Q4 -->|Yes| GOOGLE
+  Q4 -->|No| FALLBACK
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class Q1,Q2,Q3,Q4 decision
+  class OCC,SERIES focus
+  class EDIT,GOOGLE,FALLBACK outcome

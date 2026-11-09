@@ -1,0 +1,30 @@
+---
+title: "When can guest-event metadata exist?"
+accTitle: "Guest event metadata timeline"
+accDescr: "An RSVP-time overlay is stored in Bob's journal weeks before the daily note exists. Sync applies it when it first writes the Event Task."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 240
+---
+flowchart TD
+  RSVP["`**RSVP in Google**<br/>weeks ahead`"]
+  PIN["`**Pin Bob fields**<br/>same moment`"]
+  STORE["`**Overlay journal**<br/>.bob/gcal host log`"]
+  WAIT["`**No daily note yet**<br/>no Event Task`"]
+  NOTE["`**Daily note appears**<br/>that morning`"]
+  SYNC["`**bob gcal sync**<br/>reads Google plus overlay`"]
+  ROW["`**Event Task is born**<br/>with @body and −30m`"]
+  RSVP ==> PIN
+  PIN ==> STORE
+  STORE --> WAIT
+  WAIT --> NOTE
+  NOTE --> SYNC
+  SYNC ==> ROW
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class RSVP,PIN,STORE focus
+  class WAIT,NOTE,SYNC muted
+  class ROW outcome
