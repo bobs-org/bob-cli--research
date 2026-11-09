@@ -1,0 +1,31 @@
+---
+title: "Which layers must change for weekly Reviews to reach the quarter?"
+accTitle: "Period review pipeline today and proposed"
+accDescr: "Left column, today: the brief ranks finished work by minutes, the v1 callout has no lead rule, and the draft check reads only the first line, so the quarter sees cut-off statistics sentences. Right column, proposed: each of the three layers changes."
+config:
+  flowchart:
+    rankSpacing: 20
+    nodeSpacing: 36
+    wrappingWidth: 240
+---
+flowchart TD
+  B1["`**Today · brief** (code)<br/>Finished = top 7 by minutes;<br/>W45: 5 of 7 are daily reviews`"]
+  C1["`**Today · callout v1** (text)<br/>no lead rule; copy numbers;<br/>2–3 questions on any fact`"]
+  G1["`**Today · draft check** (code)<br/>reads the first line only`"]
+  P1["`**Quarter sees today**<br/>11 of 20 Headlines cut off;<br/>18 of 19 weeks lead with hours`"]
+  B2["`**Proposed · brief v2** (code)<br/>routine rows out; completions<br/>grouped; previous Review in`"]
+  C2["`**Proposed · callout v2** (text)<br/>work-first one-line Headline;<br/>curated Shipped; ≤2 questions`"]
+  G2["`**Proposed · draft check** (code)<br/>reads the whole first paragraph`"]
+  P2["`**Quarter sees, proposed**<br/>a whole sentence naming the work`"]
+  B1 -->|"agent reads"| C1
+  C1 -->|"agent saves"| G1
+  G1 -->|"Headline goes up"| P1
+  B2 -.->|"agent reads"| C2
+  C2 -.->|"agent saves"| G2
+  G2 -.->|"Headline goes up"| P2
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef proposed stroke-dasharray:5 3
+  class B1,C1,G1,P1 risk
+  class B2,C2,G2,P2 outcome
+  class B2,C2,G2,P2 proposed
