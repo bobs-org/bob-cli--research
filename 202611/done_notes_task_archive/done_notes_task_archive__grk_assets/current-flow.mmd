@@ -1,0 +1,32 @@
+---
+title: "Where does a closed Bob task go?"
+accTitle: "Current closed-task archive flow"
+accDescr: "A closed task stays in the live Done group until the note has ten closed tasks, then bob task archive moves the block into done/stem_done.md and rewrites links."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  CLOSE["`**Closed #task**<br/>checked or canceled`"]
+  GROUP["`**Live Done group**<br/>in the source note`"]
+  Q{{"`**Ten or more closed tasks in this note?**`"}}
+  STAY["`**Stay in the live note**<br/>564 notes sit here today`"]
+  ARCH["`**bob task archive**<br/>nightly, threshold 10`"]
+  FILE["`**done/stem_done.md**<br/>type done, parent source`"]
+  LINK["`**Rewrite wikilinks**<br/>to done/stem_done#^id`"]
+  CLOSE --> GROUP
+  GROUP --> Q
+  Q -->|No| STAY
+  Q -->|Yes| ARCH
+  ARCH ==> FILE
+  FILE --> LINK
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class CLOSE,GROUP,ARCH focus
+  class Q decision
+  class FILE,LINK outcome
+  class STAY risk

@@ -1,0 +1,26 @@
+---
+title: "Which closed tasks should leave the live note?"
+accTitle: "Recommended closed-task archive policy"
+accDescr: "Daily notes keep their closed tasks. Other notes keep today's work and up to five recent completions, and archive the rest into the existing per-source done file."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Canonical daily note?**`"}}
+  KEEP_DAY["`**Keep on the daily note**<br/>Events and ^gtd stay put`"]
+  Q2{{"`**Closed today, or among last five?**`"}}
+  KEEP["`**Keep in live Done group**<br/>recent completions stay visible`"]
+  MOVE["`**Move to done/stem_done.md**<br/>same identity, repaired links`"]
+  Q1 -->|Yes| KEEP_DAY
+  Q1 -->|No| Q2
+  Q2 -->|Yes| KEEP
+  Q2 -->|No| MOVE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  class Q1,Q2 decision
+  class KEEP_DAY,KEEP focus
+  class MOVE outcome
