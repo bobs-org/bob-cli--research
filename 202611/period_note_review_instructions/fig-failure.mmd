@@ -1,0 +1,29 @@
+---
+title: "Why do weekly Reviews retell the stats strip?"
+accTitle: "How v1 instructions produce a stats recitation"
+accDescr: "The brief ranks Finished by minutes, the callout treats copy-exactly as copy-the-lists, the Headline packs facts, and questions rest on typical-deltas the strip already shows."
+config:
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 10
+    wrappingWidth: 200
+---
+flowchart TD
+  B["`**Brief ranks by minutes**<br/>gtd rows top Finished`"]
+  C["`**Copy numbers exactly**<br/>read as copy the lists`"]
+  H["`**Headline 25-word cap**<br/>hours and shares are safest`"]
+  Q["`**Ground questions in a fact**<br/>typical-deltas count as facts`"]
+  E["`**Omit empty Intentions**<br/>nothing to score against`"]
+  O["`**Stats-first Review**<br/>parents display that Headline`"]
+  B --> C
+  C --> H
+  C --> Q
+  E --> O
+  H --> O
+  Q --> O
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class B,C focus
+  class H,Q,E decision
+  class O risk

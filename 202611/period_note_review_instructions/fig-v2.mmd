@@ -1,0 +1,33 @@
+---
+title: "Which instruction changes earn a v2 bump?"
+accTitle: "Routing v2 instruction changes"
+accDescr: "Leave ownership and safety rules. Rewrite Headline, Finished, Questions, and empty Intentions in the callout. Send ranking and digest bugs to the brief and draft commands."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 10
+    wrappingWidth: 200
+---
+flowchart TD
+  Q1{{"`**Keeps the week safe?**`"}}
+  Q2{{"`**Failure in the callout?**`"}}
+  Q3{{"`**Needs a new section?**`"}}
+  KEEP["`**Leave in v1**<br/>brief, draft, caps, anti-slop`"]
+  V2["`**Rewrite in v2**<br/>Headline, Finished, Questions`"]
+  BRIEF["`**Fix brief or digest**<br/>gtd ranking, archive hash`"]
+  NOSEC["`**Add no sections**<br/>tighten the existing six`"]
+  Q1 -->|Yes| Q2
+  Q1 -->|No| KEEP
+  Q2 -->|Yes| Q3
+  Q2 -->|No| BRIEF
+  Q3 -->|No| V2
+  Q3 -->|Yes| NOSEC
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class V2 outcome
+  class KEEP,NOSEC muted
+  class BRIEF focus
