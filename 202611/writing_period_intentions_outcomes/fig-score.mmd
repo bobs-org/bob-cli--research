@@ -1,0 +1,38 @@
+---
+title: "How do you know a line is a good Intention or Outcome?"
+accTitle: "Scoreability test for period-note bets"
+accDescr: "Set parent Outcomes first. Keep a line only if it is scoreable, names a result, serves a parent Outcome, and is one of at most three."
+config:
+  flowchart:
+    rankSpacing: 8
+    nodeSpacing: 8
+    wrappingWidth: 140
+---
+flowchart TD
+  Q0{{"`**Outcomes set?**`"}}
+  Q1{{"`**Scoreable?**`"}}
+  Q2{{"`**A result?**`"}}
+  Q3{{"`**Serves parent?**`"}}
+  Q4{{"`**At most three?**`"}}
+  SET["`**Set Outcomes**`"]
+  VAGUE["`**Too vague**`"]
+  ACT["`**Name a result**`"]
+  TASK["`**Keep in Next**`"]
+  CUT["`**Cut to three**`"]
+  WRITE["`**Write it**`"]
+  Q0 -->|No| SET
+  Q0 -->|Yes| Q1
+  Q1 -->|No| VAGUE
+  Q1 -->|Yes| Q2
+  Q2 -->|No| ACT
+  Q2 -->|Yes| Q3
+  Q3 -->|No| TASK
+  Q3 -->|Yes| Q4
+  Q4 -->|No| CUT
+  Q4 -->|Yes| WRITE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class Q0,Q1,Q2,Q3,Q4 decision
+  class WRITE,SET outcome
+  class VAGUE,ACT,TASK,CUT risk
