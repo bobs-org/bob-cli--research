@@ -1,0 +1,40 @@
+---
+title: "Where does each worked minute land in the two charts?"
+accTitle: "Routing one counted minute into the Roots and Types charts"
+accDescr: "Every counted on-clock minute lands once in the Roots chart and once in the Types chart. In Roots, a minute with no known root goes to a hatched unlinked series that never takes a top-N slot; a known root in the period's top N keeps its own series; any other root folds into a light N more series. In Types, a minute whose Pomodoro name has configured types splits evenly across those types, and labels take no share; otherwise it goes to a hatched untyped series."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 240
+---
+flowchart TD
+  subgraph ROOTS["Roots chart: each minute counted once"]
+    direction TD
+    RQ1{{"`**Root known?**`"}}
+    RQ2{{"`**In period's top N?**`"}}
+    RUN["`**unlinked**, hatched<br/>never takes a top-N slot`"]
+    ROWN["`**Own root series**<br/>same keys in every column`"]
+    RMORE["`**N more**, light neutral<br/>members listed on focus`"]
+    RQ1 -->|"No: unlinked or unfiled"| RUN
+    RQ1 -->|Yes| RQ2
+    RQ2 -->|Yes| ROWN
+    RQ2 -->|No| RMORE
+  end
+  subgraph TYPES["Types chart: each minute counted once"]
+    direction TD
+    TQ{{"`**Name has configured types?**`"}}
+    TOWN["`**Each configured type**<br/>equal share; labels get none`"]
+    TUN["`**untyped**, hatched<br/>unnamed or labels only`"]
+    TQ -->|Yes| TOWN
+    TQ -->|No| TUN
+  end
+  ROOTS ~~~ TYPES
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class RQ1,RQ2,TQ decision
+  class ROWN,TOWN outcome
+  class RUN,RMORE,TUN muted
+  style ROOTS fill:none,stroke:#3B78C2
+  style TYPES fill:none,stroke:#2E7D4F
