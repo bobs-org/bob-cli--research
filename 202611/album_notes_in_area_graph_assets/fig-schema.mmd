@@ -1,0 +1,30 @@
+---
+title: "Where should an album's schema live?"
+accTitle: "Schema source routing"
+accDescr: "Identity keys go in album frontmatter. Field schema goes in a bob-owned body callout because Obsidian Properties cannot edit nested YAML. Chezmoi config stops being the source of truth."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Is it identity?**`"}}
+  Q2{{"`**Is it field schema?**`"}}
+  Q3{{"`**Must Properties edit it?**`"}}
+  FM["`**Album frontmatter**<br/>type parent label emoji`"]
+  CALL["`**[!album-schema] callout**<br/>fields YAML bob owns`"]
+  CFG["`**Do not keep in config.yml**<br/>chezmoi is the wrong home`"]
+  PROP["`**Flatten or refuse**<br/>Properties smash nests`"]
+  Q1 -->|Yes| FM
+  Q1 -->|No| Q2
+  Q2 -->|Yes| Q3
+  Q2 -->|No| CFG
+  Q3 -->|No| CALL
+  Q3 -->|Yes| PROP
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class Q1,Q2,Q3 decision
+  class FM,CALL outcome
+  class CFG,PROP risk

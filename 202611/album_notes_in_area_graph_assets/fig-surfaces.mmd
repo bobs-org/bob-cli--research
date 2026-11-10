@@ -1,0 +1,35 @@
+---
+title: "What belongs on the area versus the album?"
+accTitle: "Area card versus album dashboard"
+accDescr: "body.md shows one compact album card. eat.md shows the status dashboard, the to-try list, and grouped records. Bases stay an explore view."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TB
+  subgraph AREA["body.md area"]
+    direction TB
+    N["`**Notebooks**<br/>legacy notes`"]
+    C["`**Albums card**<br/>104 places · 11 to try`"]
+    K["`**Tasks**<br/>the working set`"]
+    N --> C --> K
+  end
+  subgraph ALBUM["eat.md album"]
+    direction TB
+    D["`**Dashboard callout**<br/>counts and last note`"]
+    TRY["`**To try**<br/>11 actionable rows`"]
+    LIKE["`**Liked**<br/>grouped wikilinks`"]
+    BASE["`**Explore Base**<br/>optional embed`"]
+    D --> TRY --> LIKE --> BASE
+  end
+  C ==>|"open the collection"| D
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class C,D,TRY focus
+  class N,K muted
+  class LIKE,BASE outcome
+  style AREA fill:none,stroke:#3B78C2
+  style ALBUM fill:none,stroke:#2E7D4F

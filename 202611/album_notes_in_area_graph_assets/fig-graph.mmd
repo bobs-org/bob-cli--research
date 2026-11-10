@@ -1,0 +1,42 @@
+---
+title: "Where does a restaurant sit in the note graph?"
+accTitle: "Restaurant parent graph today and proposed"
+accDescr: "Today a restaurant parents to an untyped eat.md under a retired zorg horizon. Proposed, it parents to an eat album under the body area."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 22
+    wrappingWidth: 240
+---
+flowchart LR
+  subgraph TODAY["Today"]
+    direction TB
+    R1["`**eat/chopt.md**<br/>type restaurant`"]
+    E1["`**eat.md**<br/>untyped zorg dump`"]
+    H1["`**h2_role.md**<br/>retired horizon`"]
+    T1["`**restaurant.md**<br/>type stub`"]
+    Y1["`**type.md**<br/>type index`"]
+    R1 -->|"parent"| E1
+    E1 -->|"parent"| H1
+    R1 -->|"type"| T1
+    T1 -->|"parent"| Y1
+  end
+  subgraph PROPOSED["Proposed"]
+    direction TB
+    R2["`**eat/chopt.md**<br/>type restaurant alias`"]
+    E2["`**eat.md album**<br/>schema and dashboard`"]
+    B2["`**body.md area**<br/>Albums card`"]
+    A2["`**area.md**<br/>top-level areas`"]
+    R2 -->|"parent and type"| E2
+    E2 -->|"parent"| B2
+    B2 -->|"parent"| A2
+  end
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class R1,E1,R2,E2 focus
+  class B2,A2 outcome
+  class H1,T1,Y1 muted
+  style TODAY fill:none,stroke:#6B7280
+  style PROPOSED fill:none,stroke:#2E7D4F
