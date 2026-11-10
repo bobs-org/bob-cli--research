@@ -1,0 +1,202 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; padding: 14px; font: 16px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+body.light { --bg: #ffffff; --page: #eeece8; --border: #e3e0da; --hover: #f2f0ec; --text: #262521; --muted: #6f6c65; --faint: #a7a39b;
+  --blue: #2a78d6; --orange: #eb6834; --aqua: #1baf7a; --yellow: #eda100; --magenta: #e87ba4; --green: #008300; --violet: #6250d6; --red: #e34948;
+  --gray: #b6b2aa; --other: #dcd9d3; --hatch-ink: #bdb9b1; --hatch-bg: #f4f2ee; --tip: #ffffff; --tip-shadow: 0 6px 24px rgba(30,25,15,.14); background: var(--page); color: var(--text); }
+body.dark { --bg: #1e1f22; --page: #151618; --border: #393a3f; --hover: #2a2b30; --text: #e7e6e2; --muted: #a4a3a0; --faint: #6f7075;
+  --blue: #3987e5; --orange: #d95926; --aqua: #199e70; --yellow: #c98500; --magenta: #d55181; --green: #008300; --violet: #9085e9; --red: #e66767;
+  --gray: #6a6b70; --other: #45464b; --hatch-ink: #5d5e63; --hatch-bg: #26272b; --tip: #2a2b30; --tip-shadow: 0 6px 24px rgba(0,0,0,.5); background: var(--page); color: var(--text); }
+.case { width: 780px; margin: 0 auto 16px; }
+.case[data-shot^="after-W45-hover"] .note { padding-bottom: 46px; }
+.case-title { font: 600 12px system-ui; color: var(--muted); margin: 0 0 5px 2px; letter-spacing: .02em; }
+.note { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px 12px; }
+.strip { font-size: 14px; line-height: 1.45; position: relative; }
+/* facts (unchanged family look; `so far` moved to the meta line) */
+.facts { display: grid; grid-template-columns: repeat(5, auto); justify-content: start; column-gap: 8px; }
+.fact { padding: 3px 10px 4px; border-radius: 4px; min-width: 110px; }
+.fact .lab { font-size: 9.8px; font-weight: 650; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); height: 18px; display: flex; align-items: center; }
+.fact .val { font-size: 21px; font-weight: 650; letter-spacing: -.02em; line-height: 1.12; }
+.fact .val .u { font-size: .6em; color: var(--muted); font-weight: 600; margin-left: 1px; }
+.fact .val.word { font-size: 15px; padding-top: 4px; }
+.fact .val.empty { color: var(--muted); }
+.fact .ref { font-size: 10.5px; color: var(--muted); display: flex; gap: 4px; align-items: center; min-height: 16px; }
+.fact .ref b { font-weight: 600; }
+.fact .hint { font-size: 10.5px; color: var(--muted); margin-top: 1px; }
+/* rule with meta + switch */
+.rule { display: flex; align-items: center; gap: 10px; margin: 8px 0 6px; }
+.rule .line { flex: 1; height: 1px; background: var(--border); }
+.rule .meta { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.switch { display: inline-flex; gap: 4px; align-items: center; padding: 3px 6px; border-radius: 5px; color: var(--muted); border: 1px solid var(--border); }
+.switch i { display: block; width: 7px; height: 7px; border: 1.3px solid currentColor; }
+.switch i.r { border-radius: 50%; } .switch i.t { border-radius: 1.5px; }
+.switch i.on { background: currentColor; }
+/* chart grid */
+.chart { display: grid; column-gap: var(--gap); position: relative; }
+.legend { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; row-gap: 2px; font-size: 11.5px; color: var(--muted); margin: 0 0 5px; }
+.legend + .legend { margin-top: 0; }
+.legend .title { font-size: 9.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); width: 50px; flex: none; }
+.legend .it { display: inline-flex; align-items: baseline; gap: 5px; white-space: nowrap; }
+.legend .it .v { color: var(--text); font-variant-numeric: tabular-nums; }
+.legend .it.dim { opacity: .35; }
+.mk { display: inline-block; width: 8px; height: 8px; flex: none; transform: translateY(-.5px); }
+.mk.r { border-radius: 50%; } .mk.t { border-radius: 2px; }
+.bars { display: contents; }
+.col { position: relative; height: var(--plot); display: flex; flex-direction: column-reverse; gap: 1px; }
+.col .seg { display: block; width: 100%; flex: none; }
+.col .seg:last-child { border-radius: 3px 3px 0 0; }
+.col.future::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 1px; background: var(--border); }
+.col.current { outline: 1px dashed var(--border); outline-offset: 1px; border-radius: 3px; }
+.col.missing { border: 1px dotted var(--faint); opacity: .55; border-radius: 3px; }
+.f-blue{background:var(--blue)} .f-orange{background:var(--orange)} .f-aqua{background:var(--aqua)} .f-yellow{background:var(--yellow)}
+.f-magenta{background:var(--magenta)} .f-green{background:var(--green)} .f-violet{background:var(--violet)} .f-red{background:var(--red)}
+.f-gray{background:var(--gray)} .f-other{background:var(--other)}
+.f-hatch{background: repeating-linear-gradient(135deg, var(--hatch-ink) 0 1.2px, var(--hatch-bg) 1.2px 4px);}
+.spacer { grid-column: 1 / -1; height: 9px; }
+.ticks { display: contents; }
+.tick { font-size: 9.5px; color: var(--muted); height: 13px; white-space: nowrap; overflow: visible; border-left: 1px solid var(--faint); padding-left: 3px; line-height: 12px; }
+.tick.none { border-left: 0; }
+.mark { text-align: center; font-size: 10px; color: var(--muted); height: 14px; line-height: 14px; margin-top: 3px; }
+.cap { text-align: center; font-size: 10.5px; color: var(--muted); white-space: nowrap; }
+.cap.cur { color: var(--text); font-weight: 600; }
+.valrow { text-align: center; font-size: 11px; color: var(--text); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.valrow.fut, .cap.fut { color: var(--faint); }
+.groups { grid-column: 1 / -1; display: grid; margin-top: 4px; }
+.groups span { text-align: center; font-size: 10.5px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 2px; margin: 0 3px; font-variant-numeric: tabular-nums; }
+.hoverband { position: absolute; top: 0; bottom: 0; background: var(--hover); border-radius: 5px; z-index: 0; }
+.chart > *:not(.hoverband):not(.tip) { position: relative; z-index: 1; }
+.tip { position: absolute; z-index: 5; background: var(--tip); border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--tip-shadow); padding: 7px 10px 8px; font-size: 11px; width: 178px; line-height: 1.35; }
+.tip h4 { margin: 0 0 4px; font-size: 11.5px; font-weight: 650; }
+.tip .sec { font-size: 9px; letter-spacing: .08em; font-weight: 700; color: var(--muted); margin: 6px 0 2px; text-transform: uppercase; }
+.tip .row { display: flex; align-items: baseline; gap: 6px; color: var(--muted); }
+.tip .row .v { margin-left: auto; color: var(--text); font-variant-numeric: tabular-nums; }
+.callout { position: absolute; font: 600 10.5px system-ui; color: #b04c00; }
+</style></head>
+<body class="light"><main id="root"></main>
+<script>
+try {
+const DATA = __DATA__;
+const CASES = __CASES__;
+if (location.hash === "#dark") document.body.className = "dark";
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+function valueRuns(display) {
+  const frag = document.createDocumentFragment();
+  const m = /^(\d+)h (\d+)m$/.exec(display || "");
+  if (m) { frag.append(m[1]); frag.append(el("span", "u", "h")); frag.append(" " + m[2]); frag.append(el("span", "u", "m")); return frag; }
+  frag.append(display || "–"); return frag;
+}
+function fmt(m) { m = Math.round(m); const h = Math.floor(m / 60), r = m % 60; return h ? `${h}h ${String(r).padStart(2, "0")}m` : `${r}m`; }
+function mark(kind, hue, dim) { const s = el("span", "mk " + (kind === "types" ? "t" : "r") + " f-" + hue); return s; }
+function legend(title, lane, series, highlight, compact) {
+  const L = el("div", "legend");
+  L.append(el("span", "title", title));
+  for (const s of series) {
+    const it = el("span", "it" + (highlight && highlight !== s.key ? " dim" : ""));
+    it.append(mark(lane, s.hue)); it.append(el("span", "l", s.label)); it.append(el("span", "v", compact ? s.short : s.display));
+    L.append(it);
+  }
+  return L;
+}
+function renderStrip(host, P, opts) {
+  const view = opts.view || "both";
+  const strip = el("div", "strip");
+  const facts = el("div", "facts");
+  for (const f of P.facts) {
+    const F = el("div", "fact");
+    F.append(el("div", "lab", f.label));
+    const display = (f.display || "–");
+    const V = el("div", "val" + (display === "–" ? " empty" : /of/.test(display) ? " word" : ""));
+    V.append(valueRuns(display)); F.append(V);
+    const R = el("div", "ref");
+    const t = f.typical;
+    if (t && t.display) {
+      const rel = (!f.so_far && t.relation) ? ({ above: "▲", below: "▼", equal: "=" })[t.relation] : "";
+      if (rel) R.append(el("span", "", rel));
+      R.append(el("span", "", "typical")); R.append(el("b", "", t.display));
+    }
+    F.append(R);
+    if (f.metric === "worked" && f.offclock && f.offclock.value > 0) F.append(el("div", "hint", "◌ +" + f.offclock.display + " off-clock"));
+    facts.append(F);
+  }
+  strip.append(facts);
+  const rule = el("div", "rule"); rule.append(el("div", "line"));
+  if (P.metaText) rule.append(el("span", "meta", P.metaText));
+  const sw = el("span", "switch"); const r = el("i", "r" + (view !== "themes" ? " on" : "")); const t = el("i", "t" + (view !== "roots" ? " on" : ""));
+  sw.append(r, t); rule.append(sw); strip.append(rule);
+  const cols = P.columns; const n = cols.length;
+  const chart = el("div", "chart");
+  const gap = P.kind === "year" ? 2 : P.kind === "week" ? 10 : 5;
+  chart.style.setProperty("--gap", gap + "px");
+  chart.style.gridTemplateColumns = `repeat(${n}, minmax(0, 1fr))`;
+  const plot = view === "both" ? (opts.plotBoth || 46) : (opts.plotOne || 66);
+  chart.style.setProperty("--plot", plot + "px");
+  const tallest = Math.max(1, ...cols.map((c) => c.worked || 0));
+  const lanes = view === "both" ? ["roots", "types"] : [view === "roots" ? "roots" : "types"];
+  lanes.forEach((lane, li) => {
+    const series = lane === "roots" ? P.roots : P.types;
+    if (li > 0) chart.append(el("div", "spacer"));
+    chart.append(legend(lane === "roots" ? "Roots" : "Types", lane, series, opts.highlight && opts.highlight.lane === lane ? opts.highlight.key : null, P.kind !== "week"));
+    if (li === 0 && P.kind === "quarter") {
+      for (const c of cols) { const tk = el("div", "tick" + (c.tick ? "" : " none"), c.tick || ""); chart.append(tk); }
+    }
+    const order = series.map((s) => s.key);
+    const hueOf = Object.fromEntries(series.map((s) => [s.key, s.hue]));
+    for (const c of cols) {
+      const C = el("div", "col" + (c.state === "future" ? " future" : "") + (c.state === "current" ? " current" : "") + ((c.quality === "missing" || c.quality === "not_tracked") && c.state !== "future" ? " missing" : ""));
+      const stack = lane === "roots" ? c.roots : c.types;
+      if (c.worked && c.state !== "future") {
+        for (const key of order) {
+          const m = stack[key] || 0; if (!m) continue;
+          const h = m / tallest * plot; if (h < 0.75 || (hueOf[key] === "hatch" && h < 2)) continue;
+          const S = el("span", "seg f-" + hueOf[key]); S.style.height = h.toFixed(2) + "px";
+          if (opts.highlight && opts.highlight.lane === lane && opts.highlight.key !== key) S.style.opacity = ".28";
+          C.append(S);
+        }
+      }
+      chart.append(C);
+    }
+  });
+  if (P.kind !== "year") {
+    for (const c of cols) chart.append(el("div", "mark", c.state === "future" ? "" : ({ met: "✓", missed: "✕", open: "◐", reflected: "✓", drafted: "·", edited: "·" })[c.mark] || ""));
+    for (const c of cols) chart.append(el("div", "cap" + (c.state === "current" ? " cur" : "") + (c.state === "future" ? " fut" : ""), c.caption + (c.state === "current" && P.kind === "week" ? " · so far" : "")));
+    if (P.kind !== "all") for (const c of cols) chart.append(el("div", "valrow" + (c.state === "future" ? " fut" : ""), c.state === "future" ? "" : (P.kind === "week" ? (c.display || "–") : (c.short || "–"))));
+  } else {
+    const G = el("div", "groups");
+    const groups = []; for (const c of cols) { const g = c.group || ""; if (!groups.length || groups[groups.length - 1].g !== g) groups.push({ g, n: 0 }); groups[groups.length - 1].n++; }
+    G.style.gridTemplateColumns = groups.map((g) => g.n + "fr").join(" ");
+    for (const g of groups) { const row = (P.groups || []).find((x) => String(x.key) === g.g) || {}; G.append(el("span", "", g.g + (row.worked_display && row.worked_display !== "–" ? " · " + row.worked_display : " · not tracked"))); }
+    chart.append(G);
+  }
+  strip.append(chart);
+  host.append(strip);
+  if (opts.hoverCol !== undefined) {
+    requestAnimationFrame(() => {
+      const colsEls = chart.querySelectorAll(".col");
+      const target = colsEls[opts.hoverCol]; const last = colsEls[colsEls.length - (n - opts.hoverCol)];
+      const cr = chart.getBoundingClientRect(); const tr = target.getBoundingClientRect();
+      const band = el("div", "hoverband"); band.style.left = (tr.left - cr.left - 3) + "px"; band.style.width = (tr.width + 6) + "px";
+      chart.prepend(band);
+      const c = cols[opts.hoverCol];
+      const tip = el("div", "tip");
+      tip.append(el("h4", "", c.label + " · " + c.display + " · " + ({ met: "✓", missed: "✕" })[c.mark]));
+      tip.append(el("div", "sec", "Roots"));
+      for (const s of P.roots) { const m = c.roots[s.key]; if (!m) continue; const R = el("div", "row"); R.append(mark("roots", s.hue)); R.append(el("span", "", s.label)); R.append(el("span", "v", fmt(m))); tip.append(R); }
+      tip.append(el("div", "sec", "Types"));
+      for (const s of P.types) { const m = c.types[s.key]; if (!m) continue; const R = el("div", "row"); R.append(mark("types", s.hue)); R.append(el("span", "", s.label)); R.append(el("span", "v", fmt(m))); tip.append(R); }
+      tip.style.left = (tr.right - cr.left + 10) + "px"; tip.style.top = "24px";
+      chart.append(tip);
+    });
+  }
+}
+for (const cs of CASES) {
+  const wrap = el("div", "case"); wrap.setAttribute("data-shot", cs.shot + (location.hash === "#dark" ? "-dark" : ""));
+  if (cs.title) wrap.append(el("div", "case-title", cs.title));
+  const note = el("div", "note"); wrap.append(note);
+  document.getElementById("root").append(wrap);
+  const P = { ...DATA[cs.id], metaText: cs.meta || "" };
+  renderStrip(note, P, cs);
+}
+} catch (e) { window.__err = String(e && e.stack || e); }
+</script></body></html>
