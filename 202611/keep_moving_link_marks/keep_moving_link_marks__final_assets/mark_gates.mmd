@@ -1,0 +1,34 @@
+---
+title: "When does a Task Link show its keep-moving count?"
+accTitle: "Keep-moving mark gating"
+accDescr: "Four gates, checked in order, decide whether a live ledger Task Link shows the keep-moving count. Any failed gate means no mark."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 26
+    nodeSpacing: 40
+    wrappingWidth: 260
+---
+flowchart TD
+  G1{{"`**Live link to open<br/>project task?**`"}}
+  G2{{"`**Umbrella project?**`"}}
+  G3{{"`**Last planned, ^prj<br/>unblocked?**`"}}
+  G4{{"`**Offerable rows ≥ 1?**`"}}
+  SHOW["`**Show the count**<br/>= rows in Keep moving group`"]
+  NONE["`**No mark**<br/>silence, never a warning`"]
+  G1 -->|"yes"| G2
+  G2 -->|"no (proposed rule)"| G3
+  G3 -->|"yes"| G4
+  G4 ==>|"yes"| SHOW
+  G1 -->|"no"| NONE
+  G2 -->|"yes"| NONE
+  G3 -->|"no"| NONE
+  G4 -->|"no"| NONE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class G1,G2,G3,G4 decision
+  class G2 proposed
+  class SHOW outcome
+  class NONE muted
