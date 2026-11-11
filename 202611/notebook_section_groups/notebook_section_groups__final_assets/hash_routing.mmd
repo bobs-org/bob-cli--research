@@ -1,0 +1,36 @@
+---
+title: "What does a hash at a bullet start mean?"
+accTitle: "Bullet-start hash routing in capture drafts"
+accDescr: "Four questions decide whether a first-level dash-hash opens the drawer menu, the new notebook section menu, stays literal, or is refused."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 200
+---
+flowchart TD
+  Q1{{"`**First-level bullet?**`"}}
+  Q2{{"`**Under a task?**`"}}
+  Q3{{"`**In a notebook body?**`"}}
+  Q4{{"`**Header names a section?**`"}}
+  KEEP["`**Unchanged**<br/>nested hash as today`"]
+  DRAWER["`**Drawer menu**<br/>unchanged`"]
+  OTHER["`**No menu**<br/>task lists refuse;<br/>note detail stays literal`"]
+  POS["`**Refused**<br/>header already<br/>names one`"]
+  SECTION["`**Section menu**<br/>new: @nb list<br/>or %n create`"]
+  Q1 -->|No| KEEP
+  Q1 -->|Yes| Q2
+  Q2 -->|Yes| DRAWER
+  Q2 -->|No| Q3
+  Q3 -->|No| OTHER
+  Q3 -->|Yes| Q4
+  Q4 -->|Yes| POS
+  Q4 ==>|No| SECTION
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class Q1,Q2,Q3,Q4 decision
+  class SECTION outcome
+  class SECTION proposed
+  class KEEP,DRAWER,OTHER,POS muted
