@@ -1,0 +1,28 @@
+---
+title: "What does a first-level bullet-start hash complete?"
+accTitle: "Bullet-start hash routing"
+accDescr: "A hash after a first-level dash opens drawers under a task, notebook H2 sections on a notebook list or notebook create, and nothing otherwise."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Hash after first-level dash?**`"}}
+  Q2{{"`**Where do the bullets land?**`"}}
+  DRAWER["`**Drawer menu**<br/>inserts ALL-CAPS title`"]
+  SECTION["`**Section menu**<br/>inserts ALL-CAPS H2 group`"]
+  EMPTY["`**Empty success**<br/>no menu`"]
+  TYPE["`**Type menu**<br/>nested or parent-edge hash`"]
+  Q1 -->|No| TYPE
+  Q1 -->|Yes| Q2
+  Q2 -->|"task, project note, or note-less @route+id"| DRAWER
+  Q2 -->|"notebook list or @parent^id@ %n"| SECTION
+  Q2 -->|"glued drawer, parent note, or other"| EMPTY
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2 decision
+  class DRAWER,SECTION outcome
+  class EMPTY,TYPE muted

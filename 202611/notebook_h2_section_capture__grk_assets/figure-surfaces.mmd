@@ -1,0 +1,30 @@
+---
+title: "How do the two notebook section surfaces differ?"
+accTitle: "Glued hash versus bullet-start hash"
+accDescr: "Glued at-nb hash keeps a selector on one item or list. Bullet-start hash rewrites to an ALL-CAPS grouping header whose nested notes become that H2."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 18
+    wrappingWidth: 200
+---
+flowchart TD
+  G1["`**Glued: @nb#git note**<br/>one note in Git`"]
+  G2["`**Glued: @nb#git list**<br/>every bullet in Git`"]
+  B1["`**Bullet: - #git**<br/>rewrites to GIT`"]
+  B2["`**Bullet nested notes**<br/>become that H2`"]
+  RESOLVE["`**Shared resolver**<br/>exact title or whole slug`"]
+  WRITE["`**## Git**<br/>create on demand`"]
+  G1 --> RESOLVE
+  G2 --> RESOLVE
+  B1 -.->|"opens nested dash"| B2
+  B2 -.-> RESOLVE
+  RESOLVE ==> WRITE
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class G1,G2,B1,B2 focus
+  class B1,B2 proposed
+  class WRITE outcome
+  class RESOLVE muted
