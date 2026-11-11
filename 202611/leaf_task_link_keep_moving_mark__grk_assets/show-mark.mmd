@@ -1,0 +1,34 @@
+---
+title: "When does the keep-moving mark appear?"
+accTitle: "Keep-moving mark gates"
+accDescr: "Five gates decide whether a Task Link wears a skip-forward count. All must hold, and the count must match the keep-moving offer set."
+config:
+  flowchart:
+    rankSpacing: 8
+    nodeSpacing: 10
+    wrappingWidth: 200
+---
+flowchart TD
+  Q1{{"`**Today's daily note?**`"}}
+  Q2{{"`**Live Task Link?**`"}}
+  Q3{{"`**Work-leaf project?**`"}}
+  Q4{{"`**Last live link today?**`"}}
+  Q5{{"`**Offer set N ≥ 1?**`"}}
+  SHOW["`**Show skip-forward N**`"]
+  HIDE["`**No mark**`"]
+  Q1 -->|Yes| Q2
+  Q1 -->|No| HIDE
+  Q2 -->|Yes| Q3
+  Q2 -->|No| HIDE
+  Q3 -->|Yes| Q4
+  Q3 -->|No| HIDE
+  Q4 -->|Yes| Q5
+  Q4 -->|No| HIDE
+  Q5 -->|Yes| SHOW
+  Q5 -->|No| HIDE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3,Q4,Q5 decision
+  class SHOW outcome
+  class HIDE muted

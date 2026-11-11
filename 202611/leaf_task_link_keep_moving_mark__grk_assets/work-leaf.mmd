@@ -1,0 +1,42 @@
+---
+title: "Which projects should keep-moving preview?"
+accTitle: "Work-leaf versus reporting leaf"
+accDescr: "Reporting leaf excludes job_email_recruiters because its parent is an area. Work-leaf adds root projects that have no child projects."
+config:
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 12
+    wrappingWidth: 180
+---
+flowchart TB
+  subgraph NOW["Today: reporting leaf only"]
+    direction LR
+    N1["`**sase_pager**<br/>nested under sase`"]
+    N2["`**job emails**<br/>under job area`"]
+    N3["`**bob, sase**<br/>roots with children`"]
+    NY["`**Keep-moving**`"]
+    NN["`**Silent**`"]
+    N1 --> NY
+    N2 --> NN
+    N3 --> NN
+  end
+  subgraph NEXT["Proposed: work-leaf"]
+    direction LR
+    P1["`**sase_pager**<br/>reporting leaf`"]
+    P2["`**job emails**<br/>root, no children`"]
+    P3["`**bob, sase**<br/>roots with children`"]
+    PY["`**Keep-moving**`"]
+    PN["`**Silent**`"]
+    P1 --> PY
+    P2 --> PY
+    P3 --> PN
+  end
+  NOW -.-> NEXT
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class N1,P1,P2 focus
+  class NY,PY outcome
+  class N2,N3,NN,P3,PN risk
+  style NOW fill:none,stroke:#C0392B
+  style NEXT fill:none,stroke:#2E7D4F
