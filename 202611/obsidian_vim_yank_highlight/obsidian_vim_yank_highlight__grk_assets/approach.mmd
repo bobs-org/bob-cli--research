@@ -1,0 +1,34 @@
+---
+title: "Which yank-highlight approach should Bob take?"
+accTitle: "Yank highlight approach choice"
+accDescr: "Community plugins fail on false positives or stuck highlights. A new bob-plugins plugin that wraps CodeMirror Vim pushText and dispatches a 200ms flash is the recommended path."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Install a community plugin?**`"}}
+  Q2{{"`**Which community plugin?**`"}}
+  ALEK["`**Aleksey Rowan**<br/>Sniffs keys, LCS match`"]
+  KOME["`**kometenstaub**<br/>Wraps pushText`"]
+  OWN["`**New bob-plugins plugin**<br/>Wrap pushText, dispatch flash`"]
+  FAILA["`**False flash on ys**<br/>Misses remapped Y`"]
+  FAILK["`**Highlight can stick**<br/>No CM6 dispatch on clear`"]
+  OK["`**200 ms exact-range flash**<br/>Yank only, like SASE`"]
+  Q1 -->|Yes| Q2
+  Q1 -->|No| OWN
+  Q2 -->|Community 1.0.8| ALEK
+  Q2 -->|BRAT 1.1.4| KOME
+  ALEK --> FAILA
+  KOME --> FAILK
+  OWN ==> OK
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class Q1,Q2 decision
+  class ALEK,KOME muted
+  class FAILA,FAILK risk
+  class OWN,OK outcome

@@ -1,0 +1,30 @@
+---
+title: "What happens when yy yanks a line?"
+accTitle: "Yank flash sequence"
+accDescr: "CodeMirror Vim selects the line, the yank operator pushes text, the Bob plugin paints those live ranges, and a generation-guarded 200 millisecond timer clears the overlay."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  YY["`**yy in NORMAL**<br/>User copies the line`"]
+  SEL["`**CodeMirror Vim**<br/>setSelections on the line`"]
+  YANK["`**yank operator**<br/>getSelection, then pushText`"]
+  HOOK["`**Wrapped pushText**<br/>operator is yank`"]
+  PAINT["`**StateEffect decorations**<br/>linewise line marks`"]
+  WAIT["`**Timer 200 ms**<br/>generation N`"]
+  CLEAR["`**Dispatch Decoration.none**<br/>stale timers ignored`"]
+  YY ==> SEL
+  SEL --> YANK
+  YANK --> HOOK
+  HOOK --> PAINT
+  PAINT --> WAIT
+  WAIT --> CLEAR
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class YY,SEL,YANK focus
+  class HOOK,PAINT outcome
+  class WAIT,CLEAR muted
