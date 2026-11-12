@@ -1,0 +1,24 @@
+---
+title: "How does a walker footer switch?"
+accTitle: "Walker footer switch sequence"
+accDescr: "A letter click or walk command sets the persisted family; Ledger Tools paints one slot from that family; a slot click runs the same family's forward walk."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 12
+    wrappingWidth: 260
+---
+flowchart TD
+  Q{{"`**How did the family change?**`"}}
+  Q -->|"click s w or n"| SET["`**Nav remembers family**`"]
+  Q -->|"]s ]w or ]n"| SET
+  SET --> PAINT["`**Ledger paints one slot**`"]
+  PAINT --> HUD["`**s review, w lanes,<br/>or n compass**`"]
+  HUD -->|"click the slot"| JUMP["`**Run that forward walk**`"]
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class Q decision
+  class SET,PAINT focus
+  class HUD,JUMP outcome

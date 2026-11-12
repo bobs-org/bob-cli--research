@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Walker footer mockups</title>
+<style>
+  :root {
+    --sb-bg: #ececec;
+    --sb-border: #d4d4d4;
+    --text: #1f1f1f;
+    --muted: #6b6b6b;
+    --faint: #9a9a9a;
+    --accent: #7c6cd9;
+    --wip: #c79200;
+    --next: #1a9a4a;
+    --ready: #086ddd;
+    --tick: #086ddd;
+    --rotten: #ec7500;
+    --new: #d23b4a;
+    --pre: #0aa3a0;
+    --chip-bg: #ffffff;
+    --row-label: #5a5a5a;
+    --page: #f7f5f2;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--page);
+    color: var(--text);
+    font-family: "DejaVu Sans", ui-sans-serif, system-ui, sans-serif;
+  }
+  body { padding: 28px 32px 40px; min-height: 980px; }
+  h1 {
+    margin: 0 0 6px;
+    font-size: 20px;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+  }
+  .lede {
+    margin: 0 0 22px;
+    color: var(--muted);
+    font-size: 13px;
+    max-width: 920px;
+    line-height: 1.45;
+  }
+  .sheet { display: block; }
+  .case { display: block; margin: 0 0 14px; }
+  .case-label {
+    font-size: 11px;
+    font-weight: 650;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--row-label);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding: 0 12px;
+    background: var(--sb-bg);
+    border: 1px solid var(--sb-border);
+    border-radius: 7px;
+    font-size: 12px;
+    line-height: 1;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.65);
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    margin-left: 16px;
+  }
+  .right > * {
+    margin-left: 14px;
+  }
+  .walker {
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .walker.hidden { opacity: 0; }
+  .main {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28em;
+    font-weight: 650;
+  }
+  .icon { color: var(--muted); }
+  .due { font-weight: 650; }
+  .sep {
+    color: var(--faint);
+    margin: 0 0.28em;
+  }
+  .muted { color: var(--muted); font-weight: 500; }
+  .tier { font-weight: 650; }
+  .pre { color: var(--pre); }
+  .wip { color: var(--wip); }
+  .next { color: var(--next); }
+  .ready { color: var(--ready); }
+  .tick { color: var(--tick); }
+  .rotten { color: var(--rotten); }
+  .new { color: var(--new); }
+  .hair {
+    width: 1px;
+    height: 12px;
+    background: #c8c8c8;
+    margin: 0 0.42em;
+    flex: 0 0 auto;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.12em 0.55em 0.12em 0.16em;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--tick) 13%, #ececec);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tick) 40%, #ececec);
+    color: var(--tick);
+    font-weight: 650;
+  }
+  .keycap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.55em;
+    height: 1.15em;
+    padding: 0 0.28em;
+    border-radius: 4px;
+    background: var(--tick);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    margin-right: 0.42em;
+  }
+  .keep {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    color: #8a6d12;
+    font-weight: 650;
+    white-space: nowrap;
+  }
+  .keep .num { color: var(--text); font-weight: 600; margin-left: 0.45em; }
+  .spacer { flex: 0 0 auto; color: var(--faint); font-size: 11px; }
+  .bracket {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    font-family: "DejaVu Sans Mono", ui-monospace, monospace;
+    font-size: 12px;
+  }
+  .bracket .br-key { margin: 0 0.25em; }
+  .br-key { color: var(--faint); letter-spacing: -0.08em; }
+  .track {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+  .thumb {
+    position: absolute;
+    top: 50%;
+    width: 1.3em;
+    height: calc(1.35em + 4px);
+    transform: translateY(-50%);
+    border-radius: 4px;
+    background: rgba(124, 108, 217, 0.32);
+    box-shadow: inset 0 0 0 1px rgba(124, 108, 217, 0.55);
+    pointer-events: none;
+  }
+  .thumb.s { left: 0; }
+  .thumb.w { left: 1.3em; }
+  .thumb.n { left: 2.6em; }
+  .thumb.none { opacity: 0; }
+  .seg {
+    width: 1.3em;
+    height: 1.35em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    position: relative;
+  }
+  .seg.active { color: var(--text); font-weight: 700; }
+  .pip {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--rotten);
+    box-shadow: 0 0 0 1px var(--sb-bg);
+  }
+  .pip.lane { background: var(--next); }
+  .compass .here { font-weight: 700; color: var(--text); }
+  .compass .arm { color: var(--muted); }
+  .compass .gone { color: var(--faint); }
+  .vim { color: var(--faint); font-family: "DejaVu Sans Mono", ui-monospace, monospace; font-size: 11px; }
+</style>
+</head>
+<body>
+  <h1>Walker footers in the desktop status bar</h1>
+  <p class="lede">One left-hand slot, three mutually exclusive HUDs, switched by the persisted <code>[[ s w n ]]</code> family. Keep inbox and the mode indicator stay. A quiet pip on an inactive letter remembers the walk you are not in.</p>
+  <div class="sheet">
+
+    <div class="case">
+      <div class="case-label">Today — review footer always on, family w</div>
+      <div class="bar">
+        <div class="walker">
+          <span class="main"><span class="due">Review 12 due</span></span>
+          <span class="sep">·</span>
+          <span class="muted">8 commitments</span>
+          <span class="sep">·</span>
+          <span class="tier new">NEW 2</span>
+          <span class="sep">·</span>
+          <span class="tier wip">WIP 3</span>
+          <span class="sep">·</span>
+          <span class="tier next">NEXT 3</span>
+          <span class="hair"></span>
+          <span class="tier rotten">ROTTEN 4</span>
+          <span class="sep">·</span>
+          <span class="muted">✓ 1/3 today</span>
+        </div>
+        <div class="right">
+        <div class="keep">Keep 2 <span class="num">Inbox 4</span></div>
+        <div class="spacer">Normal</div>
+        <div class="bracket">
+          <span class="br-key">[[</span>
+          <span class="track">
+            <span class="thumb w"></span>
+            <span class="seg">s</span>
+            <span class="seg active">w</span>
+            <span class="seg">n</span>
+          </span>
+          <span class="br-key">]]</span>
+        </div>
+        <div class="vim">vim</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-label">Proposed — family s, off a queue row</div>
+      <div class="bar">
+        <div class="walker">
+          <span class="main"><span class="due">Review 12 due</span></span>
+          <span class="sep">·</span>
+          <span class="muted">8 commitments</span>
+          <span class="sep">·</span>
+          <span class="tier new">NEW 2</span>
+          <span class="sep">·</span>
+          <span class="tier wip">WIP 3</span>
+          <span class="sep">·</span>
+          <span class="tier next">NEXT 3</span>
+          <span class="hair"></span>
+          <span class="tier rotten">ROTTEN 4</span>
+          <span class="sep">·</span>
+          <span class="muted">✓ 1/3 today</span>
+        </div>
+        <div class="right">
+        <div class="keep">Keep 2 <span class="num">Inbox 4</span></div>
+        <div class="spacer">Normal</div>
+        <div class="bracket">
+          <span class="br-key">[[</span>
+          <span class="track">
+            <span class="thumb s"></span>
+            <span class="seg active">s</span>
+            <span class="seg">w<span class="pip lane"></span></span>
+            <span class="seg">n</span>
+          </span>
+          <span class="br-key">]]</span>
+        </div>
+        <div class="vim">vim</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-label">Proposed — family s, landed on a TICKLER row</div>
+      <div class="bar">
+        <div class="walker">
+          <span class="main"><span class="due">Review 9/12</span></span>
+          <span class="sep">·</span>
+          <span class="tier tick">TICKS 1/2</span>
+          <span class="sep">·</span>
+          <span class="muted">Call the bank</span>
+          <span class="sep">·</span>
+          <span class="pill"><span class="keycap">Alt+P</span> roll P2 1/1</span>
+          <span class="hair"></span>
+          <span class="tier rotten">ROTTEN 4</span>
+          <span class="sep">·</span>
+          <span class="muted">✓ 1/3 today</span>
+        </div>
+        <div class="right">
+        <div class="keep">Keep 2 <span class="num">Inbox 4</span></div>
+        <div class="spacer">Normal</div>
+        <div class="bracket">
+          <span class="br-key">[[</span>
+          <span class="track">
+            <span class="thumb s"></span>
+            <span class="seg active">s</span>
+            <span class="seg">w<span class="pip lane"></span></span>
+            <span class="seg">n</span>
+          </span>
+          <span class="br-key">]]</span>
+        </div>
+        <div class="vim">vim</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-label">Proposed — family w, lane counts</div>
+      <div class="bar">
+        <div class="walker">
+          <span class="main"><span class="due">Lanes 14</span></span>
+          <span class="sep">·</span>
+          <span class="tier wip">WIP 3</span>
+          <span class="sep">·</span>
+          <span class="tier next">NEXT 4</span>
+          <span class="sep">·</span>
+          <span class="tier ready">READY 7</span>
+          <span class="sep">·</span>
+          <span class="muted">]w next</span>
+        </div>
+        <div class="right">
+        <div class="keep">Keep 2 <span class="num">Inbox 4</span></div>
+        <div class="spacer">Normal</div>
+        <div class="bracket">
+          <span class="br-key">[[</span>
+          <span class="track">
+            <span class="thumb w"></span>
+            <span class="seg">s<span class="pip"></span></span>
+            <span class="seg active">w</span>
+            <span class="seg">n</span>
+          </span>
+          <span class="br-key">]]</span>
+        </div>
+        <div class="vim">vim</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-label">Proposed — family w, landed on a NEXT row</div>
+      <div class="bar">
+        <div class="walker">
+          <span class="main"><span class="due">Lanes 4/14</span></span>
+          <span class="sep">·</span>
+          <span class="tier next">NEXT 1/4</span>
+          <span class="sep">·</span>
+          <span class="muted">Fix the parser</span>
+          <span class="sep">·</span>
+          <span class="muted">Ctrl+Shift+Enter today · Alt+N release</span>
+        </div>
+        <div class="right">
+        <div class="keep">Keep 2 <span class="num">Inbox 4</span></div>
+        <div class="spacer">Normal</div>
+        <div class="bracket">
+          <span class="br-key">[[</span>
+          <span class="track">
+            <span class="thumb w"></span>
+            <span class="seg">s<span class="pip"></span></span>
+            <span class="seg active">w</span>
+            <span class="seg">n</span>
+          </span>
+          <span class="br-key">]]</span>
+        </div>
+        <div class="vim">vim</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-label">Proposed — family w, lanes clear, Ready waiting in review</div>
+      <div class="bar">
+        <div class="walker">
+          <span class="main"><span class="due">Lanes clear</span></span>
+          <span class="sep">·</span>
+          <span class="muted">Ready tasks are waiting in review</span>
+          <span class="sep">·</span>
+          <span class="tier tick">REVIEW 5</span>
+        </div>
+        <div class="right">
+        <div class="keep">Keep 2 <span class="num">Inbox 4</span></div>
+        <div class="spacer">Normal</div>
+        <div class="bracket">
+          <span class="br-key">[[</span>
+          <span class="track">
+            <span class="thumb w"></span>
+            <span class="seg">s<span class="pip"></span></span>
+            <span class="seg active">w</span>
+            <span class="seg">n</span>
+          </span>
+          <span class="br-key">]]</span>
+        </div>
+        <div class="vim">vim</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-label">Proposed — family n, week note compass</div>
+      <div class="bar">
+        <div class="walker compass">
+          <span class="arm">&lsaquo; W44</span>
+          <span class="sep">·</span>
+          <span class="here">W45</span>
+          <span class="sep">·</span>
+          <span class="arm">W46 &rsaquo;</span>
+        </div>
+        <div class="right">
+        <div class="keep">Keep 2 <span class="num">Inbox 4</span></div>
+        <div class="spacer">Normal</div>
+        <div class="bracket">
+          <span class="br-key">[[</span>
+          <span class="track">
+            <span class="thumb n"></span>
+            <span class="seg">s<span class="pip"></span></span>
+            <span class="seg">w<span class="pip lane"></span></span>
+            <span class="seg active">n</span>
+          </span>
+          <span class="br-key">]]</span>
+        </div>
+        <div class="vim">vim</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-label">Proposed — family n, daily note with generic prev/next labels resolved</div>
+      <div class="bar">
+        <div class="walker compass">
+          <span class="arm">&lsaquo; 11</span>
+          <span class="sep">·</span>
+          <span class="here">12 · W45</span>
+          <span class="sep">·</span>
+          <span class="arm">13 &rsaquo;</span>
+        </div>
+        <div class="right">
+        <div class="keep">Keep 2 <span class="num">Inbox 4</span></div>
+        <div class="spacer">Normal</div>
+        <div class="bracket">
+          <span class="br-key">[[</span>
+          <span class="track">
+            <span class="thumb n"></span>
+            <span class="seg">s<span class="pip"></span></span>
+            <span class="seg">w<span class="pip lane"></span></span>
+            <span class="seg active">n</span>
+          </span>
+          <span class="br-key">]]</span>
+        </div>
+        <div class="vim">vim</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-label">Proposed — family none, slot hidden</div>
+      <div class="bar">
+        <div class="walker hidden" aria-hidden="true">placeholder</div>
+        <div class="right">
+        <div class="keep">Keep 2 <span class="num">Inbox 4</span></div>
+        <div class="spacer">Normal</div>
+        <div class="bracket">
+          <span class="br-key">[[</span>
+          <span class="track">
+            <span class="thumb none"></span>
+            <span class="seg">s<span class="pip"></span></span>
+            <span class="seg">w<span class="pip lane"></span></span>
+            <span class="seg">n</span>
+          </span>
+          <span class="br-key">]]</span>
+        </div>
+        <div class="vim">vim</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+---
+title: "Which HUD does each family paint?"
+accTitle: "Walker footer family HUDs"
+accDescr: "s paints the review footer, w paints lane counts, and n paints a prev/next compass. None hides the slot."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 18
+    wrappingWidth: 200
+---
+flowchart TD
+  SLOT["`**One walker-footer slot**`"]
+  SLOT -->|"s"| REV["`**Review footer**<br/>due tiers and meter`"]
+  SLOT -->|"w"| LANE["`**Lane footer**<br/>WIP NEXT READY`"]
+  SLOT -->|"n"| LINK["`**Links compass**<br/>prev here next`"]
+  SLOT -->|"none"| HIDE["`**Hide the slot**`"]
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class SLOT focus
+  class REV,LANE,LINK outcome
+  class HIDE muted
