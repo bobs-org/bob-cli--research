@@ -168,7 +168,7 @@ that thread, once, and tells you.
 thread with no open watcher, and only the first time. Every other case
 is a no-op.
 
-![Should this thread leave the inbox this run?](gmail_sync_archive_closed_tasks__grk_decision.png)
+![Should this thread leave the inbox this run?](gmail_archive_on_task_close__grk_decision.png)
 
 Rendered size: 538 × 784 px; fit scale: 100%.
 
@@ -215,7 +215,7 @@ thread Gmail unarchived after a reply stays out of Bob's way too.
 that sync archives once; a later reply returns the thread to the inbox
 and Bob leaves it there.
 
-![What happens to a bob-labelled thread?](gmail_sync_archive_closed_tasks__grk_lifecycle.png)
+![What happens to a bob-labelled thread?](gmail_archive_on_task_close__grk_lifecycle.png)
 
 Rendered size: 461 × 670 px; fit scale: 100%.
 
