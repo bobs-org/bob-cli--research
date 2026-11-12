@@ -1,0 +1,33 @@
+---
+title: "How does a guest event become a quiet Event Task?"
+accTitle: "Guest event ack lifecycle"
+accDescr: "Sync always writes the Event Task. A no-op ack or a private note clears the unacked warning. Clearing a note leaves the ack in place."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 22
+    wrappingWidth: 240
+---
+flowchart TD
+  INVITE["`**Guest event**<br/>on Google Calendar`"]
+  KEY{{"`**bob gcal ack**`"}}
+  NOTE["`**Private note**<br/>bob gcal note`"]
+  ACK["`**gcal.ack record**<br/>sticky per event or series`"]
+  SYNC["`**bob gcal sync**<br/>still writes the row`"]
+  WARN["`**Open Event Task**<br/>with UNACKED child`"]
+  QUIET["`**Open Event Task**<br/>no warning child`"]
+  INVITE ==> KEY
+  INVITE --> NOTE
+  KEY -->|"a no-op"| ACK
+  KEY -->|n| NOTE
+  NOTE --> ACK
+  INVITE ==> SYNC
+  ACK --> SYNC
+  SYNC -->|"guest and unacked"| WARN
+  SYNC -->|"acked or owned"| QUIET
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class INVITE,KEY,NOTE,SYNC focus
+  class ACK,QUIET outcome
+  class WARN risk
