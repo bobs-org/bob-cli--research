@@ -1,0 +1,33 @@
+---
+title: "What does Ctrl+Enter do on a bank row?"
+accTitle: "Ctrl+Enter bank row behavior"
+accDescr: "A waiting row opens the category card; one keypress writes the tick and category together and advances. A ticked row unticks in place with no card and no jump."
+config:
+  flowchart:
+    rankSpacing: 18
+    nodeSpacing: 18
+    wrappingWidth: 240
+---
+flowchart TD
+  G["`**Ctrl+Enter**<br/>on a bank month-note row`"]
+  Q1{{"`**Row still waiting?**`"}}
+  UNDO["`**Untick in place**<br/>keeps category · no card · no jump`"]
+  CARD["`**Category card**<br/>suggestion pre-highlighted`"]
+  STAY["`**Cancel**<br/>nothing written · cursor stays`"]
+  WRITE["`**One editor transaction**<br/>tick + optional cat field`"]
+  NEXT["`**Land on next waiting row**<br/>wrap once · end-of-run toast`"]
+  G --> Q1
+  Q1 -->|"ticked"| UNDO
+  Q1 -->|"waiting"| CARD
+  CARD -->|"category key, or<br/>Enter accepts suggestion"| WRITE
+  CARD -->|"Space: tick with<br/>no category"| WRITE
+  CARD -->|"Esc"| STAY
+  WRITE ==> NEXT
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class G,CARD focus
+  class Q1 decision
+  class WRITE,NEXT outcome
+  class UNDO,STAY muted
