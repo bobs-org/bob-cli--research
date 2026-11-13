@@ -1,0 +1,76 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root { --bg:#1e1e1e; --bg2:#262626; --text:#dadada; --muted:#9a9a9a; --faint:#6e6e6e; --border:#363636;
+  --hue:#d95926; --nbhue:#3987e5; --red:#e66767; --green:#3fae6a; --blue:#3987e5; --white:#cfcfcf; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:"DejaVu Sans",sans-serif; font-size:14.5px; }
+.note { width:860px; padding:26px 34px 30px; }
+.task { display:flex; gap:9px; align-items:baseline; color:var(--text); margin-bottom:16px; }
+.box { width:14px; height:14px; border:1.5px solid var(--muted); border-radius:3px; flex:none; transform:translateY(2px); }
+.tag { font-size:12px; padding:1px 7px; border-radius:9px; background:#2f2f3a; color:#a9a2ef; margin-left:4px; }
+h1 { font-size:25px; margin:6px 0 14px; font-weight:700; }
+h2 { font-size:19px; margin:20px 0 8px; font-weight:700; }
+.card { --h:var(--hue); background:color-mix(in srgb, var(--h) 9%, var(--bg2)); border:1px solid color-mix(in srgb, var(--h) 28%, var(--border)); border-radius:8px; padding:9px 14px 10px; }
+.card.nb { --h:var(--nbhue); }
+.head { display:flex; align-items:center; gap:7px; color:var(--h); font-weight:600; font-size:13.5px; margin-bottom:3px; }
+.head .tally { margin-left:auto; display:flex; gap:12px; font-size:12px; color:var(--muted); font-weight:500; }
+.tally span { display:inline-flex; align-items:center; gap:5px; }
+.tally i { width:8px; height:8px; border-radius:50%; display:inline-block; }
+.add { margin-left:12px; color:var(--muted); font-size:12px; border:1px solid var(--border); border-radius:6px; padding:1px 7px; font-weight:500; }
+ul { list-style:none; margin:0; padding:0; }
+li { display:flex; align-items:center; gap:10px; padding:5px 0; border-top:1px solid color-mix(in srgb, var(--h) 10%, transparent); }
+li:first-child { border-top:none; }
+.glyph { flex:none; width:14px; display:flex; justify-content:center; }
+.glyph.open::before { content:""; width:7px; height:7px; border-radius:50%; border:1.6px solid var(--h); }
+.main { flex:1 1 auto; min-width:0; display:flex; gap:9px; align-items:baseline; white-space:nowrap; overflow:hidden; }
+.main a { font-weight:600; color:var(--text); flex:none; }
+.crit { color:var(--muted); overflow:hidden; text-overflow:ellipsis; min-width:0; }
+.chips { flex:none; display:flex; gap:10px; font-size:12px; color:var(--muted); }
+.chip.sub { color:color-mix(in srgb, var(--h) 70%, var(--muted)); }
+.chip.today { color:var(--blue); display:inline-flex; align-items:center; gap:5px; }
+.chip.today .dot { width:7px; height:7px; border-radius:50%; background:var(--blue); display:inline-block; }
+.chip.wait { color:var(--red); }
+.group { display:flex; align-items:center; gap:8px; padding:8px 0 4px; margin-top:4px; font-size:12.5px; font-weight:700; letter-spacing:.02em; color:var(--muted); border-top:1px solid color-mix(in srgb, var(--h) 22%, transparent); }
+.group .tri { width:10px; color:var(--muted); }
+.group i { width:8px; height:8px; border-radius:50%; display:inline-block; }
+.group .peek { margin-left:auto; font-weight:400; color:var(--faint); letter-spacing:0; }
+.indent li { padding-left:18px; }
+.glyph.chain { color:var(--red); }
+.more { color:var(--faint); font-size:12.5px; padding:4px 0 2px 24px; }
+.legend { margin-top:14px; color:var(--faint); font-size:11.5px; }
+</style></head><body><div class="note">
+<div class="task"><span class="box"></span><span>sase has received &gt;=1000 stars on GitHub!<span class="tag">prj</span><span class="tag">hide</span></span></div>
+<h1>SASE = Structured Agentic Software Engineering</h1>
+<h2>Projects</h2>
+<div class="card">
+ <div class="head"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.439 7.85c-.049.322.059.648.289.878l1.568 1.568c.47.47.706 1.087.706 1.704s-.235 1.233-.706 1.704l-1.611 1.611a.98.98 0 0 1-.837.276c-.47-.07-.802-.48-.968-.925a2.501 2.501 0 1 0-3.214 3.214c.446.166.855.497.925.968a.979.979 0 0 1-.276.837l-1.61 1.61a2.404 2.404 0 0 1-1.705.707 2.402 2.402 0 0 1-1.704-.706l-1.568-1.568a1.026 1.026 0 0 0-.877-.29c-.493.074-.84.504-1.02.968a2.5 2.5 0 1 1-3.237-3.237c.464-.18.894-.527.967-1.02a1.026 1.026 0 0 0-.289-.877l-1.568-1.568A2.402 2.402 0 0 1 1.998 12c0-.617.236-1.234.706-1.704L4.23 8.77c.24-.24.581-.353.917-.303.515.077.877.528 1.073 1.01a2.5 2.5 0 1 0 3.259-3.259c-.482-.196-.933-.558-1.01-1.073-.05-.336.062-.676.303-.917l1.525-1.525A2.402 2.402 0 0 1 12 1.998c.617 0 1.234.236 1.704.706l1.568 1.568c.23.23.556.338.877.29.493-.074.84-.504 1.02-.968a2.5 2.5 0 1 1 3.237 3.237c-.464.18-.894.527-.967 1.02Z"/></svg>
+  <span class="tally"><span><i style="border:1.5px solid var(--white)"></i>22 open</span><span><i style="background:var(--red)"></i>1 blocked</span><span><i style="background:var(--green)"></i>38 done/canceled</span></span>
+  <span class="add">＋ project</span></div>
+ <ul>
+<li><span class="glyph open"></span><span class="main"><a>sase_agent_recovery</a><span class="crit">Failed, killed, or interrupted agents, including after a machine restart, can be recovered in one action without losing work!</span></span><span class="chips"><span class="chip">6 tasks</span></span></li>
+<li><span class="glyph open"></span><span class="main"><a>sase_agents_repo</a><span class="crit">Use sase—agents repos to sync sase agents across machines!</span></span><span class="chips"><span class="chip">4 tasks</span></span></li>
+<li><span class="glyph open"></span><span class="main"><a>sase_art</a><span class="crit">Artifacts from Sidecars</span></span><span class="chips"><span class="chip today"><i class="dot"></i>today</span><span class="chip">24 tasks</span><span class="chip sub">▸ 2 sub-projects</span></span></li>
+<li><span class="glyph open"></span><span class="main"><a>sase_better_config</a><span class="crit">Merge xprompt sub-tab into config sub-tab and migrate memory file panel and glossary panel to this sub-tab as well!</span></span><span class="chips"><span class="chip">2 tasks</span></span></li>
+<li><span class="glyph open"></span><span class="main"><a>sase_better_glossary</a><span class="crit">Improve sase&#x27;s Glossary!</span></span><span class="chips"><span class="chip">7 tasks</span></span></li>
+<li><span class="glyph open"></span><span class="main"><a>sase_better_installs</a><span class="crit">Installs/updates are ready to be talked about!</span></span><span class="chips"><span class="chip">3 tasks</span></span></li>
+<li><span class="glyph open"></span><span class="main"><a>sase_better_macros</a><span class="crit">Macro syntax, directives, and built-in macros are consistent, composable, and self-documenting!</span></span><span class="chips"><span class="chip">18 tasks</span></span></li>
+<li><span class="glyph open"></span><span class="main"><a>sase_better_piw</a><span class="crit">Prompt completion, history, and editing make the PIW the best place to write agent prompts!</span></span><span class="chips"><span class="chip">13 tasks</span></span></li>
+<li><span class="glyph open"></span><span class="main"><a>sase_better_tasks</a><span class="crit">Improve task/flag beads!</span></span><span class="chips"><span class="chip">11 tasks</span></span></li>
+<li><span class="glyph open"></span><span class="main"><a>sase_better_tui</a><span class="crit">TUI keymaps, decks, and panels are consistent, reversible, and discoverable!</span></span><span class="chips"><span class="chip today"><i class="dot"></i>today</span><span class="chip">20 tasks</span></span></li>
+<li><span class="glyph open"></span><span class="main"><a>sase_better_vars</a><span class="crit">Sase agents should be able to use the /sase_var skill to see variables that were set by previous agents that they forked.</span></span><span class="chips"><span class="chip">4 tasks</span></span></li>
+<li><span class="glyph open"></span><span class="main"><a>sase_blog</a><span class="crit">My SASE post, in my own voice, is live on https://sase.sh!</span></span><span class="chips"><span class="chip">12 tasks</span><span class="chip sub">▸ 1 sub-project</span></span></li>
+<li><span class="glyph open"></span><span class="main"><a>sase_completion</a><span class="crit">Every turn, including plans and monitors, ends on a defined finalizer → stitch → patch/PR path, sidecars included!</span></span><span class="chips"><span class="chip">12 tasks</span></span></li>
+<li><span class="glyph open"></span><span class="main"><a>sase_memory</a><span class="crit">Improved memory enough that it&#x27;s ready to be talked about!</span></span><span class="chips"><span class="chip">17 tasks</span><span class="chip sub">▸ 2 sub-projects</span></span></li>
+<li><span class="glyph open"></span><span class="main"><a>sase_monitor</a><span class="crit">Add new /sase_monitor skill!</span></span><span class="chips"><span class="chip">6 tasks</span></span></li>
+<li><span class="glyph open"></span><span class="main"><a>sase_more_agent_clis</a><span class="crit">Add support for more coding agent CLIs!</span></span><span class="chips"><span class="chip">4 tasks</span></span></li>
+ </ul>
+ <div class="more">⋯ 6 more open rows (sase_pager … sase_usage)</div>
+ <div class="group"><span class="tri">▾</span><i style="background:var(--red)"></i>Blocked · 1</div>
+ <ul class="indent"><li><span class="glyph chain"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span><span class="main"><a>sase_post_blog</a><span class="crit">Plan features to launch after sase_blog post!</span></span><span class="chips"><span class="chip wait">waits on sase_blog</span><span class="chip">20 tasks</span><span class="chip sub">▸ 2 sub-projects</span></span></li></ul>
+ <div class="group"><span class="tri">▸</span><i style="background:var(--green)"></i>Done &amp; Canceled · 38<span class="peek">latest: ✕ sase_back_policy · Oct 19 &nbsp;·&nbsp; ✓ sase_agent_history · Oct 18</span></div>
+</div>
+<h2>Notebooks</h2>
+<div class="card nb"><div class="head"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h4"/><path d="M2 10h4"/><path d="M2 14h4"/><path d="M2 18h4"/><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M15 2v20"/><path d="M15 7h5"/><path d="M15 12h5"/><path d="M15 17h5"/></svg></div>
+ <ul><li><span class="main"><a>SASE ideas</a><span class="crit">— Open ideas and proposals for SASE, captured in zorg (Oct 2025 – Feb 2026).</span></span><span class="chips"><span class="chip">41 notes</span><span class="chip">3 mo</span></span></li></ul></div>
+<h2>Tasks</h2>
+<div class="legend">Mockup only: Obsidian dark theme, Bob Ledger Tools card styling borrowed from the existing notebook catalog. Rows, criteria, and task counts are real sase.md data from 2026-11-13; the "today" dots and notebook chips are illustrative. Six open rows are elided to fit the page.</div>
+</div></body></html>
