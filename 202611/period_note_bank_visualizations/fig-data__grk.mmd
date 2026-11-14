@@ -1,0 +1,26 @@
+---
+title: "Which payload should paint the child-period cashflow?"
+accTitle: "Bank report series versus per-day rows"
+accDescr: "Week notes may reuse seven day totals. Quarter, year, and all-time notes need a compact child-period series from bob, not a plugin fold of daily rows."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 230
+---
+flowchart TD
+  KIND{{"`**Period kind?**`"}}
+  WEEK["`**Seven day totals**<br/>Existing days array`"]
+  SERIES["`**Compact series**<br/>ISO children from bob`"]
+  FOLD["`**Plugin-side fold**<br/>Calendar bugs return`"]
+  KIND -->|"week"| WEEK
+  KIND -->|"quarter, year, all time"| SERIES
+  KIND -.->|"do not"| FOLD
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef proposed stroke-dasharray:5 3
+  class KIND decision
+  class WEEK,SERIES outcome
+  class FOLD risk
+  class FOLD proposed

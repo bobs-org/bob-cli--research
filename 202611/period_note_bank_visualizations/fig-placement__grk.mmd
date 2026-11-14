@@ -1,0 +1,30 @@
+---
+title: "Where should period-note bank charts live?"
+accTitle: "Placement of period-note bank charts"
+accDescr: "Daily notes keep the Bank Badge. Period notes get an own money plot, mounted as a sibling host after the stats strip and badge inside the existing bob-stats-strip fence."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 18
+    wrappingWidth: 220
+---
+flowchart TD
+  Q{{"`**Which note?**`"}}
+  BADGE["`**Daily**<br/>Bank Badge only`"]
+  subgraph PERIOD["Period note"]
+    direction TB
+    UNITS["`**Own money plot**<br/>Cents off minutes`"]
+    FENCE["`**Existing fence**<br/>bob-stats-strip`"]
+    HOST["`**Sibling host**<br/>After strip and badge`"]
+    UNITS --> FENCE
+    FENCE --> HOST
+  end
+  Q -->|daily| BADGE
+  Q -->|"week, quarter, year, all time"| UNITS
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  class Q decision
+  class BADGE,UNITS,FENCE outcome
+  class HOST focus
+  style PERIOD fill:none,stroke:#2E7D4F
