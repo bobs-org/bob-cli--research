@@ -1,0 +1,30 @@
+---
+title: "Which colors should the bank badge use?"
+accTitle: "Bank badge color rules"
+accDescr: "Sequential checks color each visible token. In is green, out is neutral, mixed days keep split tokens on slate chrome, and red is never used for spending."
+config:
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 10
+    wrappingWidth: 220
+---
+flowchart TD
+  Q1{{"`**In and out both > 0?**`"}}
+  Q2{{"`**In only?**`"}}
+  Q3{{"`**Out only?**`"}}
+  BOTH["`**Split tokens**<br/>green in, slate out`"]
+  IN["`**In only**<br/>green amount and wash`"]
+  OUT["`**Out only**<br/>slate amount and wash`"]
+  WAIT["`**Waiting token**<br/>amber count if today`"]
+  Q1 -->|Yes| BOTH
+  Q1 -->|No| Q2
+  Q2 -->|Yes| IN
+  Q2 -->|No| Q3
+  Q3 -->|Yes| OUT
+  Q3 -->|No| WAIT
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  class Q1,Q2,Q3 decision
+  class IN,BOTH outcome
+  class OUT,WAIT focus

@@ -1,0 +1,40 @@
+---
+title: "Which bob bank report should each stats strip request?"
+accTitle: "Bank report period mapping"
+accDescr: "Each stats strip asks bob bank report for the same period id the note already uses. Calendar-year minus-y stays for month statements."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 220
+---
+flowchart LR
+  subgraph STRIP["Stats strip"]
+    direction TB
+    DAY["`**Day strip**`"]
+    WEEK["`**Week strip**`"]
+    QUARTER["`**Quarter strip**`"]
+    YEAR["`**Year strip**`"]
+    ALL["`**All-time strip**`"]
+  end
+  subgraph BOB["bob bank report"]
+    direction TB
+    D["`**-D day**<br/>ships today`"]
+    W["`**-w ISO week**<br/>ships today`"]
+    P["`**-p period id**<br/>proposed`"]
+  end
+  DAY --> D
+  WEEK --> W
+  QUARTER -.-> P
+  YEAR -.-> P
+  ALL -.-> P
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef proposed stroke-dasharray:5 3
+  class DAY,WEEK,QUARTER,YEAR,ALL focus
+  class D,W outcome
+  class P outcome
+  class P proposed
+  style STRIP fill:none,stroke:#3B78C2
+  style BOB fill:none,stroke:#2E7D4F
