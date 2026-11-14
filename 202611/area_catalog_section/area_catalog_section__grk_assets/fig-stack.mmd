@@ -1,0 +1,41 @@
+---
+title: "Where does Areas sit in a host note?"
+accTitle: "Generated catalog reading order"
+accDescr: "Areas lands after authored intro and before Projects, Notebooks, Albums, and Tasks so the outline reads spheres, outcomes, collections, then standing work."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 28
+    wrappingWidth: 200
+---
+flowchart LR
+  subgraph TODAY["Today"]
+    direction TB
+    TI["`**Intro**`"]
+    TP["`**Projects**`"]
+    TN["`**Notebooks**`"]
+    TA["`**Albums**`"]
+    TT["`**Tasks**`"]
+    TI --> TP --> TN --> TA --> TT
+  end
+  subgraph PROPOSED["Proposed"]
+    direction TB
+    PI["`**Intro**`"]
+    PA["`**Areas**`"]
+    PP["`**Projects**`"]
+    PN["`**Notebooks**`"]
+    PAL["`**Albums**`"]
+    PT["`**Tasks**`"]
+    PI ==> PA ==> PP --> PN --> PAL --> PT
+  end
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class TI,PI,TN,PN,TA,PAL,TT,PT muted
+  class TP,PP focus
+  class PA outcome
+  class PA proposed
+  style TODAY fill:none,stroke:#6B7280
+  style PROPOSED fill:none,stroke:#2E7D4F

@@ -1,0 +1,31 @@
+---
+title: "Which notes get an Areas catalog?"
+accTitle: "Areas catalog host eligibility"
+accDescr: "A note gets an Areas catalog when at least one area note parents to it and the host is an area note or the area type-definition note."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 18
+    wrappingWidth: 220
+---
+flowchart TD
+  Q1{{"`**Any area note parents here?**`"}}
+  Q2{{"`**Is the host type area?**`"}}
+  Q3{{"`**Is it the area type note?**`"}}
+  NONE["`**No section**<br/>Leaf area, project, or other note`"]
+  CHECK["`**Check finding**<br/>Wrong parent, no catalog row`"]
+  HOST["`**Write ## Areas**<br/>Bob owns the callout`"]
+  Q1 -->|No| NONE
+  Q1 -->|Yes| Q2
+  Q2 -->|Yes| HOST
+  Q2 -->|No| Q3
+  Q3 -->|Yes| HOST
+  Q3 -->|No| CHECK
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class Q1,Q2,Q3 decision
+  class HOST outcome
+  class NONE muted
+  class CHECK risk
