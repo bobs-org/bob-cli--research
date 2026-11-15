@@ -1,0 +1,29 @@
+---
+title: "Where should Ava's Birthday land?"
+accTitle: "Ava's Birthday inclusion"
+accDescr: "Birthday events are omitted today. The proposal accepts the birthday event type and lands all-day rows as context bullets, while timed busy events remain Event Tasks."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 220
+---
+flowchart TD
+  Q1{{"`**Allowed event type?**`"}}
+  Q2{{"`**All-day or birthday?**`"}}
+  Q3{{"`**Timed, busy, under a day?**`"}}
+  OMIT["`**Omit**<br/>focus, OOO, declined`"]
+  CTX["`**Context bullet**<br/>**all day** Ava's Birthday`"]
+  TASK["`**Event Task**<br/>MEET link and checkbox`"]
+  Q1 -->|"default, fromGmail,<br/>birthday"| Q2
+  Q1 -->|"focusTime and the rest"| OMIT
+  Q2 -->|Yes| CTX
+  Q2 -->|No| Q3
+  Q3 -->|Yes and accepted| TASK
+  Q3 -->|Maybe, free, multi-day| CTX
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class Q1,Q2,Q3 decision
+  class CTX,TASK outcome
+  class OMIT risk

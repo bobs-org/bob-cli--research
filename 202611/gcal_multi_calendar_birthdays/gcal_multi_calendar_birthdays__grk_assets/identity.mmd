@@ -1,0 +1,40 @@
+---
+title: "How does a reader tell which calendar a row came from?"
+accTitle: "Calendar identity stack"
+accDescr: "Config stores the Google id and a unique label. The journal keys by id. The vault row, list column, and painter all show the same label."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TB
+  subgraph CONFIG["Config"]
+    direction TB
+    ID["`**id**<br/>Google calendar id`"]
+    LABEL["`**label**<br/>Birthdays`"]
+  end
+  subgraph WRITE["bob gcal sync"]
+    direction TB
+    KEY["`**Journal key**<br/>id plus event id`"]
+    ROW["`**Vault row**<br/>[cal:: Birthdays]`"]
+  end
+  subgraph READ["Readers"]
+    direction TB
+    LIST["`**bob gcal list**<br/>CAL column`"]
+    PAINT["`**Ledger painter**<br/>green Birthdays chip`"]
+  end
+  ID ==> KEY
+  LABEL ==> ROW
+  KEY --> ROW
+  ROW ==> LIST
+  ROW ==> PAINT
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class ID,LABEL focus
+  class KEY muted
+  class ROW,LIST,PAINT outcome
+  style CONFIG fill:none,stroke:#3B78C2
+  style WRITE fill:none,stroke:#6B7280
+  style READ fill:none,stroke:#2E7D4F

@@ -1,0 +1,30 @@
+---
+title: "How should Bob choose between two calendars named Birthdays?"
+accTitle: "Duplicate Birthdays calendar names"
+accDescr: "The Google UI shows two calendars named Birthdays. Bob matches the configured Google id, requires distinct labels, and v1 syncs only the user-created calendar."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  Q{{"`**Summary unique?**`"}}
+  UNIQUE["`**Resolve by name or id**<br/>store the real Google id`"]
+  COLLIDE["`**Two calendars named Birthdays**`"]
+  PICK["`**Config the Google id**<br/>from bob gcal calendars`"]
+  LABELS["`**Distinct labels required**<br/>Birthdays vs Contacts`"]
+  V1["`**v1 syncs one**<br/>the user-created calendar`"]
+  Q -->|Yes| UNIQUE
+  Q -->|No| COLLIDE
+  COLLIDE ==> PICK
+  PICK --> LABELS
+  LABELS --> V1
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class Q decision
+  class UNIQUE,PICK focus
+  class LABELS,V1 outcome
+  class COLLIDE risk
