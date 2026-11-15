@@ -1,0 +1,31 @@
+---
+title: "Which recurring charges become subscription records?"
+accTitle: "Subscription seed filter"
+accDescr: "Seed keep-or-cancel charges from old_recur plus recent ledger evidence. Obligations stay bank categories. Stale listed charges become cancelled or to-cancel records for review."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 260
+---
+flowchart TD
+  SRC["`**Evidence**<br/>old_recur plus ledger`"]
+  Q1{{"`**Keep-or-cancel?**`"}}
+  Q2{{"`**Charged in recent months?**`"}}
+  REC["`**Active record**<br/>amount from ledger`"]
+  REVIEW["`**To-cancel record**<br/>listed but unseen`"]
+  DONE["`**Cancelled record**<br/>stopped on purpose`"]
+  OBL["`**No record**<br/>loans, utilities, salary`"]
+  SRC --> Q1
+  Q1 -->|No| OBL
+  Q1 -->|Yes| Q2
+  Q2 -->|Yes| REC
+  Q2 -->|No, still listed| REVIEW
+  Q2 -->|No, known stop| DONE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class SRC muted
+  class Q1,Q2 decision
+  class REC,REVIEW,DONE outcome
+  class OBL muted

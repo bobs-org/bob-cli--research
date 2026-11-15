@@ -1,0 +1,30 @@
+---
+title: "How does import choose a bank-row link?"
+accTitle: "Bank import link resolution"
+accDescr: "A new imported row takes its wikilink from a bank rule, then a learned acknowledged row, then exactly one album record match. Zero or many record hits leave the row unlinked."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Bank rule sets a link?**`"}}
+  Q2{{"`**A learned row has a link?**`"}}
+  Q3{{"`**Exactly one record matches?**`"}}
+  RULE["`**Rule link**<br/>first bank.md hit`"]
+  LEARNED["`**Learned link**<br/>latest acked twin`"]
+  RECORD["`**Record link**<br/>album emoji alias`"]
+  NONE["`**No link**<br/>plain payee row`"]
+  Q1 -->|Yes| RULE
+  Q1 -->|No or unspecified| Q2
+  Q2 -->|Yes| LEARNED
+  Q2 -->|No| Q3
+  Q3 -->|One hit| RECORD
+  Q3 -->|Zero or many| NONE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class RULE,LEARNED,RECORD outcome
+  class NONE muted
