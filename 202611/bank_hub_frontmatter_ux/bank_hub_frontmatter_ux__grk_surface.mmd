@@ -1,0 +1,38 @@
+---
+title: "What does bank.md show today versus after?"
+accTitle: "Bank hub surface today and proposed"
+accDescr: "Today the nested bank mapping is CSS-hidden with no replacement. The proposal keeps the hide, adds a collapsed config header, and leaves the queue card as the acknowledgment surface."
+config:
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 12
+    wrappingWidth: 220
+---
+flowchart TD
+  subgraph TODAY["Today"]
+    direction TB
+    TPROP["`**Properties**<br/>parent, type, summary, created`"]
+    THIDE["`**bank row hidden**<br/>no replacement chrome`"]
+    TH1["`**H1 Bank and prose**`"]
+    TQUEUE["`**Queue card**<br/>waiting rows and health`"]
+    TPROP --> THIDE --> TH1 --> TQUEUE
+  end
+  subgraph AFTER["Proposed"]
+    direction TB
+    APROP["`**Properties**<br/>same four scalars`"]
+    AHEAD["`**Config header**<br/>WF Checking · 21 categories`"]
+    AH1["`**H1 Bank and prose**`"]
+    AQUEUE["`**Queue card**<br/>unchanged job`"]
+    APROP --> AHEAD --> AH1 --> AQUEUE
+  end
+  THIDE -.->|"replace the gap"| AHEAD
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef proposed stroke-dasharray:5 3
+  class TPROP,TH1,TQUEUE,APROP,AH1,AQUEUE muted
+  class THIDE risk
+  class AHEAD outcome
+  class AHEAD proposed
+  style TODAY fill:none,stroke:#6B7280
+  style AFTER fill:none,stroke:#2E7D4F

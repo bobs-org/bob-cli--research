@@ -1,0 +1,32 @@
+---
+title: "How does a config edit reach bank.md?"
+accTitle: "Bank config write path"
+accDescr: "The Config Card paints report JSON and sends a JSON envelope. bob bank update dry-runs, then span-preserves the bank mapping, and returns inverse ops for Undo."
+config:
+  sequence:
+    actorMargin: 16
+    width: 110
+    diagramMarginX: 6
+    diagramMarginY: 6
+    messageMargin: 14
+    noteMargin: 6
+    boxMargin: 6
+    mirrorActors: false
+---
+sequenceDiagram
+  autonumber
+  participant CARD as Config Card
+  participant BOB as bob bank update
+  participant HUB as bank.md
+  CARD-->>BOB: Dry-run JSON operations
+  BOB-->>CARD: Diff, hotkeys, row impact
+  Note over CARD,BOB: Preview or cancel: no writes
+  opt User confirms with Enter
+    CARD-->>BOB: Apply ops plus fingerprint
+    alt Stale fingerprint or used-key refusal
+      BOB-->>CARD: Refuse: keep draft plus reason
+    else Guards pass
+      BOB-->>HUB: Span-preserving YAML, one commit
+      BOB-->>CARD: Saved plus inverse operations
+    end
+  end

@@ -1,0 +1,30 @@
+---
+title: "Where should the bank mapping be edited?"
+accTitle: "Bank config edit surface"
+accDescr: "Five rejected homes for the nested bank mapping sit in one rejected group. The winning surface is a hub header plus a Config Card that writes through bob bank update."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 10
+    wrappingWidth: 160
+---
+flowchart TD
+  Q{{"`**Where is config edited?**`"}}
+  subgraph REJECTED["Rejected homes"]
+    direction LR
+    NAT["`**Properties**<br/>unsupported`"]
+    FLAT["`**Flatten**<br/>name pollution`"]
+    PLUG["`**Plugin tree**<br/>no validation`"]
+    QUEUE["`**Queue card**<br/>wrong job`"]
+    YAML["`**YAML only**<br/>already hurt`"]
+  end
+  WIN["`**Header + Config Card**<br/>bob bank update writes`"]
+  Q --> REJECTED
+  REJECTED ==>|"chart of accounts"| WIN
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class Q decision
+  class NAT,FLAT,PLUG,QUEUE,YAML risk
+  class WIN outcome
+  style REJECTED fill:none,stroke:#C0392B
