@@ -1,0 +1,32 @@
+---
+title: "How does a second slash reach Note Go To?"
+accTitle: "Capture Go To mode ladder"
+accDescr: "A blank capture draft reaches Task Go To with slash or the backslash alias; a real second slash on an empty filter enters the new Note Go To; Backspace steps back one rung; the second backslash still types one literal backslash."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 36
+    nodeSpacing: 30
+    wrappingWidth: 260
+---
+flowchart TD
+  BLANK["`**Blank draft**<br/>idle ledger agenda`"]
+  TASKS["`**Go To · Tasks**<br/>draft is one slash`"]
+  NOTES["`**Go To · Notes**<br/>draft is two slashes`"]
+  LIT["`**Literal backslash**<br/>ordinary prose draft`"]
+  OPEN["`**Open in Obsidian**<br/>discard draft, hide panel`"]
+  BLANK -->|"slash, or the<br/>backslash alias"| TASKS
+  TASKS ==>|"real slash,<br/>empty filter (new)"| NOTES
+  TASKS -->|"second backslash<br/>right after the alias"| LIT
+  NOTES -.->|"Backspace,<br/>empty filter (new)"| TASKS
+  TASKS -->|"Backspace,<br/>empty filter"| BLANK
+  TASKS -->|"Return on a task row"| OPEN
+  NOTES -.->|"Return on a<br/>note row (new)"| OPEN
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class NOTES focus
+  class NOTES proposed
+  class OPEN outcome
+  class BLANK,TASKS,LIT muted
