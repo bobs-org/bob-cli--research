@@ -1,0 +1,24 @@
+---
+title: "How do slash and backslash switch Go To modes?"
+accTitle: "Go To mode switching"
+accDescr: "A first slash or blank-draft backslash opens task search. A second consecutive slash opens note search. Backspace on an empty note filter returns to tasks, then to the idle agenda. A second backslash types a literal backslash and stays in task search."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  IDLE["`**Idle agenda**<br/>Empty capture draft`"]
+  TASKS["`**Go To · Tasks**<br/>Draft is /query`"]
+  NOTES["`**Go To · Notes**<br/>Draft is //query`"]
+  IDLE -->|"type / or blank-draft \\"| TASKS
+  TASKS -->|"type / on empty filter"| NOTES
+  NOTES -->|"empty Backspace"| TASKS
+  TASKS -->|"empty Backspace"| IDLE
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class IDLE muted
+  class TASKS focus
+  class NOTES outcome

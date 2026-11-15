@@ -1,0 +1,29 @@
+---
+title: "What does a leading-slash capture draft become?"
+accTitle: "Leading slash draft claim"
+accDescr: "A whole-draft token starting with two slashes searches notes. A token starting with one slash and holding no other slash searches tasks. Any other extra slash, including Unix paths, stays capturable prose."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Whole draft one token?**`"}}
+  Q2{{"`**Starts with //?**`"}}
+  Q3{{"`**One leading / and no other slash?**`"}}
+  NOTES["`**note_goto**<br/>Search notes; query may contain slashes`"]
+  TASKS["`**task_goto**<br/>Search open tasks`"]
+  PROSE["`**Prose**<br/>Captured as a normal item`"]
+  Q1 -->|No| PROSE
+  Q1 -->|Yes| Q2
+  Q2 -->|Yes| NOTES
+  Q2 -->|No| Q3
+  Q3 -->|Yes| TASKS
+  Q3 -->|No| PROSE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class NOTES,TASKS outcome
+  class PROSE muted
