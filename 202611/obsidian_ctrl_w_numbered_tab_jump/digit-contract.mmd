@@ -1,0 +1,32 @@
+---
+title: "What does an armed Ctrl+W digit do?"
+accTitle: "Ctrl+W digit tab-jump decision contract"
+accDescr: "A digit 1 to 9 is checked against the global tab catalog, then against the painted hint, then against the active tab. A missing number stays armed, a stale mapping refuses, the current tab pulses, and otherwise the target tab is focused in its own split."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 150
+---
+flowchart TD
+  Q1{{"`**Tab N exists?**`"}}
+  Q2{{"`**Painted hint still N?**`"}}
+  Q3{{"`**Already the active tab?**`"}}
+  STAY["`**Stay armed**<br/>No tab 7 · 6 tabs`"]
+  STALE["`**Refuse and disarm**<br/>Tabs changed — try again`"]
+  PULSE["`**Pulse and disarm**<br/>Layout unchanged`"]
+  JUMP["`**Focus tab N in place**<br/>Load if deferred, never move`"]
+  Q1 -->|No| STAY
+  Q1 -->|Yes| Q2
+  Q2 -->|No| STALE
+  Q2 -->|Yes| Q3
+  Q3 -->|Yes| PULSE
+  Q3 ==>|No| JUMP
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class JUMP,PULSE outcome
+  class STALE risk
+  class STAY muted
