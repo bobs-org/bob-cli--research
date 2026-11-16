@@ -1,0 +1,26 @@
+---
+title: "Which tabs receive a Ctrl+W number?"
+accTitle: "Ctrl+W tab number scope"
+accDescr: "Only the focused split is numbered left to right. Other splits stay unnumbered and are reached with h, l, or w. Tabs past nine have no single-digit cap; zero still reaches the last tab."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Focused split?**`"}}
+  Q2{{"`**Index 1 to 9?**`"}}
+  HINT["`**Paint a number cap**<br/>Left of the file name`"]
+  OTHER["`**No number**<br/>Reach with h l or w`"]
+  MORE["`**No single-digit cap**<br/>0 still reaches last`"]
+  Q1 -->|Yes| Q2
+  Q1 -->|No| OTHER
+  Q2 -->|Yes| HINT
+  Q2 -->|No| MORE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2 decision
+  class HINT outcome
+  class OTHER,MORE muted

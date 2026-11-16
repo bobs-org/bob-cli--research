@@ -1,0 +1,30 @@
+---
+title: "What does Ctrl+W plus a digit do?"
+accTitle: "Ctrl+W digit tab jump"
+accDescr: "Digits 1 to 9 focus that tab of the focused split in place. Zero focuses the last tab. A missing index stays armed. The current tab pulses."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Which digit?**`"}}
+  Q2{{"`**This split has tab N?**`"}}
+  Q3{{"`**Already focused?**`"}}
+  LAST["`**Focus last tab**<br/>Same split, in place`"]
+  JUMP["`**Focus tab N**<br/>Same split, in place`"]
+  STAY["`**Stay armed**<br/>No tab N here`"]
+  PULSE["`**Pulse current tab**<br/>Layout unchanged`"]
+  Q1 -->|"1 to 9"| Q2
+  Q1 -->|"0"| LAST
+  Q2 -->|Yes| Q3
+  Q2 -->|No| STAY
+  Q3 -->|No| JUMP
+  Q3 -->|Yes| PULSE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class LAST,JUMP,PULSE outcome
+  class STAY muted
