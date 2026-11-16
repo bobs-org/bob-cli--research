@@ -1,0 +1,40 @@
+---
+title: "How does a %c file path become a task sub-bullet?"
+accTitle: "Proposed %c attachment routing with reliability guards"
+accDescr: "A clipboard file path passes a size guard and a gitignore guard, then routes by extension to img, the proposed vid directory, or file; images and videos open under Z."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  P["`**Clipboard file path**<br/>~/tmp/screencasts/x.mp4`"]
+  G1{{"`**95 MiB or larger?**`"}}
+  G2{{"`**Destination gitignored?**`"}}
+  REFUSE["`**Refuse the capture**<br/>nothing written; sync stays healthy`"]
+  Q{{"`**Which extension class?**`"}}
+  IMG["`**img/x.png**<br/>embed at 400 px`"]
+  VID["`**vid/x.mp4**<br/>embed at 400 px`"]
+  FILE["`**file/x.pdf**<br/>plain wikilink`"]
+  Z["`**Z in Obsidian**<br/>image zoom or video player`"]
+  P --> G1
+  G1 -.->|"yes (proposed guard)"| REFUSE
+  G1 -->|no| G2
+  G2 -.->|"yes (proposed guard)"| REFUSE
+  G2 -->|no| Q
+  Q -->|image| IMG
+  Q -.->|"video (proposed)"| VID
+  Q -->|other| FILE
+  IMG -->|"opens in"| Z
+  VID -.->|"opens in (proposed)"| Z
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef proposed stroke-dasharray:5 3
+  class G1,G2,Q decision
+  class P,IMG,FILE,Z focus
+  class VID focus
+  class VID proposed
+  class REFUSE risk
+  class REFUSE proposed
