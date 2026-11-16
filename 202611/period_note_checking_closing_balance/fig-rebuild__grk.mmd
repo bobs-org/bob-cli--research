@@ -1,0 +1,28 @@
+---
+title: "How is the closing dollar computed?"
+accTitle: "Reconstruction of a posted checking close from QFX and journal"
+accDescr: "Clip the wanted date to coverage, walk forward from the latest QFX ledger balance on or before that day, and add later journaled postings. The plugin never adds cents."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  WANT["`**Wanted date**<br/>period.end or today`"]
+  CLIP["`**Clip to coverage**<br/>min with imported_through`"]
+  SNAP["`**Nearest QFX snapshot**<br/>LEDGERBAL on or before as-of`"]
+  ADD["`**Add later postings**<br/>journal cents after snapshot`"]
+  JSON["`**closings[] in report JSON**<br/>cents, as-of, state, hero`"]
+  UI["`**Plugin paints the header**<br/>never adds money`"]
+  WANT ==> CLIP
+  CLIP ==> SNAP
+  SNAP ==> ADD
+  ADD ==> JSON
+  JSON ==> UI
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class WANT,CLIP,SNAP,ADD focus
+  class JSON muted
+  class UI outcome

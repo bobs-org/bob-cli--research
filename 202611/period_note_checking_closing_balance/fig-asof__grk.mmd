@@ -1,0 +1,29 @@
+---
+title: "Which date may the closing claim?"
+accTitle: "As-of date honesty for a period-end checking balance"
+accDescr: "The readout claims period end only when QFX coverage reaches that day. Otherwise it names the last covered day, or hides when no opening anchor exists."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 14
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Period note?**`"}}
+  Q2{{"`**QFX opening anchor?**`"}}
+  Q3{{"`**Covered through end?**`"}}
+  HIDE["`**Hide the number**`"]
+  PART["`**Name the as-of date**`"]
+  FULL["`**Quiet period-end close**`"]
+  Q1 -->|No| HIDE
+  Q1 -->|Yes| Q2
+  Q2 -->|No| HIDE
+  Q2 -->|Yes| Q3
+  Q3 -->|Short coverage| PART
+  Q3 -->|Reaches period.end| FULL
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class FULL,PART outcome
+  class HIDE muted

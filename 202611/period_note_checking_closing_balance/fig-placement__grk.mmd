@@ -1,0 +1,35 @@
+---
+title: "Where does the checking close live?"
+accTitle: "Period note placement of the Wells Fargo checking closing balance"
+accDescr: "Daily notes keep only the Bank Badge. Period notes add a closing readout in the existing Bank Period Charts header after the stats strip and badge."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  subgraph DAILY["Daily note"]
+    direction TB
+    DS["`**Day strip**`"]
+    DB["`**Bank Badge**<br/>In / Out flow`"]
+    DS --> DB
+  end
+  subgraph PERIOD["Period note"]
+    direction TB
+    PS["`**Stats strip**`"]
+    PB["`**Bank Badge**<br/>In / Out flow`"]
+    HDR["`**BANK CHARTS header**`"]
+    CL["`**Closing readout**<br/>WF Checking stock`"]
+    PL["`**Cashflow and Out charts**`"]
+    PS --> PB
+    PB --> HDR
+    HDR --> CL
+    HDR --> PL
+  end
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class DS,DB,PS,PB,HDR,PL muted
+  class CL outcome
+  style DAILY fill:none,stroke:#6B7280
+  style PERIOD fill:none,stroke:#3B78C2
