@@ -1,0 +1,31 @@
+---
+title: "How does a multi-slot move become one envelope?"
+accTitle: "Schema grab mode lifecycle"
+accDescr: "Browsing becomes grabbed with m or the first Alt+J/K. While grabbed, J/K, Home, End, and a count change only the local overlay. An idle dry-run arms Apply. Enter writes one destination move. Escape restores the original order."
+config:
+  flowchart:
+    rankSpacing: 18
+    nodeSpacing: 24
+    wrappingWidth: 220
+---
+flowchart TD
+  Browse["`**Browsing**<br/>select a field or choice`"]
+  Held["`**Grabbed**<br/>local overlay plus caret`"]
+  Idle["`**Idle dry-run**<br/>one destination op`"]
+  Apply["`**Apply**<br/>one lock and commit`"]
+  Cancel["`**Escape**<br/>restore original order`"]
+  Browse -->|"m or first Alt+J/K"| Held
+  Held -->|"J/K, Home/End, count"| Held
+  Held -->|"250 ms idle"| Idle
+  Idle -->|"further J/K"| Held
+  Idle -->|"Enter"| Apply
+  Held -->|"Escape"| Cancel
+  Idle -->|"Escape"| Cancel
+  Cancel --> Browse
+  Apply --> Browse
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Browse,Held focus
+  class Apply,Cancel outcome
+  class Idle muted

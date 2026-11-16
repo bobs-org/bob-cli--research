@@ -1,0 +1,40 @@
+---
+title: "Why does moving a choice take seconds?"
+accTitle: "Current versus proposed schema reorder"
+accDescr: "Today each adjacent move replaces the draft, spawns a bob dry-run, and Apply locks, syncs, rebuilds the index, and commits. The proposal composes locally, dry-runs one destination, and commits once."
+config:
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 14
+    wrappingWidth: 240
+---
+flowchart TB
+  subgraph TODAY["Today"]
+    direction TB
+    T1["`**Alt+J or Alt+K**<br/>one adjacent slot`"]
+    T2["`**Replace the draft**<br/>one move op`"]
+    T3["`**Spawn bob dry-run**<br/>full planner`"]
+    T4["`**Enter Apply**<br/>lock, sync, index, commit`"]
+    T1 --> T2
+    T2 --> T3
+    T3 --> T4
+  end
+  subgraph NEXT["Proposed"]
+    direction TB
+    N1["`**Grab or repeat J/K**<br/>local overlay`"]
+    N2["`**Insertion caret**<br/>chips slide`"]
+    N3["`**One destination op**<br/>idle dry-run`"]
+    N4["`**Enter once**<br/>one commit`"]
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+  end
+  T4 -.-> N1
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class T1,T2,T3,T4 risk
+  class N1,N2,N3 muted
+  class N4 outcome
+  style TODAY fill:none,stroke:#C0392B
+  style NEXT fill:none,stroke:#2E7D4F

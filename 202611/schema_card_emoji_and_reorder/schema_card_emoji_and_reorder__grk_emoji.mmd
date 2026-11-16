@@ -1,0 +1,26 @@
+---
+title: "Who owns emoji search in the Schema Card?"
+accTitle: "Emoji glyph-well ownership"
+accDescr: "bob-emoji owns the gemoji catalog, recents, and search ranks. The Schema Card and Bank Setup attach AbstractInputSuggest to a glyph well. The chosen glyph rides the existing choice or category envelope. bob validates and writes."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TB
+  Catalog["`**bob-emoji**<br/>gemoji catalog, recents, search`"]
+  Well["`**Glyph well**<br/>AbstractInputSuggest popover`"]
+  Card["`**Schema Card or Bank Setup**<br/>live chip preview`"]
+  Env["`**Existing envelope**<br/>choice.add or category.add`"]
+  Bob["`**bob writer**<br/>validate, YAML, commit`"]
+  Catalog --> Well
+  Well --> Card
+  Card --> Env
+  Env --> Bob
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class Catalog,Well focus
+  class Card,Env muted
+  class Bob outcome
