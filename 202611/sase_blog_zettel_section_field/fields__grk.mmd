@@ -1,0 +1,22 @@
+---
+title: "What question does each zettel field answer?"
+accTitle: "Orthogonal zettel fields"
+accDescr: "Status is material maturity, section is the target heading, part is the rhetorical job, and claim is the one-sentence point. Section does not replace part."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 16
+    wrappingWidth: 220
+---
+flowchart TD
+  ST["`**status**<br/>Is this usable?`"]
+  SEC["`**section**<br/>Which heading?`"]
+  PART["`**part**<br/>What job in the prose?`"]
+  CL["`**claim**<br/>What is the point?`"]
+  ST -.-> SEC
+  SEC -.-> PART
+  PART -.-> CL
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class ST,CL focus
+  class SEC,PART outcome

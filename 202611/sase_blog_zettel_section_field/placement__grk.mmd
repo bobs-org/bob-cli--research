@@ -1,0 +1,27 @@
+---
+title: "Where should a zettel's target heading live?"
+accTitle: "Placement for a SASE blog zettel"
+accDescr: "Accept the glossary outline first. Then store the target heading as an optional album choice field when unplaced seeds need a filter. Order stays in the article. Do not mint values from the old contents.md outline."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Glossary outline accepted?**`"}}
+  REWRITE["`**Rewrite article headings**<br/>Match the task outline`"]
+  Q2{{"`**Filter unplaced seeds?**`"}}
+  FIELD["`**Optional section choice**<br/>Filter, not a second outline`"]
+  LINKS["`**Spine wikilinks only**<br/>Article stays the authority`"]
+  Q1 -->|No| REWRITE
+  REWRITE --> Q2
+  Q1 -->|Yes| Q2
+  Q2 -->|Yes| FIELD
+  Q2 -->|No| LINKS
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  class Q1,Q2 decision
+  class REWRITE focus
+  class FIELD,LINKS outcome
