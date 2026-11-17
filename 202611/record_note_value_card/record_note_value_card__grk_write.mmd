@@ -1,0 +1,31 @@
+---
+title: "Who writes a record field change?"
+accTitle: "Record Card write path"
+accDescr: "The plugin paints from the album report and live frontmatter, stages one field gesture, and bob records update validates, span-edits YAML, rebuilds the album index, and returns Undo ops."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  CACHE["`**Live frontmatter**<br/>Obsidian metadata cache`"]
+  REPORT["`**Album report**<br/>schema, choices, labels`"]
+  CARD["`**Record Card**<br/>paints values, collects intent`"]
+  DRY["`**bob records update -d**<br/>JSON envelope + fingerprint`"]
+  APPLY["`**bob records update**<br/>span edit + index rebuild`"]
+  YAML["`**Record YAML + H1**<br/>schema fields in order`"]
+  INDEX["`**Album index**<br/>[!records] callout`"]
+  CACHE --> CARD
+  REPORT --> CARD
+  CARD -->|"preview"| DRY
+  DRY -->|"consequence"| CARD
+  CARD -->|"Enter"| APPLY
+  APPLY --> YAML
+  APPLY --> INDEX
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class CACHE,REPORT muted
+  class CARD,DRY focus
+  class APPLY,YAML,INDEX outcome

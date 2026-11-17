@@ -1,0 +1,32 @@
+---
+title: "What should == open in Live Preview?"
+accTitle: "Double-equals routing by note kind"
+accDescr: "Album notes open the Schema Card, bank.md opens Bank setup, record notes open the Record Card, and every other note keeps Vim reindent."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 220
+---
+flowchart TD
+  Q1{{"`**Is this an album?**`"}}
+  Q2{{"`**Is this bank.md?**`"}}
+  Q3{{"`**Is this a record?**`"}}
+  ALBUM["`**Album Schema Card**<br/>edit field definitions`"]
+  BANK["`**Bank setup card**<br/>edit bank.md config`"]
+  RECORD["`**Record Card**<br/>edit this note's values`"]
+  VIM["`**Vim ==**<br/>reindent the line`"]
+  Q1 -->|Yes| ALBUM
+  Q1 -->|No| Q2
+  Q2 -->|Yes| BANK
+  Q2 -->|No| Q3
+  Q3 -->|Yes| RECORD
+  Q3 -->|No| VIM
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class ALBUM,BANK focus
+  class RECORD outcome
+  class VIM muted

@@ -1,0 +1,37 @@
+---
+title: "Where should a record note show its facts?"
+accTitle: "Record note layout today and proposed"
+accDescr: "Today the facts live in native Properties above the title, leaving a dead zone under the H1. The proposal hides that panel and paints a Record Card between the H1 and Notes."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 220
+---
+flowchart TB
+  subgraph TODAY["Today"]
+    direction TB
+    PROP["`**Properties panel**<br/>raw keys: draft, claim`"]
+    H1["`**H1 title**<br/>Bead Lifecycle`"]
+    GAP["`**Empty gap**<br/>no Bob chrome`"]
+    NOTES["`**H2 Notes**<br/>often empty`"]
+    PROP --> H1
+    H1 --> GAP
+    GAP --> NOTES
+  end
+  subgraph PROPOSED["Proposed"]
+    direction TB
+    H1P["`**H1 title**<br/>Bead Lifecycle`"]
+    CARD["`**Record Card**<br/>✍️ Draft · 🔮 Future Work`"]
+    NOTESP["`**H2 Notes**<br/>observations stay here`"]
+    H1P ==> CARD
+    CARD --> NOTESP
+  end
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class PROP,GAP muted
+  class H1,NOTES,H1P,NOTESP focus
+  class CARD outcome
+  style TODAY fill:none,stroke:#6B7280
+  style PROPOSED fill:none,stroke:#2E7D4F
