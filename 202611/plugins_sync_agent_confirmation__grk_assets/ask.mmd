@@ -1,0 +1,33 @@
+---
+title: "When should an agent ask Bryan about plugin sync?"
+accTitle: "Plugin sync confirmation decision"
+accDescr: "Ordinary sync is pre-approved. On a guard refusal, fetch then wait. Ask only for an abandoned unlanded force."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  Q0{{"`**Is this a force flag?**`"}}
+  SYNC["`**Run ordinary sync**<br/>repo flag plus no-pull`"]
+  Q1{{"`**Did the stamp refuse?**`"}}
+  Q2{{"`**Is the build on origin?**`"}}
+  FETCH["`**Fetch, rebase, sync**<br/>no force, no question`"]
+  Q3{{"`**Is the author still running?**`"}}
+  WAIT["`**Wait, then retry**<br/>monitor, no question`"]
+  ASK["`**Ask Bryan**<br/>name what force drops`"]
+  Q0 -->|No| Q1
+  Q0 -->|Yes| ASK
+  Q1 -->|No| SYNC
+  Q1 -->|Yes| Q2
+  Q2 -->|Yes| FETCH
+  Q2 -->|No| Q3
+  Q3 -->|Yes| WAIT
+  Q3 -->|No| ASK
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class Q0,Q1,Q2,Q3 decision
+  class SYNC,FETCH,WAIT outcome
+  class ASK risk

@@ -1,0 +1,32 @@
+---
+title: "Which layer actually stalls plugin sync?"
+accTitle: "Plugin sync stall layers"
+accDescr: "Mechanical command guards are safe. The hour-cost stall is a semantic question gate fired by publish-safety rules and over-eager force asks."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  subgraph LLM["Agent judgment"]
+    DA["`**Publish-safety rules**<br/>vault deploy looks like publish`"]
+    Q["`**Question gate**<br/>24h QUESTION status`"]
+  end
+  subgraph CMD["Command already safe"]
+    AL["`**Plugin id allowlist**`"]
+    BK["`**Backups, no data.json**`"]
+    ST["`**Stamp guard and lock**`"]
+  end
+  DA --> Q
+  Q -.->|"hours lost here"| ST
+  AL --> ST
+  BK --> ST
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class DA focus
+  class Q risk
+  class AL,BK,ST outcome
+  style LLM fill:none,stroke:#C0392B
+  style CMD fill:none,stroke:#2E7D4F
