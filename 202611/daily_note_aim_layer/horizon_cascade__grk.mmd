@@ -1,0 +1,31 @@
+---
+title: "What does each Bob horizon own?"
+accTitle: "Bob planning horizons from year to day"
+accDescr: "Year Theme and Outcomes frame quarter Outcomes, which frame week Intentions. A proposed daily Aim is the day's authored result. The ledger Highlight and Today links stay derived from Pomodoros and Event Tasks."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 22
+    nodeSpacing: 28
+    wrappingWidth: 280
+---
+flowchart TB
+  Y["`**Year Theme and Outcomes**<br/>tie-break plus year-end states`"]
+  Q["`**Quarter Outcomes**<br/>at most 3 states true by quarter end`"]
+  W["`**Week Intentions**<br/>at most 3 results finishable by Sunday`"]
+  A["`**Day Aim proposed**<br/>one result that makes today count`"]
+  H["`**Ledger Highlight**<br/>first open non-exempt Pomodoro`"]
+  T["`**Today and Events**<br/>linked tasks and calendar rows`"]
+  Y ==>|"frames"| Q
+  Q ==>|"next step this week"| W
+  W ==>|"next step today"| A
+  A -->|"session that serves it"| H
+  H -->|"queued under"| T
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class Y,Q,W focus
+  class A outcome
+  class A proposed
+  class H,T muted

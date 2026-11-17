@@ -1,0 +1,32 @@
+---
+title: "Where should a daily planning fact live?"
+accTitle: "Routing a daily planning fact"
+accDescr: "A result for today is a daily Aim. A timed session or task link belongs in the Pomodoro ledger. A ritual chore belongs in gtd_daily. Anything else stays on a week or quarter note, or is omitted."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  Q1{{"`**Result for today?**`"}}
+  Q2{{"`**Timed session or link?**`"}}
+  Q3{{"`**Ritual chore?**`"}}
+  AIM["`**Daily Aim**<br/>one authored line`"]
+  LEDGER["`**Pomodoros and Today**<br/>derived from links`"]
+  GTD["`**gtd_daily checklist**<br/>PRE and POST rows`"]
+  SKIP["`**Leave it off the day**<br/>week, quarter, or nowhere`"]
+  Q1 -->|Yes| AIM
+  Q1 -->|No| Q2
+  Q2 -->|Yes| LEDGER
+  Q2 -->|No| Q3
+  Q3 -->|Yes| GTD
+  Q3 -->|No| SKIP
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class AIM focus
+  class LEDGER,GTD outcome
+  class SKIP muted
