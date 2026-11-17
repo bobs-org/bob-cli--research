@@ -1,0 +1,29 @@
+---
+title: "When may a record note hide its native Properties?"
+accTitle: "Fail-open rule for hiding native Properties on record notes"
+accDescr: "Three checks decide whether the record sheet replaces Obsidian's Properties block, keeps it beside a warning, or leaves the note untouched."
+config:
+  flowchart:
+    rankSpacing: 18
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Desktop with bob?**`"}}
+  Q2{{"`**A canonical record in its album?**`"}}
+  Q3{{"`**Album schema healthy?**`"}}
+  NATIVE["`**Native Properties only**<br/>No sheet, nothing hidden`"]
+  WARN["`**Warning sheet + native Properties**<br/>bob cannot write, so YAML stays editable`"]
+  SHEET["`**Record sheet replaces Properties**<br/>Every key shown; extra keys in a fold`"]
+  Q1 -->|No: mobile or no bob| NATIVE
+  Q1 -->|Yes| Q2
+  Q2 -->|"No: unresolved parent,<br/>outside folder, other type"| NATIVE
+  Q2 -->|Yes| Q3
+  Q3 -->|"No: invalid schema<br/>or album missing from report"| WARN
+  Q3 -->|Yes| SHEET
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class SHEET outcome
+  class NATIVE,WARN muted
