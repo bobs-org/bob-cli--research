@@ -1,0 +1,38 @@
+---
+title: "How should a field and its choices group?"
+accTitle: "Field block grouping"
+accDescr: "Today field rows and choice clouds are siblings with tiny margins. Proposed field blocks wrap each row with its chips, add a hairline and gap before the next field, and paint a 1-9 keycap on the row."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 22
+    wrappingWidth: 180
+---
+flowchart LR
+  subgraph TODAY["Today"]
+    direction TB
+    TS["`**Status row**`"]
+    TC["`**Choice cloud**`"]
+    TCLAIM["`**Claim row**`"]
+    TSEC["`**Section row**`"]
+    TS --> TC
+    TC --> TCLAIM
+    TCLAIM --> TSEC
+  end
+  subgraph PROPOSED["Proposed"]
+    direction TB
+    B1["`**Block 1**<br/>keycap + Status + chips`"]
+    B2["`**Block 2**<br/>keycap + Claim`"]
+    B3["`**Block 3**<br/>keycap + Section + chips`"]
+    B1 -.->|"hairline and gap"| B2
+    B2 -.->|"hairline and gap"| B3
+  end
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef proposed stroke-dasharray:5 3
+  class TS,TC,TCLAIM,TSEC muted
+  class B1,B2,B3 outcome
+  class B1,B2,B3 proposed
+  style TODAY fill:none,stroke:#6B7280
+  style PROPOSED fill:none,stroke:#2E7D4F

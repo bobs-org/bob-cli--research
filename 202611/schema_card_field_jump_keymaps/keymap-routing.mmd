@@ -1,0 +1,26 @@
+---
+title: "Which idle Schema Card key moves what?"
+accTitle: "Schema Card idle key routing"
+accDescr: "Lowercase j and k walk every target, Shift+J and K jump a field cluster, 1 to 9 jump a numbered field, and Alt+J and K nudge arrangement."
+config:
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 16
+    wrappingWidth: 160
+---
+flowchart TD
+  Q{{"`**Idle card key?**`"}}
+  FINE["`**j / k / arrows**<br/>Walk every target`"]
+  FIELD["`**J / K**<br/>Jump a field cluster`"]
+  DIGIT["`**1 to 9**<br/>Jump field N`"]
+  NUDGE["`**Alt+J / K**<br/>Nudge arrangement`"]
+  Q -->|"`j k arrows`"| FINE
+  Q -->|"`J K`"| FIELD
+  Q -->|"`1 to 9`"| DIGIT
+  Q -->|"`Alt+J K`"| NUDGE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  class Q decision
+  class FIELD,DIGIT outcome
+  class FINE,NUDGE focus
