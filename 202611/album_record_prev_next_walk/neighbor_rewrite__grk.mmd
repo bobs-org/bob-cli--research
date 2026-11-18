@@ -1,0 +1,20 @@
+---
+title: "How many record files does adding one restaurant rewrite?"
+accTitle: "Record nav rewrite blast radius"
+accDescr: "Storing N of M in every record would rewrite all 104 eat notes when one restaurant is added. Storing only previous and next links rewrites the new note and its two neighbours."
+config:
+  flowchart:
+    rankSpacing: 18
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  Q{{"`**Is N of M stored<br/>in the note?**`"}}
+  Q -->|Yes| ALL["`**Rewrite every record**<br/>104 eat notes per insert`"]
+  Q -->|No, paint it live| THREE["`**Rewrite three notes**<br/>new record plus two neighbours`"]
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class Q decision
+  class ALL risk
+  class THREE outcome

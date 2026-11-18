@@ -1,0 +1,31 @@
+---
+title: "What should a record note store, and what should Bob paint live?"
+accTitle: "Record album walk ownership"
+accDescr: "Bob writes period-style previous and next wiki links into each record note so the n walk can follow them. Position text is painted live on the record sheet and the links footer, because storing N of M would rewrite every record when membership changes."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  subgraph write["Written into the vault"]
+    NAV["`**Prev and next links**<br/>Period-style ‹ › wiki line`"]
+  end
+  subgraph paint["Painted at read time"]
+    RAIL["`**Sheet walk rail**<br/>‹ neighbour · N of M · neighbour ›`"]
+    FOOT["`**n links footer**<br/>3/104 in the position slot`"]
+  end
+  CREATE["`**Capture or records new**`"] ==> NAV
+  NAV ==> KEYS["`**[n and ]n**<br/>Existing n walk`"]
+  NAV -.-> RAIL
+  MEM["`**Album membership**<br/>Title then path`"] --> RAIL
+  MEM --> FOOT
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class CREATE,NAV,KEYS focus
+  class RAIL,FOOT outcome
+  class MEM muted
+  style write fill:none,stroke:#3B78C2
+  style paint fill:none,stroke:#2E7D4F
