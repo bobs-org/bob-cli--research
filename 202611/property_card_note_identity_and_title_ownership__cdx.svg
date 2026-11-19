@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1020" viewBox="0 0 1200 1020" role="img" aria-labelledby="title desc">
+<title id="title">One card family, three unmistakable note identities</title>
+<desc id="desc">Design proposal, not a product screenshot. Album, Record, and Daily use distinct monochrome icons and explicit labels. Shared title typography and subtle area accents unify the cards. Light and dark samples and an empty daily header show the proposed behavior.</desc>
+<rect width="1200" height="1020" fill="#f3f4f5"/>
+<style>text{font-family:Inter,Arial,sans-serif} .title{font-size:27px;font-weight:650} .kind{font-size:12px;font-weight:700;letter-spacing:1.4px} .body{font-size:14px} .small{font-size:12px} .label{font-size:11px;font-weight:700;letter-spacing:1px}</style>
+<text x="36" y="44" font-size="25" font-weight="650" fill="#1d2529">One family. Three clear identities.</text>
+<text x="36" y="70" font-size="14" fill="#586167">Concept sketch · words + structural icons identify kind; area color keeps its existing meaning</text>
+<text x="36" y="105" fill="#59636c" class="small" >LIGHT · same root hue on album and record</text>
+<rect x="36" y="122" width="360" height="310" rx="8" fill="#ffffff" stroke="#dce1e5"/>
+<path d="M37 131V423" stroke="#477a64" stroke-width="2"/>
+<g transform="translate(56,139) scale(.8)" fill="none" stroke="#59636c" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><rect x="4" y="6" width="17" height="15" rx="2"/><path d="M1 16V3a2 2 0 0 1 2-2h14"/></g>
+<text x="85" y="154" fill="#59636c" class="kind" >ALBUM</text>
+<text x="378" y="153" fill="#59636c" class="small" text-anchor="end">Edit schema</text>
+<text x="56" y="199" fill="#20272b" class="title" >Eat</text>
+<text x="56" y="227" fill="#59636c" class="small" >Body  ›  Restaurants</text>
+<path d="M56 248H376" stroke="#dce1e5"/>
+<text x="56" y="275" fill="#20272b" class="body" >Places to eat around here.</text>
+<text x="56" y="304" fill="#59636c" class="small" >15 records · 3 fields</text>
+<text x="56" y="337" fill="#59636c" class="label" >SCHEMA</text>
+<text x="56" y="364" fill="#59636c" class="small" >Status</text>
+<text x="148" y="364" fill="#20272b" class="body" >To try  ·  Liked</text>
+<text x="56" y="394" fill="#59636c" class="small" >Location</text>
+<text x="148" y="394" fill="#20272b" class="body" >Westfield  ·  Clark</text>
+<rect x="420" y="122" width="360" height="310" rx="8" fill="#ffffff" stroke="#dce1e5"/>
+<path d="M421 131V423" stroke="#477a64" stroke-width="2"/>
+<g transform="translate(440,139) scale(.8)" fill="none" stroke="#59636c" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M5 2h9l6 6v14H5Z"/><path d="M14 2v6h6M9 13h7M9 17h7"/></g>
+<text x="469" y="154" fill="#59636c" class="kind" >RECORD</text>
+<text x="762" y="153" fill="#59636c" class="small" text-anchor="end">Edit fields</text>
+<text x="440" y="199" fill="#20272b" class="title" >Ninja Sushi</text>
+<text x="440" y="227" fill="#59636c" class="small" >Body  ›  Eat  ·  Restaurant</text>
+<path d="M440 248H760" stroke="#dce1e5"/>
+<text x="440" y="282" fill="#59636c" class="small" >Status</text>
+<text x="530" y="282" fill="#20272b" class="body" >Liked</text>
+<text x="440" y="317" fill="#59636c" class="small" >Location</text>
+<text x="530" y="317" fill="#20272b" class="body" >Westfield</text>
+<text x="440" y="352" fill="#59636c" class="small" >Category</text>
+<text x="530" y="352" fill="#20272b" class="body" >Japanese</text>
+<text x="440" y="403" fill="#59636c" class="small" >Added Nov 18</text>
+<rect x="804" y="122" width="360" height="310" rx="8" fill="#ffffff" stroke="#dce1e5"/>
+<path d="M805 131V423" stroke="#717c86" stroke-width="2"/>
+<g transform="translate(824,139) scale(.8)" fill="none" stroke="#59636c" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><rect x="2" y="4" width="20" height="18" rx="3"/><path d="M7 1v6M17 1v6M2 10h20M7 15h3M14 15h3"/></g>
+<text x="853" y="154" fill="#59636c" class="kind" >DAILY</text>
+<text x="1146" y="153" fill="#59636c" class="small" text-anchor="end">Edit intentions</text>
+<text x="824" y="199" fill="#20272b" class="title" >Thu, Nov 19, 2026</text>
+<text x="824" y="227" fill="#59636c" class="small" >‹ Nov 18     ↑ Week 47     Nov 20 ›</text>
+<path d="M824 248H1144" stroke="#dce1e5"/>
+<text x="824" y="273" fill="#59636c" class="label" >INTENTIONS</text>
+<text x="824" y="301" fill="#59636c" class="body" >1</text>
+<text x="848" y="301" fill="#20272b" class="body" >Finish the card design.</text>
+<text x="824" y="340" fill="#59636c" class="label" >SUMMARY · AGENT</text>
+<text x="824" y="366" fill="#20272b" class="body" >Compared the title patterns and</text>
+<text x="824" y="387" fill="#20272b" class="body" >settled on one shared header.</text>
+<rect x="0" y="458" width="1200" height="390" fill="#181d21"/>
+<text x="36" y="488" fill="#b1bac1" class="small" >DARK · the kind stays obvious without color differences</text>
+<rect x="36" y="506" width="360" height="310" rx="8" fill="#24292d" stroke="#48525b"/>
+<path d="M37 515V807" stroke="#87b6a1" stroke-width="2"/>
+<g transform="translate(56,523) scale(.8)" fill="none" stroke="#b1bac1" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><rect x="4" y="6" width="17" height="15" rx="2"/><path d="M1 16V3a2 2 0 0 1 2-2h14"/></g>
+<text x="85" y="538" fill="#b1bac1" class="kind" >ALBUM</text>
+<text x="378" y="537" fill="#b1bac1" class="small" text-anchor="end">Edit schema</text>
+<text x="56" y="583" fill="#eef1f3" class="title" >Eat</text>
+<text x="56" y="611" fill="#b1bac1" class="small" >Body  ›  Restaurants</text>
+<path d="M56 632H376" stroke="#48525b"/>
+<text x="56" y="659" fill="#eef1f3" class="body" >Places to eat around here.</text>
+<text x="56" y="688" fill="#b1bac1" class="small" >15 records · 3 fields</text>
+<text x="56" y="721" fill="#b1bac1" class="label" >SCHEMA</text>
+<text x="56" y="748" fill="#b1bac1" class="small" >Status</text>
+<text x="148" y="748" fill="#eef1f3" class="body" >To try  ·  Liked</text>
+<text x="56" y="778" fill="#b1bac1" class="small" >Location</text>
+<text x="148" y="778" fill="#eef1f3" class="body" >Westfield  ·  Clark</text>
+<rect x="420" y="506" width="360" height="310" rx="8" fill="#24292d" stroke="#48525b"/>
+<path d="M421 515V807" stroke="#87b6a1" stroke-width="2"/>
+<g transform="translate(440,523) scale(.8)" fill="none" stroke="#b1bac1" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M5 2h9l6 6v14H5Z"/><path d="M14 2v6h6M9 13h7M9 17h7"/></g>
+<text x="469" y="538" fill="#b1bac1" class="kind" >RECORD</text>
+<text x="762" y="537" fill="#b1bac1" class="small" text-anchor="end">Edit fields</text>
+<text x="440" y="583" fill="#eef1f3" class="title" >Ninja Sushi</text>
+<text x="440" y="611" fill="#b1bac1" class="small" >Body  ›  Eat  ·  Restaurant</text>
+<path d="M440 632H760" stroke="#48525b"/>
+<text x="440" y="666" fill="#b1bac1" class="small" >Status</text>
+<text x="530" y="666" fill="#eef1f3" class="body" >Liked</text>
+<text x="440" y="701" fill="#b1bac1" class="small" >Location</text>
+<text x="530" y="701" fill="#eef1f3" class="body" >Westfield</text>
+<text x="440" y="736" fill="#b1bac1" class="small" >Category</text>
+<text x="530" y="736" fill="#eef1f3" class="body" >Japanese</text>
+<text x="440" y="787" fill="#b1bac1" class="small" >Added Nov 18</text>
+<rect x="804" y="506" width="360" height="310" rx="8" fill="#24292d" stroke="#48525b"/>
+<path d="M805 515V807" stroke="#a8b0ba" stroke-width="2"/>
+<g transform="translate(824,523) scale(.8)" fill="none" stroke="#b1bac1" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><rect x="2" y="4" width="20" height="18" rx="3"/><path d="M7 1v6M17 1v6M2 10h20M7 15h3M14 15h3"/></g>
+<text x="853" y="538" fill="#b1bac1" class="kind" >DAILY</text>
+<text x="1146" y="537" fill="#b1bac1" class="small" text-anchor="end">Edit intentions</text>
+<text x="824" y="583" fill="#eef1f3" class="title" >Thu, Nov 19, 2026</text>
+<text x="824" y="611" fill="#b1bac1" class="small" >‹ Nov 18     ↑ Week 47     Nov 20 ›</text>
+<path d="M824 632H1144" stroke="#48525b"/>
+<text x="824" y="657" fill="#b1bac1" class="label" >INTENTIONS</text>
+<text x="824" y="685" fill="#b1bac1" class="body" >1</text>
+<text x="848" y="685" fill="#eef1f3" class="body" >Finish the card design.</text>
+<text x="824" y="724" fill="#b1bac1" class="label" >SUMMARY · AGENT</text>
+<text x="824" y="750" fill="#eef1f3" class="body" >Compared the title patterns and</text>
+<text x="824" y="771" fill="#eef1f3" class="body" >settled on one shared header.</text>
+<rect x="36" y="868" width="360" height="130" rx="8" fill="#ffffff" stroke="#dce1e5"/>
+<path d="M37 877V989" stroke="#717c86" stroke-width="2"/>
+<g transform="translate(56,885) scale(.8)" fill="none" stroke="#59636c" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><rect x="2" y="4" width="20" height="18" rx="3"/><path d="M7 1v6M17 1v6M2 10h20M7 15h3M14 15h3"/></g>
+<text x="85" y="900" fill="#59636c" class="kind" >DAILY</text>
+<text x="378" y="899" fill="#59636c" class="small" text-anchor="end">Edit intentions</text>
+<text x="56" y="945" fill="#20272b" class="title" >Thu, Nov 19, 2026</text>
+<text x="56" y="973" fill="#59636c" class="small" >‹ Nov 18     ↑ Week 47     Nov 20 ›</text>
+<text x="426" y="905" fill="#59636c" class="kind" >EMPTY DAY</text>
+<text x="426" y="936" fill="#20272b" class="body" >Keep the title and navigation. Omit the empty content bands.</text>
+<text x="426" y="963" fill="#59636c" class="body" >No placeholder tasks, empty field grid, or pressure to fill the day.</text>
+<text x="426" y="989" fill="#59636c" class="small" >Illustrative layout only; production uses Obsidian theme variables and wrapping.</text>
+</svg>
