@@ -1,0 +1,50 @@
+---
+title: "Who writes each intention field, and who reads it?"
+accTitle: "Ownership and data flow for intentions, summary, and reflection"
+accDescr: "Bryan writes intentions and reflection through the == card editor; an agent writes summary through bob periods brief and draft. Both write paths go through bob into note frontmatter. The intention card, parts table, Mac agenda, period briefs, and Dataview only read."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 28
+    nodeSpacing: 14
+    wrappingWidth: 260
+    subGraphTitleMargin:
+      top: 6
+      bottom: 10
+---
+flowchart TB
+  subgraph WRITERS["Writers"]
+    direction LR
+    BRYAN["`**Bryan**<br/>intentions, reflection`"]
+    AGENT["`**Summary agent**<br/>summary only`"]
+  end
+  subgraph BOB["bob-cli, the sole writer"]
+    direction LR
+    UPDATE["`**bob periods update**<br/>guarded preview, apply, undo`"]
+    DRAFT["`**bob periods brief, then draft**<br/>instructions in, validated summary out`"]
+  end
+  NOTE["`**Note frontmatter**<br/>intentions · summary · reflection`"]
+  subgraph READERS["Readers, read-only"]
+    direction LR
+    CARD["`**Intention card**<br/>metadata cache`"]
+    PARTS["`**Parent parts table**<br/>periods show`"]
+    MAC["`**Mac idle agenda**<br/>capture-pomodoros`"]
+    BRIEFS["`**Briefs, Dataview**<br/>agents, bob query`"]
+  end
+  BRYAN -->|"== then i / r"| UPDATE
+  AGENT -->|"brief, then draft"| DRAFT
+  UPDATE ==>|"YAML line edit"| NOTE
+  DRAFT -->|"YAML line edit"| NOTE
+  NOTE --> CARD
+  NOTE --> PARTS
+  NOTE --> MAC
+  NOTE --> BRIEFS
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class BRYAN,AGENT focus
+  class UPDATE,DRAFT,NOTE outcome
+  class CARD,PARTS,MAC,BRIEFS muted
+  style WRITERS fill:none,stroke:#3B78C2
+  style BOB fill:none,stroke:#2E7D4F
+  style READERS fill:none,stroke:#6B7280
