@@ -1,0 +1,45 @@
+---
+title: "Why do album, record, and daily notes look the same?"
+accTitle: "Shared property-card chrome"
+accDescr: "Album, record, and daily notes all paint a rounded area-hue card under or instead of an H1, so species identity collapses to a heading the cards already repeat."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  subgraph SHARED["Shared chrome"]
+    direction TB
+    CH["`**8px card**<br/>2px left bar, area hue`"]
+  end
+  subgraph ALBUM["Album note"]
+    direction TB
+    AH["`**H1 Eat**`"]
+    AC["`**Album card**<br/>crumbs end on Eat`"]
+    AH --> AC
+  end
+  subgraph RECORD["Record note"]
+    direction TB
+    RT["`**Sheet title**<br/>Smashburger`"]
+    RC["`**Record card**<br/>same area hue as Eat`"]
+    RT --> RC
+  end
+  subgraph DAILY["Daily note after nh"]
+    direction TB
+    DH["`**H1 date Wed**`"]
+    DC["`**Intention card**<br/>same kit chrome`"]
+    DH --> DC
+  end
+  SHARED --> ALBUM
+  SHARED --> RECORD
+  SHARED --> DAILY
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  class CH,AH,RT,DH focus
+  class AC,RC,DC muted
+  style SHARED fill:none,stroke:#6B7280
+  style ALBUM fill:none,stroke:#3B78C2
+  style RECORD fill:none,stroke:#3B78C2
+  style DAILY fill:none,stroke:#3B78C2

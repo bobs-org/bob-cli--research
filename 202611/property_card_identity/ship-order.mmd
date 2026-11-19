@@ -1,0 +1,29 @@
+---
+title: "When should identity chrome ship?"
+accTitle: "Property-card identity sequencing"
+accDescr: "Keep the in-flight kit pixel-identical. Add species identity after the kit lands. Fold daily identity into the intention card if that phase is still open, otherwise restyle it in the follow-up epic."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  KIT["`**nh.6 kit chrome**<br/>pixel-identical extract`"]
+  Q{{"`**Has nh.7 shipped?**`"}}
+  IN["`**Fold title into**<br/>intention card now`"]
+  AFTER["`**Restyle the shipped**<br/>intention card`"]
+  ID["`**Identity epic**<br/>species row plus H1 policy`"]
+  ALB["`**Album title key**<br/>then H1 tidy`"]
+  KIT ==> Q
+  Q -->|No| IN
+  Q -->|Yes| AFTER
+  IN ==> ID
+  AFTER ==> ID
+  ID ==> ALB
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class KIT,ID focus
+  class Q decision
+  class IN,AFTER,ALB outcome

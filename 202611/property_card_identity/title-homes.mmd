@@ -1,0 +1,30 @@
+---
+title: "Where should each note keep its visible title?"
+accTitle: "Title homes by note kind"
+accDescr: "Records already store title in YAML so they can drop the H1. Albums still store the pretty title only in the H1. Days and periods can hide the H1 in view because the date is in the path."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 220
+---
+flowchart TD
+  Q{{"`**Where does the title live?**`"}}
+  REC["`**Record**<br/>YAML title key`"]
+  ALB["`**Album**<br/>H1 is the only pretty title`"]
+  DAY["`**Day and period**<br/>path plus weekday or id`"]
+  DROP["`**Drop H1 bytes**<br/>sheet already paints title`"]
+  ADD["`**Add title key**<br/>then tidy the H1`"]
+  HIDE["`**Hide H1 in view**<br/>keep scaffold bytes`"]
+  Q --> REC
+  Q --> ALB
+  Q --> DAY
+  REC ==> DROP
+  ALB ==> ADD
+  DAY ==> HIDE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class Q decision
+  class REC,ALB,DAY focus
+  class DROP,ADD,HIDE outcome

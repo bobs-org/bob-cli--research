@@ -1,0 +1,41 @@
+---
+title: "How should a glance name the open note?"
+accTitle: "Property-card identity stack"
+accDescr: "Species word and glyph name the kind, the page title names the note, a species wash colors the card, and area hue stays a crumb pip so Eat the album and Smashburger the record stay distinct."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 20
+    wrappingWidth: 200
+---
+flowchart LR
+  subgraph ALBUM["Album"]
+    direction TB
+    AW["`**ALBUM**`"]
+    AT["`**Eat**`"]
+    AP["`**slate wash**<br/>area pip on crumb`"]
+    AW --> AT --> AP
+  end
+  subgraph RECORD["Record"]
+    direction TB
+    RW["`**RECORD**`"]
+    RT["`**Smashburger**`"]
+    RP["`**paper wash**<br/>same area pip as Eat`"]
+    RW --> RT --> RP
+  end
+  subgraph DAY["Day"]
+    direction TB
+    DW["`**DAY**`"]
+    DT["`**Wed Nov 18**`"]
+    DP["`**calendar wash**<br/>week crumb`"]
+    DW --> DT --> DP
+  end
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class AW,RW,DW focus
+  class AT,RT,DT outcome
+  class AP,RP,DP muted
+  style ALBUM fill:none,stroke:#3B78C2
+  style RECORD fill:none,stroke:#2E7D4F
+  style DAY fill:none,stroke:#C77C02
