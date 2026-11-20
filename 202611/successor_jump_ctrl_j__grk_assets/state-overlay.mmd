@@ -1,0 +1,32 @@
+---
+title: "Is jump a fifth verdict, or a pin on top?"
+accTitle: "Jump successor is a pin overlay"
+accDescr: "Each successor row keeps one write state. Ctrl+J pins at most one row as the jump target without changing Leave, Pull in, Done, or Cancel."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  KEY{{"`**Ctrl+J on a row?**`"}}
+  SAME{{"`**Already pinned?**`"}}
+  OTHER{{"`**Another pin exists?**`"}}
+  WRITE["`**Write state stays**<br/>Leave, Pull in, Done, Cancel`"]
+  PIN["`**Pin this row**<br/>↗ jump after apply`"]
+  MOVE["`**Move the pin here**<br/>previous row loses ↗`"]
+  CLEAR["`**Clear the pin**<br/>no jump after apply`"]
+  KEY -->|Yes| SAME
+  SAME -->|Yes| CLEAR
+  SAME -->|No| OTHER
+  OTHER -->|Yes| MOVE
+  OTHER -->|No| PIN
+  PIN --> WRITE
+  MOVE --> WRITE
+  CLEAR --> WRITE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class KEY,SAME,OTHER decision
+  class PIN,MOVE focus
+  class CLEAR,WRITE outcome

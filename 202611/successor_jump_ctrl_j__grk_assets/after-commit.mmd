@@ -1,0 +1,33 @@
+---
+title: "Where does focus go after the successor card commits?"
+accTitle: "Post-commit focus routing"
+accDescr: "A jump pin lands on that task and parks the review walk. Without a pin, Capture open-intent opens captured notes, a review landing advances, and every other close stays put."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  DONE["`**Write succeeds**`"]
+  PIN{{"`**Jump pin set?**`"}}
+  OPEN{{"`**Capture open intent?**`"}}
+  WALK{{"`**]s landing close?**`"}}
+  JUMP["`**Open the pinned task**<br/>park the review walk`"]
+  NOTES["`**Open captured notes**<br/>bob-open-notes`"]
+  NEXT["`**Advance the ]s walk**<br/>once, as today`"]
+  STAY["`**Stay on the closed row**`"]
+  DONE ==> PIN
+  PIN -->|Yes| JUMP
+  PIN -->|No| OPEN
+  OPEN -->|Yes| NOTES
+  OPEN -->|No| WALK
+  WALK -->|Yes| NEXT
+  WALK -->|No| STAY
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class PIN,OPEN,WALK decision
+  class DONE,JUMP focus
+  class NOTES,NEXT,STAY outcome
