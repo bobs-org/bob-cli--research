@@ -32,7 +32,7 @@ Recommended encoding:
 
 Mac Capture stays a thin client of `bob`. The grammar bumps from 28. Nested `#task` lines (checkbox plus the global filter) stay a different species.
 
-![How a child bullet classifies](micro_task_hash_marker_and_successor_audit__grk_assets/figure-classify.png)
+![How a child bullet classifies](explicit_micro_tasks__grk_assets/figure-classify.png)
 
 **Figure 1.** Two or more hashes mark a micro task. An ALL-CAPS title with nested notes is still a named drawer. Every other note files in `NOTES`, created if missing. Rendered with mermaid-cli 12.0.0; 661 × 736 px, fit 98.8%.
 
@@ -52,7 +52,7 @@ What would make it a bad idea: storing `#task` on a non-checkbox bullet (the Tas
 
 The out-of-scope goal — convert any project back into an equivalent task — is the right north star. Hash depth is the task-shaped form of a project outline. That round-trip should constrain v1 even though reversal of a complex project is later work.
 
-![How micro tasks round-trip with project tasks](micro_task_hash_marker_and_successor_audit__grk_assets/figure-roundtrip.png)
+![How micro tasks round-trip with project tasks](explicit_micro_tasks__grk_assets/figure-roundtrip.png)
 
 **Figure 2.** Promotion turns `## Micro` into a project `#task` and a `NOTES` drawer into `## Notes`. Restore walks the same edge back. Nested micro tasks stay hashed children of the new task, so the project does not grow nested `#task` lines that status grouping already warns about. Rendered with mermaid-cli 12.0.0; 646 × 676 px, fit 100%.
 
