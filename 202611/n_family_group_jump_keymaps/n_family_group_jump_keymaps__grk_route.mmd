@@ -1,0 +1,31 @@
+---
+title: "How does [N] pick a destination?"
+accTitle: "Group-jump destination routing"
+accDescr: "Canonical daily, week, quarter, and grouped-record notes compute the first child of the previous or next parent. Other notes follow a guillemet body link. Year notes, all-time, and ungrouped records show a notice."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  PRESS["`**Press [N] or ]N**`"]
+  KIND{{"`**Canonical kind?**`"}}
+  PARENT{{"`**Parent has a neighbour?**`"}}
+  COMP["`**Open first child of**<br/>that neighbour parent`"]
+  LINK{{"`**Guillemet body link?**`"}}
+  FOLLOW["`**Open the « or » link**`"]
+  NOTICE["`**Notice: no group jump**`"]
+  PRESS ==> KIND
+  KIND -->|"daily, week,<br/>quarter, grouped record"| PARENT
+  KIND -->|"any other note"| LINK
+  PARENT -->|Yes| COMP
+  PARENT -->|"year, all-time,<br/>ungrouped record"| NOTICE
+  LINK -->|Yes| FOLLOW
+  LINK -->|No| NOTICE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class KIND,PARENT,LINK decision
+  class COMP,FOLLOW outcome
+  class PRESS,NOTICE muted

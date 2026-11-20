@@ -1,0 +1,28 @@
+---
+title: "Where does [N] go from week 2026-W30?"
+accTitle: "Week group jump inside a quarter"
+accDescr: "From 2026-W30 in Q3, [N] opens 2026-W14, the first week of the previous quarter Q2, and ]N opens 2026-W40, the first week of the next quarter Q4."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 18
+    wrappingWidth: 220
+---
+flowchart TD
+  Q2["`**2026-Q2**<br/>W14 to W26`"]
+  Q3["`**2026-Q3**<br/>W27 to W39`"]
+  Q4["`**2026-Q4**<br/>W40 to W53`"]
+  W14["`**2026-W14**<br/>first week of Q2`"]
+  W30["`**2026-W30**<br/>the open week`"]
+  W40["`**2026-W40**<br/>first week of Q4`"]
+  Q2 --> W14
+  Q3 --> W30
+  Q4 --> W40
+  W30 ==>|"[N]"| W14
+  W30 ==>|"]N"| W40
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class W30 decision
+  class W14,W40 outcome
+  class Q2,Q3,Q4 muted

@@ -1,0 +1,26 @@
+---
+title: "Why should skip labels use guillemets instead of ASCII chevrons?"
+accTitle: "Skip-label spelling choice"
+accDescr: "ASCII << matches the existing [n] prev rule because that rule accepts any label starting with a less-than sign. Double guillemets are already outside that matcher, so [N] can own them."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 240
+---
+flowchart TD
+  Q{{"`**Skip label spelling?**`"}}
+  ASCII["`**ASCII chevrons << >>**`"]
+  GUILL["`**Guillemets « »**`"]
+  STEAL["`**[n] treats << as prev**<br/>on notes with no prev link`"]
+  SAFE["`**[n] ignores «**<br/>[N] owns the skip pair`"]
+  Q -.->|"first thought"| ASCII
+  Q ==>|"recommended"| GUILL
+  ASCII --> STEAL
+  GUILL --> SAFE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class Q decision
+  class GUILL,SAFE outcome
+  class ASCII,STEAL risk
