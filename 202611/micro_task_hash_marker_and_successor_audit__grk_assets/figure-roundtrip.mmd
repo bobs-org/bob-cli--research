@@ -1,0 +1,35 @@
+---
+title: "How do micro tasks round-trip with project tasks?"
+accTitle: "Task and project round trip"
+accDescr: "Promotion turns a hashed micro task into a project task and a NOTES drawer into a Notes heading. Reversal restores the same outline."
+config:
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 16
+    wrappingWidth: 200
+---
+flowchart TB
+  subgraph TASK["Task"]
+    direction LR
+    TP["`**Parent #task**`"]
+    TM["`**## Micro**`"]
+    TD["`**NOTES drawer**`"]
+    TP --> TM
+    TP --> TD
+  end
+  subgraph PROJ["Project"]
+    direction LR
+    PP["`**^prj lifecycle**`"]
+    PM["`**#task Micro**`"]
+    PD["`**## Notes**`"]
+    PP --> PM
+    PP --> PD
+  end
+  TM -->|"promote"| PM
+  PM -.->|"restore"| TM
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class TP,TM,TD focus
+  class PP,PM,PD outcome
+  style TASK fill:none,stroke:#3B78C2
+  style PROJ fill:none,stroke:#2E7D4F
