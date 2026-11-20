@@ -1,0 +1,42 @@
+---
+title: "Where does [N / ]N get its destination, and when may it create?"
+accTitle: "Group-stop resolution and creation guard"
+accDescr: "Authored guillemet links on a nav line win; otherwise the calendar or record-group provider derives the stop from the note's identity. Existing targets open; missing daily and adopted-year period targets create through the existing writers; pre-adoption periods and album records are ghost stops that never auto-create."
+config:
+  flowchart:
+    rankSpacing: 11
+    nodeSpacing: 14
+    wrappingWidth: 185
+---
+flowchart TD
+  Q1{{"`Authored « » nav line?`"}}
+  Q2{{"`Note species?`"}}
+  CAL["`**Calendar provider**<br/>first child of parent ± 1`"]
+  REC["`**Record-group provider**<br/>first record of group ± 1`"]
+  NONE["`**No group stop**<br/>teaching notice`"]
+  Q3{{"`Target exists?`"}}
+  OPEN["`**Open it**<br/>same jump history as [n`"]
+  Q4{{"`Safe to create?`"}}
+  CREATE["`**Create, then open**<br/>periods ensure / daily template`"]
+  HOLD["`**Ghost stop**<br/>never auto-creates`"]
+  Q1 ==>|"yes — wins"| Q3
+  Q1 -->|no| Q2
+  Q2 -->|"day / week / quarter"| CAL
+  Q2 -->|"walk_by record"| REC
+  Q2 -->|"year · ungrouped"| NONE
+  CAL -.-> Q3
+  REC -.-> Q3
+  Q3 -->|yes| OPEN
+  Q3 -->|no| Q4
+  Q4 -->|"day · adopted period"| CREATE
+  Q4 -->|"pre-adoption · record"| HOLD
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class CAL,REC focus
+  class CAL,REC proposed
+  class OPEN,CREATE outcome
+  class CREATE proposed
+  class NONE,HOLD muted
+  class HOLD proposed
