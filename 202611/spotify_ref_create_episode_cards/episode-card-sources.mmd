@@ -1,0 +1,30 @@
+---
+title: "Where does an episode card get its fields?"
+accTitle: "Episode card data sources"
+accDescr: "Identity is local. oEmbed is required for title. Episode HTML supplies show notes and date. The embed entity is optional for duration and show URI. Generated Markdown prints through the existing Chromium template."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 18
+    wrappingWidth: 240
+---
+flowchart TD
+  ID["`**Identity**<br/>type plus 22-char id`"]
+  OEM["`**oEmbed**<br/>title and thumbnail`"]
+  PAGE["`**Episode HTML**<br/>JSON-LD notes and date`"]
+  EMB["`**Embed entity**<br/>duration and show URI`"]
+  MD["`**Generated Markdown**<br/>write-once source`"]
+  PDF["`**Highlights PDF**<br/>existing print template`"]
+  ID ==> OEM
+  OEM ==> PAGE
+  PAGE -.->|"optional"| EMB
+  OEM ==> MD
+  PAGE ==> MD
+  EMB -.-> MD
+  MD ==> PDF
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class ID,OEM,PAGE focus
+  class EMB muted
+  class MD,PDF outcome
