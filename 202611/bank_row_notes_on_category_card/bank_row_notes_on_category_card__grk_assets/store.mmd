@@ -1,0 +1,20 @@
+---
+title: "Where should the bank row note live?"
+accTitle: "Bank row note storage"
+accDescr: "A short note joins the row as a canonical em dash before the bank id. A newline or long text becomes a child bullet the import planner already preserves."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Fits one line?**`"}}
+  INLINE["`**Inline em dash**<br/>after tail, before id`"]
+  CHILD["`**Indented child**<br/>already a free note`"]
+  Q1 -->|Yes| INLINE
+  Q1 -->|Newline or too long| CHILD
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class Q1 decision
+  class INLINE,CHILD outcome

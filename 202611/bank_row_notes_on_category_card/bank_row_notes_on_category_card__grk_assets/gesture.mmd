@@ -1,0 +1,29 @@
+---
+title: "What does a note do to the bank walk?"
+accTitle: "Bank row note gesture and walk"
+accDescr: "Hyphen opens a note stage on the Category card. Enter writes the em dash note and stays. A later filing key still advances."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 240
+---
+flowchart TD
+  TILES["`**Category tiles**<br/>Same waiting row`"]
+  Q{{"`**Which key?**`"}}
+  NOTE["`**Note stage**<br/>Type the clarification`"]
+  STAY["`**Write and stay**<br/>Em dash, tiles return`"]
+  FILE["`**File and advance**<br/>Tick, category, next row`"]
+  CLOSE["`**Close the card**<br/>Cursor stays`"]
+  TILES --> Q
+  Q -->|hyphen| NOTE
+  Q -->|"letter, Enter, or Space"| FILE
+  Q -->|"Esc, q, or Ctrl+["| CLOSE
+  NOTE -->|Enter with text| STAY
+  NOTE -->|Esc or empty Enter| TILES
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class TILES,NOTE focus
+  class Q decision
+  class STAY,FILE,CLOSE outcome

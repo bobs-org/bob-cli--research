@@ -1,0 +1,26 @@
+---
+title: "Should Space open the note prompt?"
+accTitle: "Space versus hyphen for bank row notes"
+accDescr: "Space already files with no category and acknowledges on the restricted card, so hyphen opens the note stage instead."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Is Space free?**`"}}
+  Q2{{"`**Can a letter be the note key?**`"}}
+  SPACE["`**Keep Space**<br/>No category, advance`"]
+  LETTER["`**Letters stay hotkeys**<br/>a-z and 0-9 file`"]
+  HYPHEN["`**Bind hyphen**<br/>Note stage, stay`"]
+  Q1 -->|No, it files unclassified| SPACE
+  SPACE --> Q2
+  Q2 -->|No, they are category keys| LETTER
+  LETTER ==> HYPHEN
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2 decision
+  class SPACE,LETTER muted
+  class HYPHEN outcome
