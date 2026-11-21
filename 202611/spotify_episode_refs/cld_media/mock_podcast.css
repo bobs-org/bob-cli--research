@@ -1,0 +1,28 @@
+/* Podcast-episode layout layered on reader.css (design mock). */
+.ep { margin-bottom: 18pt; }
+.ep .masthead-site { font-family: "Inter", sans-serif; font-size: 8.5pt; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #2b4c7e; margin: 0 0 10pt; }
+.ep-hero { display: flex; gap: 16pt; align-items: flex-start; margin-bottom: 12pt; }
+.ep-art { width: 1.55in; height: 1.55in; border-radius: 7pt; flex: none; box-shadow: 0 0.5pt 2pt rgba(31,35,40,.25); }
+.ep-id .masthead-title { font-size: 21pt; line-height: 1.15; margin: 0 0 6pt; }
+.ep-by { font-family: "Inter", sans-serif; font-size: 9.5pt; margin: 0 0 2pt; color: #1f2328; }
+.ep-meta { font-family: "Inter", sans-serif; font-size: 9pt; color: #57606a; margin: 0 0 9pt; font-variant-numeric: tabular-nums; }
+.ep-pills { margin: 0; display: flex; flex-wrap: wrap; gap: 5pt; }
+.pill { font-family: "Inter", sans-serif; font-size: 7.75pt; font-weight: 500; color: #57606a; border: 0.5pt solid #d0d7de; border-radius: 999pt; padding: 2.5pt 7pt; text-decoration: none; }
+.pill.play { color: #fff; background: #2b4c7e; border-color: #2b4c7e; border-bottom: 0.5pt solid #2b4c7e; }
+.chapters h2, .notes h2, .transcript h2 { font-family: "Inter", sans-serif; font-size: 11pt; font-weight: 600; letter-spacing: 0.02em; margin: 16pt 0 8pt; }
+.chapters ol { list-style: none; padding: 0; margin: 0; columns: 1; }
+.chapters li { margin: 0; padding: 2.2pt 0; border-bottom: 0.5pt dotted #d0d7de; break-inside: avoid; }
+.chapters li a { display: flex; gap: 10pt; color: #1f2328; border: none; text-decoration: none; font-size: 9.75pt; }
+.chapters .t { font-family: "Inter", sans-serif; font-size: 8.25pt; color: #2b4c7e; width: 0.5in; flex: none; text-align: right; font-variant-numeric: tabular-nums; padding-top: 1pt; }
+.notes { font-size: 9.75pt; color: #3b434b; }
+.notes hr { border: none; border-top: 0.5pt solid #d0d7de; margin: 8pt 0; }
+.transcript { break-before: page; }
+.tx-note { font-family: "Inter", sans-serif; font-size: 7.75pt; color: #6e7781; margin: -4pt 0 14pt; }
+.transcript p.turn, .transcript h3.chapter { position: relative; margin-left: 0.62in; }
+.transcript p.turn { margin-top: 0; margin-bottom: 7pt; }
+.transcript p.turn.first { margin-top: 11pt; }
+.gutter { position: absolute; left: -0.62in; width: 0.5in; text-align: right; font-family: "Inter", sans-serif; font-size: 7pt; color: #8c959f; font-variant-numeric: tabular-nums; top: 2.2pt; font-weight: 400; letter-spacing: 0; }
+.who { font-family: "Inter", sans-serif; font-size: 7.25pt; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-right: 3pt; }
+.who.host { color: #2b4c7e; } .who.guest { color: #8a4b0f; } .who.spk { color: #57606a; }
+.transcript h3.chapter { font-family: "Inter", sans-serif; font-size: 10.5pt; font-weight: 600; color: #1f2328; margin-top: 20pt; margin-bottom: 6pt; padding-top: 7pt; border-top: 0.5pt solid #d0d7de; break-after: avoid; }
+.transcript h3.chapter .gutter { color: #2b4c7e; font-weight: 600; top: 9.5pt; font-size: 7.5pt; }
