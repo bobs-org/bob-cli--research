@@ -1,0 +1,33 @@
+---
+title: "How does a direct child of a #task classify?"
+accTitle: "Task child classification"
+accDescr: "Four answers route a child to nested task, requirement, drawer, or note."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Nested #task line?**`"}}
+  Q2{{"`**Checkbox without #task?**`"}}
+  Q3{{"`**ALL-CAPS with nested notes?**`"}}
+  NEST["`**Nested task**<br/>first-class lanes`"]
+  REQ["`**Requirement**<br/>remaining work`"]
+  DRAW["`**Drawer**<br/>named notes`"]
+  NOTE["`**Note**<br/>NOTES if reqs exist`"]
+  Q1 -->|Yes| NEST
+  Q1 -->|No| Q2
+  Q2 -->|Yes| REQ
+  Q2 -->|No| Q3
+  Q3 -->|Yes| DRAW
+  Q3 -->|No| NOTE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class Q1,Q2,Q3 decision
+  class NEST,DRAW outcome
+  class NOTE muted
+  class REQ outcome
+  class REQ proposed

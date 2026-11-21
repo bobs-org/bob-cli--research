@@ -1,0 +1,26 @@
+---
+title: "What happens to leftover requirements when the parent closes?"
+accTitle: "Close-card routing for leftover requirements"
+accDescr: "Leftover requirements are the first successor group. Leave closes them with the parent. Ctrl+X extracts. Ctrl+J extracts and pins."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  START["`**Close parent**<br/>open reqs remain`"]
+  CARD["`**Successor card**<br/>reqs first, count in title`"]
+  LEAVE["`**Leave default**<br/>done with parent`"]
+  XKEY["`**Ctrl+X**<br/>extract as task`"]
+  JKEY["`**Ctrl+J**<br/>extract and pin`"]
+  START --> CARD
+  CARD ==>|"Enter"| LEAVE
+  CARD -->|"row key"| XKEY
+  CARD -->|"row key"| JKEY
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class START,CARD focus
+  class LEAVE,JKEY outcome
+  class XKEY muted

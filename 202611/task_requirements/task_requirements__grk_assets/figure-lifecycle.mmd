@@ -1,0 +1,26 @@
+---
+title: "What can happen to a requirement while its parent is open?"
+accTitle: "Requirement lifecycle while parent is open"
+accDescr: "An open requirement can be extracted or obsoleted, or wait for the parent close card. Independent completion is refused."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  OPEN["`**Open requirement**<br/>hidden checkbox`"]
+  EXTRACT["`**Extract or split**<br/>sibling task plus stub`"]
+  OBS["`**Obsolete**<br/>optional reason`"]
+  CARD["`**Parent close card**<br/>Leave, extract, obsolete`"]
+  REFUSE["`**Independent complete**<br/>refused`"]
+  OPEN ==>|"parent Done"| CARD
+  OPEN --> EXTRACT
+  OPEN --> OBS
+  OPEN -.->|"tick to [x]"| REFUSE
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class OPEN focus
+  class EXTRACT,OBS,CARD outcome
+  class REFUSE risk
