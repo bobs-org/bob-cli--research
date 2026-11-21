@@ -1,0 +1,26 @@
+---
+title: "Which prompt fields complete wiki-links?"
+accTitle: "Wiki-link completion membership"
+accDescr: "A field that writes Markdown into the vault gets inline [[ completion or a whole-field note picker. Identifier and search fields stay literal."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Writes vault Markdown?**`"}}
+  Q2{{"`**Whole value is a link?**`"}}
+  PROSE["`**Inline [[ popover**<br/>Intentions, logs, text`"]
+  FIELD["`**Always-on note picker**<br/>Record link fields`"]
+  SKIP["`**Stay literal**<br/>IDs, mail, commands`"]
+  Q1 -->|Yes| Q2
+  Q1 -->|No| SKIP
+  Q2 -->|No| PROSE
+  Q2 -->|Yes| FIELD
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2 decision
+  class PROSE,FIELD outcome
+  class SKIP muted
