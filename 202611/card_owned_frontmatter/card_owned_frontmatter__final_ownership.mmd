@@ -1,0 +1,32 @@
+---
+title: "Who reads and who writes a card note's frontmatter?"
+accTitle: "Property card frontmatter ownership and write routing"
+accDescr: "A mounted property card hides native Properties and paints a read-only foot row and drawer; the =+ property editor routes ordinary keys through the new bob props writer and hands card-owned keys to the existing == species editors; every failure falls back to native Properties."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 20
+    wrappingWidth: 210
+---
+flowchart TB
+  MOUNT["`**Mounted card**<br/>hides native Properties`"]
+  VIEW["`**Foot row and =- drawer**<br/>created stamp; every key, read-only`"]
+  NATIVE["`**Native Properties**<br/>fail-open fallback`"]
+  PROP["`**=+ property editor**<br/>typed stages, any note`"]
+  DOMAIN["`**== species editors**<br/>record, album, period, bank`"]
+  PROPS["`**bob props update**<br/>new generic span writer`"]
+  SPECIES["`**Existing species writers**<br/>records, albums, periods`"]
+  MOUNT -->|"paints"| VIEW
+  MOUNT -.->|"mount fails, Source,<br/>embed, bad YAML"| NATIVE
+  VIEW -.->|"Enter on a row"| PROP
+  PROP ==>|"ordinary keys:<br/>fingerprinted span ops"| PROPS
+  PROP -.->|"card-owned keys<br/>hand off"| DOMAIN
+  DOMAIN -->|"dry-run then apply"| SPECIES
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class MOUNT,VIEW,PROP,PROPS focus
+  class MOUNT,VIEW,PROP,PROPS proposed
+  class DOMAIN,SPECIES outcome
+  class NATIVE muted
