@@ -1,0 +1,33 @@
+---
+title: "Proposed: who writes a key you edit on an area or project note?"
+accTitle: "Area and project key routing"
+accDescr: "Three questions route each editor row to the Task Card, a locked or handed-off row, a validated setting write, or a plain property write."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 10
+    wrappingWidth: 200
+---
+flowchart TD
+  Q1{{"`**On the ^prj line?**`"}}
+  Q2{{"`**Owned elsewhere?**`"}}
+  Q3{{"`**In the contract?**`"}}
+  TASK["`**Task Card**<br/>goal, start, deps`"]
+  LOCK["`**Locked or handed off**<br/>status, counts, type;<br/>bank map via ==`"]
+  SET["`**Settings row**<br/>setting.set, validated`"]
+  LOOSE["`**Loose row**<br/>prop.set, any key`"]
+  Q1 -->|Yes| TASK
+  Q1 -->|No| Q2
+  Q2 -->|Yes| LOCK
+  Q2 -->|No| Q3
+  Q3 -.->|Yes| SET
+  Q3 -->|No| LOOSE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef proposed stroke-dasharray:5 3
+  class Q1,Q2,Q3 decision
+  class TASK,SET,LOOSE outcome
+  class LOCK muted
+  class SET proposed
+  class TASK proposed
