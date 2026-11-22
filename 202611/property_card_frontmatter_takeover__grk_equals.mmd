@@ -1,0 +1,36 @@
+---
+title: "What does the second key after pending equals do?"
+accTitle: "Property-card equals-prefix dispatch"
+accDescr: "On a property-card note in Vim normal Live Preview, a pending indent equals waits for a second key. Equals opens the species editor, minus toggles the properties fold, plus opens the properties editor, and any other motion stays with Vim."
+config:
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 10
+    wrappingWidth: 220
+---
+flowchart TD
+  Q1{{"`**Property-card note?**`"}}
+  Q2{{"`**Pending indent equals?**`"}}
+  Q3{{"`**Second key is equals?**`"}}
+  Q4{{"`**Second key is minus?**`"}}
+  Q5{{"`**Second key is plus?**`"}}
+  EQ["`**Species editor**`"]
+  MINUS["`**Toggle the fold**`"]
+  PLUS["`**Properties editor**`"]
+  VIM["`**Vim keeps the motion**`"]
+  Q1 -->|No| VIM
+  Q1 -->|Yes| Q2
+  Q2 -->|No| VIM
+  Q2 -->|Yes| Q3
+  Q3 -->|Yes| EQ
+  Q3 -->|No| Q4
+  Q4 -->|Yes| MINUS
+  Q4 -->|No| Q5
+  Q5 -->|Yes| PLUS
+  Q5 -->|No| VIM
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3,Q4,Q5 decision
+  class EQ,MINUS,PLUS outcome
+  class VIM muted

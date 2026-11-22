@@ -1,0 +1,32 @@
+---
+title: "What sits above the note body?"
+accTitle: "Property card chrome today and proposed"
+accDescr: "Today a property card sits above native Properties. The proposal hides that section and keeps created plus a collapsed inventory fold inside the card, above the nav rail."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TB
+  subgraph TODAY["Today"]
+    direction TB
+    TC["`**Property card** designed fields`"]
+    TN["`**Native Properties** leftovers and Add property`"]
+    TC --> TN
+  end
+  subgraph PROPOSED["Proposed"]
+    direction TB
+    PC["`**Property card** designed fields plus created`"]
+    PF["`**Properties fold** collapsed inventory`"]
+    PR["`**Nav rail** when the note has one`"]
+    PC --> PF --> PR
+  end
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class TC,TN focus
+  class PC,PF outcome
+  class PR muted
+  style TODAY fill:none,stroke:#3B78C2
+  style PROPOSED fill:none,stroke:#2E7D4F
