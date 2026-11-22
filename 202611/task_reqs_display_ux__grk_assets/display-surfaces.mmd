@@ -1,0 +1,26 @@
+---
+title: "Which surfaces share the requirement mark?"
+accTitle: "Requirement display surfaces"
+accDescr: "One character from req_run, one CSS mask, and the Mac overlay must change together. Close cards already receive run and a separate depth field."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TB
+  Q{{"`**Where is the mark drawn?**`"}}
+  RUN["`**req_run()**<br/>CLI and close JSON`"]
+  CSS["`**CSS mask**<br/>Obsidian Live Preview and Reading`"]
+  MAC["`**Mac overlay**<br/>four-cell capture slot`"]
+  CARDS["`**Successor cards**<br/>paint run, indent from depth`"]
+  Q -->|"bob-cli token"| RUN
+  Q -->|"ledger-tools"| CSS
+  Q -->|"capture panel"| MAC
+  RUN --> CARDS
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class Q decision
+  class RUN,CSS,MAC focus
+  class CARDS outcome

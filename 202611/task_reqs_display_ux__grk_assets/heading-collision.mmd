@@ -1,0 +1,27 @@
+---
+title: "Why does a requirement look like a heading?"
+accTitle: "Requirement hash runs collide with Markdown headings"
+accDescr: "Bob draws more hashes as requirement depth grows, which is the same visual rule Markdown uses for heading levels."
+config:
+  flowchart:
+    rankSpacing: 18
+    nodeSpacing: 18
+    wrappingWidth: 220
+---
+flowchart TB
+  TASK["`**Tracked task**<br/>one slanted hash`"]
+  R1["`**Req depth 1**<br/>two hashes`"]
+  R2["`**Req depth 2**<br/>three hashes`"]
+  R3["`**Req depth 3+**<br/>four hashes`"]
+  H1["`**Heading 1**<br/>one hash`"]
+  H2["`**Heading 2**<br/>two hashes`"]
+  H3["`**Heading 3**<br/>three hashes`"]
+  H4["`**Heading 4**<br/>four hashes`"]
+  TASK -->|"same silhouette"| H1
+  R1 ==>|"same silhouette"| H2
+  R2 ==>|"same silhouette"| H3
+  R3 ==>|"same silhouette"| H4
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class TASK,R1,R2,R3 focus
+  class H1,H2,H3,H4 risk

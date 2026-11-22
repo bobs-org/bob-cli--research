@@ -1,0 +1,38 @@
+---
+title: "How should a requirement look on the page?"
+accTitle: "Today versus proposed requirement display"
+accDescr: "Today grows a hash run with depth and widens the mark slot. The proposal keeps one diamond in a constant slot and lets indent carry hierarchy."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TB
+  subgraph TODAY["Today"]
+    direction TB
+    T_OWN["`**Owner task**<br/>checkbox plus hash`"]
+    T_R1["`**Depth 1**<br/>two hashes, 1em slot`"]
+    T_R2["`**Depth 2**<br/>three hashes, 1.5em slot`"]
+    T_R3["`**Depth 3+**<br/>four hashes, 2em slot`"]
+    T_OWN --> T_R1
+    T_R1 --> T_R2
+    T_R2 --> T_R3
+  end
+  subgraph PROPOSED["Proposed"]
+    direction TB
+    P_OWN["`**Owner task**<br/>checkbox plus hash`"]
+    P_R1["`**Depth 1**<br/>one diamond, 1em slot`"]
+    P_R2["`**Depth 2**<br/>same diamond, extra indent`"]
+    P_R3["`**Depth 3+**<br/>same diamond, extra indent`"]
+    P_OWN --> P_R1
+    P_R1 --> P_R2
+    P_R2 --> P_R3
+  end
+  T_R3 -.->|"keep the species,<br/>change the mark"| P_OWN
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class T_OWN,T_R1,T_R2,T_R3 focus
+  class P_OWN,P_R1,P_R2,P_R3 outcome
+  style TODAY fill:none,stroke:#3B78C2
+  style PROPOSED fill:none,stroke:#2E7D4F
