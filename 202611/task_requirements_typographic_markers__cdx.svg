@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="940" viewBox="0 0 1240 940" role="img" aria-labelledby="title desc">
+<title id="title">Task requirements: comparison and proposed presentation</title>
+<desc id="desc">Three identical outlines compare repeated hashes, a compact req text marker, and a diamond. Below, capture and close-card concepts show the req label and explain that requirements are met with their owner. Conceptual artwork, not application screenshots.</desc>
+<rect width="1240" height="940" fill="#f3f2ee"/>
+<style>text{font-family:Inter,Arial,sans-serif} .body{font-size:17px;fill:#27312f} .muted{font-size:14px;fill:#596660} .mark{font-size:14px;font-weight:600;fill:#17635d} .title{font-size:21px;font-weight:600;fill:#23312b} .mono{font-family:monospace}</style>
+<text x="36" y="48" font-size="28" font-weight="600" fill="#23312b">Requirements should read like part of the task.</text>
+<text x="36" y="78" class="muted">Independent concept study · cdx · Same hierarchy, three marker treatments</text>
+
+<rect x="36" y="108" width="360" height="325" rx="12" fill="#ffffff" stroke="#d9ddd6" stroke-width="1.5"/>
+<text x="58" y="143" class="title" >Current</text>
+<text x="58" y="169" class="muted" >Depth repeats in the marker</text>
+<text x="58" y="213" class="body" >□ # Ship exporter</text>
+<text x="76" y="251" class="mark" >##</text>
+<text x="118" y="251" class="body" >Handles inputs</text>
+<text x="96" y="287" class="mark" >###</text>
+<text x="138" y="287" class="body" >Windows files</text>
+<text x="116" y="323" class="mark" >####</text>
+<text x="158" y="323" class="body" >Preserves CRLF</text>
+<text x="76" y="359" class="mark" >##</text>
+<text x="118" y="359" class="body" >Handles empty input</text>
+<text x="58" y="411" class="muted" >Indentation carries the tree.</text>
+<rect x="440" y="108" width="360" height="325" rx="12" fill="#ffffff" stroke="#17635d" stroke-width="1.5"/>
+<text x="462" y="143" class="title" >Recommended</text>
+<text x="462" y="169" class="muted" >A readable role; constant width</text>
+<text x="462" y="213" class="body" >□ # Ship exporter</text>
+<text x="480" y="251" class="mark" >req</text>
+<text x="522" y="251" class="body" >Handles inputs</text>
+<text x="500" y="287" class="mark" >req</text>
+<text x="542" y="287" class="body" >Windows files</text>
+<text x="520" y="323" class="mark" >req</text>
+<text x="562" y="323" class="body" >Preserves CRLF</text>
+<text x="480" y="359" class="mark" >req</text>
+<text x="522" y="359" class="body" >Handles empty input</text>
+<text x="462" y="411" class="muted" >Indentation carries the tree.</text>
+<rect x="844" y="108" width="360" height="325" rx="12" fill="#ffffff" stroke="#d9ddd6" stroke-width="1.5"/>
+<text x="866" y="143" class="title" >Alternative</text>
+<text x="866" y="169" class="muted" >A quieter icon that needs teaching</text>
+<text x="866" y="213" class="body" >□ # Ship exporter</text>
+<text x="884" y="251" class="mark" >◇</text>
+<text x="926" y="251" class="body" >Handles inputs</text>
+<text x="904" y="287" class="mark" >◇</text>
+<text x="946" y="287" class="body" >Windows files</text>
+<text x="924" y="323" class="mark" >◇</text>
+<text x="966" y="323" class="body" >Preserves CRLF</text>
+<text x="884" y="359" class="mark" >◇</text>
+<text x="926" y="359" class="body" >Handles empty input</text>
+<text x="866" y="411" class="muted" >Indentation carries the tree.</text>
+<rect x="36" y="465" width="550" height="368" rx="14" fill="#172421"/>
+<text x="60" y="500" class="title" style="fill:#e4eeea">Capture editor</text>
+<text x="60" y="529" class="muted" style="fill:#aec1b8">Same draft bytes. Same typing and undo.</text>
+<text x="60" y="574" class="body mono" style="fill:#edf3f0">Ship exporter @dev</text>
+<text x="82" y="610" class="mark" style="fill:#93c9b7">req</text>
+<text x="124" y="610" class="body" style="fill:#edf3f0">Handles inputs</text>
+<text x="104" y="644" class="mark" style="fill:#93c9b7">req</text>
+<text x="146" y="644" class="body" style="fill:#edf3f0">Windows files</text>
+<text x="126" y="678" class="mark" style="fill:#93c9b7">req</text>
+<text x="168" y="678" class="body" style="fill:#edf3f0">Preserves CRLF</text>
+<text x="82" y="712" class="mark" style="fill:#93c9b7">req</text>
+<text x="124" y="712" class="body" style="fill:#edf3f0">Handles empty input</text>
+<line x1="60" y1="738" x2="562" y2="738" stroke="#40564d"/>
+<text x="60" y="768" class="body" style="fill:#edf3f0;font-weight:600">Requirements</text>
+<text x="60" y="797" class="muted" style="fill:#aec1b8">Met when this task closes.</text>
+<rect x="614" y="465" width="590" height="368" rx="14" fill="#fff" stroke="#d9ddd6"/>
+<text x="638" y="500" class="title" >Requirements · “Ship exporter”</text>
+<text x="638" y="529" class="muted" >Met with the task unless you drop one or make it a task.</text>
+<text x="638" y="578" class="mark" >req</text>
+<text x="678" y="578" class="body" >Handles inputs</text>
+<text x="1178" y="578" class="muted" text-anchor="end">Met with task</text>
+<text x="656" y="618" class="mark" >req</text>
+<text x="696" y="618" class="body" >Windows files</text>
+<text x="1178" y="618" class="muted" text-anchor="end">Met with task</text>
+<text x="674" y="658" class="mark" >req</text>
+<text x="714" y="658" class="body" >Preserves CRLF</text>
+<text x="1178" y="658" class="muted" text-anchor="end">Met with task</text>
+<text x="638" y="708" class="mark" >req</text>
+<text x="678" y="708" class="body" >Docs cover every flag</text>
+<text x="1178" y="708" class="muted" text-anchor="end">Make task</text>
+<line x1="638" y1="738" x2="1180" y2="738" stroke="#e3e6df"/>
+<text x="638" y="770" class="body" >Met with task   ·   Drop   ·   Make task</text>
+<text x="638" y="799" class="muted" >Existing shortcuts, pull-in, and jump remain.</text>
+<text x="36" y="878" class="body" style="font-weight:600">Design rule: label the role once per row; let indentation show depth.</text>
+<text x="36" y="909" class="muted" >Concept only. No new syntax, stored headings, checkoffs, or progress meters. Existing state and operation rules stay intact.</text>
+</svg>
