@@ -1,0 +1,36 @@
+---
+title: "How should a direct child of a task be classified?"
+accTitle: "Classification of a task's direct child"
+accDescr: "Checkboxes become requirements or subtasks, managed lines stay logs and links, a ## prefix or legacy ALL-CAPS title is a drawer, and a glued hashtag is a note tag rather than a drawer mark."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 10
+    wrappingWidth: 220
+---
+flowchart TD
+  Q1{{"`**Checkbox child?**`"}}
+  Q2{{"`**Carries #task?**`"}}
+  Q3{{"`**Managed line?**`"}}
+  Q4{{"`**Starts with ##?**`"}}
+  Q5{{"`**ALL-CAPS title?**`"}}
+  REQ["`**Requirement**`"]
+  SUB["`**Subtask**`"]
+  MGD["`**Managed line**`"]
+  DRW["`**Drawer**`"]
+  NOTE["`**Note, including tags**`"]
+  Q1 -->|Yes| Q2
+  Q1 -->|No| Q3
+  Q2 -->|No| REQ
+  Q2 -->|Yes| SUB
+  Q3 -->|Yes| MGD
+  Q3 -->|No| Q4
+  Q4 -->|Yes| DRW
+  Q4 -->|No| Q5
+  Q5 -->|Yes| DRW
+  Q5 -->|No| NOTE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class Q1,Q2,Q3,Q4,Q5 decision
+  class REQ,SUB,MGD,DRW,NOTE outcome

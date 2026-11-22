@@ -1,0 +1,37 @@
+---
+title: "Does promotion keep the intended section name?"
+accTitle: "Promotion casing today versus the proposed list-item heading"
+accDescr: "Today an ALL-CAPS drawer is title-cased into an H2, so API DESIGN becomes Api Design. The proposal stores ## API Design on the task and lifts that exact heading text onto the project note."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TB
+  subgraph TODAY["Today"]
+    direction TB
+    T1["`**Task drawer**<br/>API DESIGN`"]
+    T2["`**Title-case heuristic**<br/>drops acronyms`"]
+    T3["`**Project heading**<br/>## Api Design`"]
+    T1 -->|"format_project_section_title"| T2
+    T2 -->|"writes"| T3
+  end
+  subgraph NEXT["Proposed"]
+    direction TB
+    N1["`**Task drawer**<br/>- ## API Design`"]
+    N2["`**Lift the list marker**<br/>keep the heading text`"]
+    N3["`**Project heading**<br/>## API Design`"]
+    N1 -->|"byte-identical title"| N2
+    N2 -->|"writes"| N3
+  end
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class T1,N1 focus
+  class T2 decision
+  class N2,N3 outcome
+  class T3 risk
+  style TODAY fill:none,stroke:#C0392B
+  style NEXT fill:none,stroke:#2E7D4F
