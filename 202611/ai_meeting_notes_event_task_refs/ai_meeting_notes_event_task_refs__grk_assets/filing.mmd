@@ -1,0 +1,35 @@
+---
+title: "How does filing session notes onto an Event Task work?"
+accTitle: "Event-attached session-note filing"
+accDescr: "A source file or clipboard and an Event Task handle together derive parent, title, and stem, promote Markdown into a meeting dossier, create a meets reference born Next, relate it to the Event Task, and optionally offer follow-up tasks."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  subgraph INPUTS["Both required"]
+    direction LR
+    SRC["`**Source**<br/>File or clipboard`"]
+    EVT["`**Event handle**<br/>Caret or Google id`"]
+  end
+  DERIVE["`**Derive**<br/>Root, title, stem`"]
+  PROMOTE["`**Promote Markdown**<br/>H1, H2s, dossier header`"]
+  CREATE["`**Create meets ref**<br/>Born Next under root`"]
+  REL["`**Write notes of**<br/>Relation on both ends`"]
+  OFFER["`**Offer follow-ups**<br/>Never auto-create`"]
+  INPUTS ==> DERIVE
+  DERIVE ==> PROMOTE
+  PROMOTE ==> CREATE
+  CREATE ==> REL
+  REL -.->|"optional"| OFFER
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef proposed stroke-dasharray:5 3
+  class SRC,EVT focus
+  class DERIVE,PROMOTE muted
+  class CREATE,REL,OFFER outcome
+  class OFFER proposed
+  style INPUTS fill:none,stroke:#3B78C2

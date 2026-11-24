@@ -1,0 +1,28 @@
+---
+title: "Where should AI meeting notes live?"
+accTitle: "Meeting content routing"
+accDescr: "Three decisions send calendar logistics to a private event note, Google invite text to Event Task bullets, source-backed session notes to a meets reference, and typed recurring logs to a notebook."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Calendar logistics?**`"}}
+  Q2{{"`**Google invite text?**`"}}
+  Q3{{"`**Has a source file?**`"}}
+  PRIV["`**Private event note**<br/>Root, buffer, clock`"]
+  INVITE["`**Event Task bullets**<br/>Invite description`"]
+  REF["`**meets reference**<br/>PDF, highlights, review`"]
+  NB["`**Notebook section**<br/>Typed 1:1 log`"]
+  Q1 -->|Yes| PRIV
+  Q1 -->|No| Q2
+  Q2 -->|Yes| INVITE
+  Q2 -->|No| Q3
+  Q3 -->|Yes| REF
+  Q3 -->|No| NB
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class Q1,Q2,Q3 decision
+  class PRIV,INVITE,REF,NB outcome
