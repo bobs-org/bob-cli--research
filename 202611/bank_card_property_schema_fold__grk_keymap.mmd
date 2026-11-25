@@ -1,0 +1,32 @@
+---
+title: "When does underscore fold schema?"
+accTitle: "Underscore schema-fold dispatch"
+accDescr: "A capture-phase underscore toggles the album Schema or bank Setup fold only in Live Preview Vim normal mode on those notes. A forced-open invalid setup stays expanded. Every other case leaves the Vim motion alone."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 14
+    wrappingWidth: 240
+---
+flowchart TD
+  Q1{{"`**Bare underscore?**`"}}
+  Q2{{"`**LP Vim normal clean?**`"}}
+  Q3{{"`**Album or bank hub?**`"}}
+  Q4{{"`**Forced open?**`"}}
+  TOGGLE["`**Toggle schema fold**`"]
+  STAY["`**Keep expanded**<br/>leave session map`"]
+  VIM["`**Vim first-non-blank**`"]
+  Q1 -->|No| VIM
+  Q1 -->|Yes| Q2
+  Q2 -->|No| VIM
+  Q2 -->|Yes| Q3
+  Q3 -->|No| VIM
+  Q3 -->|Yes| Q4
+  Q4 -->|Yes| STAY
+  Q4 -->|No| TOGGLE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3,Q4 decision
+  class TOGGLE,STAY outcome
+  class VIM muted

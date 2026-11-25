@@ -1,0 +1,29 @@
+---
+title: "When may bank.md hide native Properties?"
+accTitle: "Bank native-Properties hide eligibility"
+accDescr: "Hiding the native Properties block requires a title-slot mount, a live foot, and whole-frontmatter eligibility. Any miss restores the native block."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  Q1{{"`**Title slot mounted?**`"}}
+  Q2{{"`**Card and foot live?**`"}}
+  Q3{{"`**Source matches cache?**`"}}
+  HIDE["`**Hide native block**<br/>node stays as slot anchor`"]
+  ROW["`**Per-row fallback**<br/>hide bank key only`"]
+  NATIVE["`**Show native Properties**`"]
+  Q1 -->|No| NATIVE
+  Q1 -->|Yes| Q2
+  Q2 -->|No| NATIVE
+  Q2 -->|Yes| Q3
+  Q3 -->|Yes and props_v1| HIDE
+  Q3 -->|No or uncertain| ROW
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class Q1,Q2,Q3 decision
+  class HIDE outcome
+  class ROW,NATIVE risk

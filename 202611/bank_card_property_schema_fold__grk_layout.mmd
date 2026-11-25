@@ -1,0 +1,34 @@
+---
+title: "What fills the first screen of bank.md?"
+accTitle: "bank.md first-screen layout today versus proposed"
+accDescr: "Today the first screen is native Properties plus an expanded Setup body. The proposal replaces both with a title-slot Bank card and a collapsed Setup line above the queue."
+config:
+  flowchart:
+    rankSpacing: 18
+    nodeSpacing: 14
+    wrappingWidth: 160
+---
+flowchart TB
+  subgraph TODAY["Today"]
+    direction LR
+    T1["`**Native Properties**`"]
+    T2["`**H1 plus Setup**`"]
+    T3["`**Queue**`"]
+    T1 --> T2 --> T3
+  end
+  subgraph PROPOSED["Proposed"]
+    direction LR
+    P1["`**Title-slot card**`"]
+    P2["`**Collapsed Setup**`"]
+    P3["`**Queue**`"]
+    P1 ==> P2 --> P3
+  end
+  TODAY --> PROPOSED
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class T1,T2 risk
+  class T3 muted
+  class P1,P2,P3 outcome
+  style TODAY fill:none,stroke:#C0392B
+  style PROPOSED fill:none,stroke:#2E7D4F
