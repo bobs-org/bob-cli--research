@@ -1,0 +1,34 @@
+---
+title: "How does a snoozed link become Today?"
+accTitle: "Snoozed Task Link wake lifecycle"
+accDescr: "Capture parks a timed link in Snoozed outside Pomodoros. A five-minute tick wake moves a due unblocked link into a type-matching open Pomodoro, which makes it Today and raises Ready to Next."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 14
+    wrappingWidth: 240
+---
+flowchart TD
+  AUTH["`**Author**<br/>z:1900 capture or keymap`"]
+  PARK["`**Park**<br/>Snoozed bullet **1900** plus link`"]
+  TICK["`**bob tick wake**<br/>every 5 minutes on Mac`"]
+  DUE{{"`**Wake time reached?**`"}}
+  BLOCK{{"`**Task still blocked?**`"}}
+  MOVE["`**Move link**<br/>into type Pomodoro`"]
+  TODAY["`**Today plus Next**<br/>open-ledger membership`"]
+  WAIT["`**Stay parked**<br/>not Today, walk skips`"]
+  AUTH ==> PARK
+  PARK ==> TICK
+  TICK ==> DUE
+  DUE -->|No| WAIT
+  DUE -->|Yes| BLOCK
+  BLOCK -->|Yes| WAIT
+  BLOCK -->|No| MOVE
+  MOVE ==> TODAY
+  WAIT -.->|"next tick"| TICK
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class AUTH,PARK,TICK,MOVE focus
+  class DUE,BLOCK decision
+  class TODAY,WAIT outcome
