@@ -1,0 +1,28 @@
+---
+title: "Does a snoozed task count against max_links?"
+accTitle: "Snooze plan-budget rule"
+accDescr: "Event Tasks cannot be snoozed. A parked snoozed row is exempt from max_links. A woken Task Link counts. Snoozing still forecasts whether wake would overflow the cap."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 16
+    wrappingWidth: 220
+---
+flowchart TD
+  Q1{{"`**Is this an Event Task?**`"}}
+  REFUSE["`**Refuse**<br/>Events keep their span`"]
+  Q2{{"`**Where is the row?**`"}}
+  PARKED["`**Snoozed section**<br/>Exempt from the cap`"]
+  FORECAST["`**Snooze-time forecast**<br/>Warn if wake would overflow`"]
+  WOKEN["`**Open Pomodoro**<br/>Counts toward max_links`"]
+  Q1 -->|Yes| REFUSE
+  Q1 -->|No| Q2
+  Q2 -->|Waiting| PARKED
+  PARKED -.->|"authoring"| FORECAST
+  PARKED ==>|"wake clock arrives"| WOKEN
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class Q1,Q2 decision
+  class PARKED,WOKEN,FORECAST outcome
+  class REFUSE risk

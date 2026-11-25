@@ -1,0 +1,27 @@
+---
+title: "What does Bryan see before and after wake?"
+accTitle: "Snoozed task visual lifecycle"
+accDescr: "While parked, the task definition and the Snoozed row both wear a clock and the wake time. After wake the definition shows a tomato and the Pomodoro Task Link keeps the same clock time as a woke mark."
+config:
+  flowchart:
+    rankSpacing: 18
+    nodeSpacing: 20
+    wrappingWidth: 200
+---
+flowchart TD
+  Q{{"`**Has the wake clock arrived?**`"}}
+  DEF1["`**Task definition**<br/>clock plus 1530`"]
+  ROW1["`**Snoozed row**<br/>clock, bold 1530, link`"]
+  DEF2["`**Task definition**<br/>tomato, no clock`"]
+  LINK2["`**Pomodoro Task Link**<br/>tomato, clock 1530, link`"]
+  Q -->|No, still parked| DEF1
+  DEF1 -->|"same wake clock"| ROW1
+  Q -->|Yes, wake moves it| DEF2
+  DEF2 -->|"same task"| LINK2
+  ROW1 -.->|"subtree leaves Snoozed"| LINK2
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class Q decision
+  class DEF1,ROW1 focus
+  class DEF2,LINK2 outcome

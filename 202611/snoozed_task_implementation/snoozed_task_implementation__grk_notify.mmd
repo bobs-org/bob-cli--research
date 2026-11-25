@@ -1,0 +1,34 @@
+---
+title: "How does Bryan learn a snoozed task woke?"
+accTitle: "Snooze wake notification stack"
+accDescr: "Wake always writes durable vault marks. A time-sensitive Mac Capture banner auto-dismisses when Capture is running. An Obsidian Notice covers an focused editor, and the idle agenda refreshes either way."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 14
+    wrappingWidth: 220
+---
+flowchart TD
+  WAKE["`**bob snooze wake**<br/>Moves the row, writes today`"]
+  MARKS["`**Durable vault marks**<br/>Tomato on the definition<br/>Clock 1530 on the Task Link`"]
+  Q1{{"`**Is Capture running?**`"}}
+  BANNER["`**Time-sensitive banner**<br/>Ready now · Email Dan<br/>Auto-dismisses`"]
+  FALLBACK["`**desktop_notify banner**<br/>Same copy, no click-through`"]
+  Q2{{"`**Is Obsidian focused?**`"}}
+  NOTICE["`**Obsidian Notice**<br/>Eight-second timeout`"]
+  AGENDA["`**Idle agenda refresh**<br/>Task appears in Next`"]
+  WAKE ==> MARKS
+  MARKS --> Q1
+  Q1 -->|Yes| BANNER
+  Q1 -->|No| FALLBACK
+  BANNER --> Q2
+  FALLBACK --> Q2
+  Q2 -->|Yes| NOTICE
+  Q2 -->|No| AGENDA
+  NOTICE -.->|"agenda also refreshes"| AGENDA
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class Q1,Q2 decision
+  class WAKE,MARKS focus
+  class BANNER,FALLBACK,NOTICE,AGENDA outcome
