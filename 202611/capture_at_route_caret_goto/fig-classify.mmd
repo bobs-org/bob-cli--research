@@ -1,0 +1,36 @@
+---
+title: "What should an empty @route^id draft do?"
+accTitle: "Empty at-route-caret classification"
+accDescr: "A whole-draft empty at-route-caret token is Go To. Exact IDs open the task. Anything else opens a picker scoped to that note. Task text still creates."
+config:
+  flowchart:
+    rankSpacing: 8
+    nodeSpacing: 8
+    wrappingWidth: 180
+---
+flowchart TD
+  Q1{{"`**Whole draft @route^?**`"}}
+  Q2{{"`**Any task text?**`"}}
+  Q3{{"`**Route holds tasks?**`"}}
+  Q4{{"`**Exact ID in note?**`"}}
+  CREATE["`**Create**<br/>task with that ID`"]
+  OTHER["`**Other grammar**<br/>link, list, notebook, seal`"]
+  PICKER["`**Scoped Go To**<br/>tasks in that note`"]
+  OPEN["`**Open in Obsidian**<br/>bob-goto-task URI`"]
+  KEEP["`**Keep refusal**<br/>album, notebook, missing`"]
+  Q1 -->|No| OTHER
+  Q1 -->|Yes| Q2
+  Q2 -->|Yes| CREATE
+  Q2 -->|No| Q3
+  Q3 -->|No| KEEP
+  Q3 -->|Yes| Q4
+  Q4 -->|Yes| OPEN
+  Q4 -->|No| PICKER
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3,Q4 decision
+  class OPEN,PICKER outcome
+  class CREATE focus
+  class OTHER,KEEP muted

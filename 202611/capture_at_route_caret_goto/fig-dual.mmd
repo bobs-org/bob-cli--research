@@ -1,0 +1,39 @@
+---
+title: "What does each empty @route form do?"
+accTitle: "Empty at-route dual today versus proposed"
+accDescr: "Today every empty at-route family has a meaning except caret, which errors. The proposal fills that hole with Go To, beside slash vault search and colon linking."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 8
+    nodeSpacing: 12
+    wrappingWidth: 180
+---
+flowchart LR
+  subgraph TODAY["Today"]
+    direction TB
+    T1["`**@route**<br/>Pull-in offer`"]
+    T2["`**@route:id**<br/>Link into today`"]
+    T3["`**@route^id**<br/>task text required`"]
+    T4["`**@route+id**<br/>Ensure Next`"]
+    T5["`**/query**<br/>Go To vault tasks`"]
+  end
+  subgraph PROPOSED["Proposed"]
+    direction TB
+    P1["`**@route**<br/>Pull-in offer`"]
+    P2["`**@route:id**<br/>Link into today`"]
+    P3["`**@route^id**<br/>Go To that task`"]
+    P4["`**@route+id**<br/>Ensure Next`"]
+    P5["`**/query**<br/>Go To vault tasks`"]
+  end
+  T3 -.->|"fill the hole"| P3
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef proposed stroke-dasharray:5 3
+  class T1,T2,T4,T5,P1,P2,P4,P5 focus
+  class T3 risk
+  class P3 outcome
+  class P3 proposed
+  style TODAY fill:none,stroke:#3B78C2
+  style PROPOSED fill:none,stroke:#2E7D4F
