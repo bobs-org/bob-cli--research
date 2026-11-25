@@ -1,0 +1,37 @@
+---
+title: "What does a draft containing @route^id do?"
+accTitle: "Classification gate for at-route-caret-id drafts"
+accDescr: "A whole-draft bare at-route-caret-id token resolves the note, then the block ID, then optionally the done archive pair, and either shows a Go To card or a precise refusal. Any other draft keeps today's grammar."
+config:
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 8
+    wrappingWidth: 160
+---
+flowchart TD
+  Q1{{"`**Whole draft, one bare token?**`"}}
+  Q2{{"`**Route note exists?**`"}}
+  Q3{{"`**Unique ^id in note?**`"}}
+  Q4{{"`**^id in done/ pair?**`"}}
+  OLD["`**Today's grammar**<br/>text mints, seal names`"]
+  LAND["`**Go To card**<br/>Return opens task`"]
+  ARCH["`**Land in archive**<br/>Archived badge`"]
+  NONOTE["`**Refuse**<br/>note not found`"]
+  MISS["`**Calm miss**<br/>did-you-mean rows`"]
+  Q1 -->|No| OLD
+  Q1 ==>|Yes| Q2
+  Q2 -->|No| NONOTE
+  Q2 -->|Yes| Q3
+  Q3 -->|"One hit"| LAND
+  Q3 -->|No| Q4
+  Q4 -.->|"Yes, severable"| ARCH
+  Q4 -->|No| MISS
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  classDef proposed stroke-dasharray:5 3
+  class Q1,Q2,Q3,Q4 decision
+  class OLD,LAND,ARCH outcome
+  class LAND proposed
+  class ARCH proposed
+  class NONOTE,MISS risk
