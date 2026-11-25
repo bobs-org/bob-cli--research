@@ -1,0 +1,28 @@
+---
+title: "Which pair-states may two tasks occupy?"
+accTitle: "Legal pair states for a dependency and a plain relation"
+accDescr: "A dependency and an unlabelled relation cannot share a pair in either direction. Labelled relations may sit beside a dependency."
+config:
+  flowchart:
+    rankSpacing: 8
+    nodeSpacing: 8
+    wrappingWidth: 180
+---
+flowchart TB
+  subgraph WAIT["A wait joins the pair"]
+    direction TB
+    DEP["`**Wait only**<br/>labelled relations may stay`"]
+    INVALID["`**Illegal**<br/>plain link plus wait`"]
+  end
+  subgraph FREE["No wait"]
+    direction TB
+    PLAIN["`**Plain link**`"]
+    LAB["`**Labelled only**`"]
+    NONE["`**Unrelated**`"]
+  end
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class DEP,PLAIN,LAB,NONE outcome
+  class INVALID risk
+  style WAIT fill:none,stroke:#C77C02
+  style FREE fill:none,stroke:#3B78C2

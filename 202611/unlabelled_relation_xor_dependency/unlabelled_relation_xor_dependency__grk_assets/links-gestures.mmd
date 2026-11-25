@@ -1,0 +1,41 @@
+---
+title: "What does a Links-stage key do to the selected row?"
+accTitle: "Links stage Enter versus Ctrl+B"
+accDescr: "Enter writes a plain relation and drops any wait on the pair. Ctrl+B writes a wait and drops any plain relation. Labelled relations are left alone."
+config:
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 12
+    wrappingWidth: 200
+---
+flowchart TB
+  subgraph CUR["CURRENT plain link"]
+    direction TB
+    UNLINK["`**Enter**<br/>unlinks`"]
+    TOWAIT["`**Ctrl+B**<br/>waits · drops plain`"]
+  end
+  subgraph ALSO["ALSO waiting"]
+    direction TB
+    STOPWAIT["`**Enter**<br/>links · stops waiting`"]
+    KEEPW["`**Ctrl+B**<br/>already waits`"]
+  end
+  subgraph FRESH["RESULTS unrelated"]
+    direction TB
+    ADDLINK["`**Enter**<br/>adds a plain link`"]
+    INSTEAD["`**Ctrl+B**<br/>waits instead`"]
+  end
+  subgraph LAB["Labelled relation"]
+    direction TB
+    KEEPLAB["`**Enter**<br/>relabels · wait stays`"]
+    ADDWAIT["`**Ctrl+B**<br/>adds a wait · label stays`"]
+  end
+  CUR --> ALSO
+  ALSO --> FRESH
+  FRESH --> LAB
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class UNLINK,TOWAIT,STOPWAIT,KEEPW,ADDLINK,INSTEAD,KEEPLAB,ADDWAIT outcome
+  style CUR fill:none,stroke:#3B78C2
+  style ALSO fill:none,stroke:#C77C02
+  style FRESH fill:none,stroke:#6B7280
+  style LAB fill:none,stroke:#2E7D4F
