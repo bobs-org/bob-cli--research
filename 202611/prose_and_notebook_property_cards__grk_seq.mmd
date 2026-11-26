@@ -1,0 +1,22 @@
+---
+title: "When should notebook and prose cards land?"
+accTitle: "Sequencing notebook and prose cards against qi and qj"
+accDescr: "Notebook cards wait for qi takeover proof. Prose cards wait for qj dual spelling. The two card phases share the species kit."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 14
+    wrappingWidth: 200
+---
+flowchart TD
+  QI4["`**qi.4 GO**<br/>takeover proof`"]
+  QJ2["`**qj.2**<br/>dual spelling`"]
+  NB["`**Notebook Card**`"]
+  PR["`**Prose Card**`"]
+  QI4 ==>|"kit stable"| NB
+  QJ2 ==>|"type helper"| PR
+  NB -.->|"species kit"| PR
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class QI4,QJ2 focus
+  class NB,PR outcome

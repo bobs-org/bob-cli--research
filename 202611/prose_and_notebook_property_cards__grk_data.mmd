@@ -1,0 +1,26 @@
+---
+title: "Where does each card field come from?"
+accTitle: "Card field sources"
+accDescr: "YAML-backed fields paint from confirmed source on first frame. Report-backed chips patch in place when a cache is ready and stay omitted when it is not. Painting never starts bob or writes the vault."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  Q1{{"`**Is it in YAML?**`"}}
+  Q2{{"`**Is a cache ready?**`"}}
+  LOCAL["`**Paint now**<br/>title, summary, crumbs`"]
+  PATCH["`**Patch in place**<br/>counts, stubs, lint`"]
+  OMIT["`**Omit the chip**<br/>never show zero`"]
+  Q1 -->|Yes| LOCAL
+  Q1 -->|No| Q2
+  Q2 -->|Yes| PATCH
+  Q2 -->|No| OMIT
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2 decision
+  class LOCAL,PATCH outcome
+  class OMIT muted

@@ -1,0 +1,26 @@
+---
+title: "What happens to the linked notebook header?"
+accTitle: "Notebook header absorption"
+accDescr: "A mounted notebook property card absorbs crumbs and child chips into the title slot and removes the body header. Failed mounts keep the linked header and native Properties."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  Q{{"`**Did the card mount?**`"}}
+  CARD["`**Title-slot card**<br/>crumbs, summary, chips`"]
+  KEEP["`**Keep linked header**<br/>body widget stays`"]
+  DROP["`**Drop body header**<br/>hide native Properties`"]
+  NATIVE["`**Native Properties**<br/>and header remain`"]
+  Q -->|Yes| CARD
+  Q -->|No| KEEP
+  CARD --> DROP
+  KEEP --> NATIVE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q decision
+  class CARD,DROP outcome
+  class KEEP,NATIVE muted
