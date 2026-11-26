@@ -1,0 +1,34 @@
+---
+title: "What ref-card work can run beside bob-cli-qm?"
+accTitle: "Ref card delivery gates against bob-cli-qm"
+accDescr: "Props-lock starts now in bob-cli. Kit and card fragments wait for qm.1. Acceptance waits for qm.6. Glossary and deploy wait for qm.7."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  NOW["`**Now**<br/>Lock pipeline keys in bob-cli`"]
+  Q1{{"`**Has qm.1 closed?**`"}}
+  KIT["`**Kit + card fragments**<br/>Species, preview gate, DOM`"]
+  Q6{{"`**Has qm.6 closed?**`"}}
+  ACC["`**Acceptance**<br/>Extend takeover harness`"]
+  Q7{{"`**Has qm.7 closed?**`"}}
+  LIVE["`**Go-live**<br/>Docs, glossary, deploy`"]
+  NOW ==> Q1
+  Q1 -->|No| WAIT1["`**Wait**<br/>Do not edit kit files`"]
+  Q1 -->|Yes| KIT
+  KIT ==> Q6
+  Q6 -->|No| WAIT6["`**Wait**<br/>Reuse, do not fork`"]
+  Q6 -->|Yes| ACC
+  ACC ==> Q7
+  Q7 -->|No| WAIT7["`**Wait**<br/>Family glossary settled`"]
+  Q7 -->|Yes| LIVE
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class NOW,KIT,ACC,LIVE outcome
+  class Q1,Q6,Q7 decision
+  class WAIT1,WAIT6,WAIT7 risk

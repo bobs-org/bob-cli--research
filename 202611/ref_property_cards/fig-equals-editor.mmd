@@ -1,0 +1,26 @@
+---
+title: "What should == open on a reference note?"
+accTitle: "Ref card equals-key routing"
+accDescr: "Album, record, and home notes keep their species editors. A reference note opens the Property Editor on title only after pipeline keys are locked."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 14
+    wrappingWidth: 220
+---
+flowchart TD
+  Q1{{"`**Album, record, or home?**`"}}
+  KEEP["`**Keep that species editor**`"]
+  Q2{{"`**Pipeline keys locked?**`"}}
+  TITLE["`**Property Editor on title**`"]
+  UNSAFE["`**Do not register ==**`"]
+  Q1 -->|Yes| KEEP
+  Q1 -->|No, a ref| Q2
+  Q2 -->|Yes| TITLE
+  Q2 -->|No| UNSAFE
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class Q1,Q2 decision
+  class KEEP,TITLE outcome
+  class UNSAFE risk
