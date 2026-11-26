@@ -1,0 +1,20 @@
+---
+title: "What lands first after the cancellation?"
+accTitle: "Recommended epic sequence"
+accDescr: "Demote the hub and delete dual-card logic first. Area takeover and bank Properties hide then finish as separate species."
+config:
+  flowchart:
+    rankSpacing: 16
+    nodeSpacing: 18
+    wrappingWidth: 250
+---
+flowchart TD
+  A["`**Epic A: demote the hub**<br/>vault type, albums, capture, CLI roles, delete arbitration`"]
+  B["`**Epic B: area and project takeover**<br/>hide native Properties on homes, no bank.md`"]
+  C["`**Epic C: bank card hide**<br/>fail-open Properties gate, Bank Card only`"]
+  A ==> B
+  A ==> C
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class A focus
+  class B,C outcome

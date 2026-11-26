@@ -1,0 +1,29 @@
+---
+title: "Why does bank.md grow two cards?"
+accTitle: "Dual identity of bank.md"
+accDescr: "type area plus path-based Bank kind both fire, so Area Card and Bank Card mount on the same note until arbitration picks one foot and title."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  HUB["`**bank.md**<br/>parent cash, type area`"]
+  TYPE{{"`**type is area?**`"}}
+  PATH{{"`**path is bank.md?**`"}}
+  AREA["`**Area Card**<br/>title, foot, AREA SETTINGS`"]
+  BANK["`**Bank Card**<br/>Setup, == editor`"]
+  FIGHT["`**Arbitration module**<br/>one title, one foot`"]
+  HUB --> TYPE
+  HUB --> PATH
+  TYPE -->|Yes| AREA
+  PATH -->|Yes| BANK
+  AREA --> FIGHT
+  BANK --> FIGHT
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef risk fill:#FDECEC,stroke:#C0392B,stroke-width:1.5px,color:#5F1414
+  class HUB focus
+  class TYPE,PATH decision
+  class AREA,BANK,FIGHT risk

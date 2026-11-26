@@ -1,0 +1,26 @@
+---
+title: "What should own bank.md after demotion?"
+accTitle: "Single identity of the bank hub"
+accDescr: "Dropping type area leaves only the path-based Bank kind, so one Bank Card owns the note. cash keeps tasks, albums, and the areas catalog."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 16
+    wrappingWidth: 240
+---
+flowchart TD
+  CASH["`**cash.md**<br/>money area, tasks, albums`"]
+  HUB["`**bank.md**<br/>parent cash, no area type`"]
+  MONTH["`**bank/YYYY-MM.md**<br/>type bank_month`"]
+  SUBS["`**subscriptions.md**<br/>album under cash`"]
+  CARD["`**Bank Card only**<br/>title, Setup, Properties hide`"]
+  CASH -->|"hue and breadcrumb"| HUB
+  CASH -->|"album parent"| SUBS
+  HUB -->|"owns config and queue"| CARD
+  HUB -->|"parent link"| MONTH
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class HUB,CARD outcome
+  class CASH focus
+  class MONTH,SUBS muted
