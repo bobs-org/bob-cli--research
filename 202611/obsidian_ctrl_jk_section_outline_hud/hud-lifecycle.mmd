@@ -1,0 +1,28 @@
+---
+title: "When is the section HUD visible?"
+accTitle: "Section skip HUD lifecycle"
+accDescr: "A successful jump shows the HUD at 0 ms, repeats keep the same card, idle starts a 1200 ms fade, and the timer returns to hidden."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 18
+    nodeSpacing: 36
+    wrappingWidth: 260
+---
+flowchart TD
+  IDLE["`**Hidden**<br/>other key or click also hides`"]
+  SHOW["`**Visible at 0 ms**<br/>window plus rail`"]
+  HOLD["`**Held on repeat**<br/>same card, new current`"]
+  FADE["`**Fading after 1200 ms**`"]
+  IDLE -->|"successful C-j or C-k"| SHOW
+  SHOW ==>|"another C-j or C-k"| HOLD
+  HOLD -->|"another C-j or C-k"| HOLD
+  SHOW -->|idle| FADE
+  HOLD -->|idle| FADE
+  FADE -->|"timer ends"| IDLE
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class IDLE muted
+  class SHOW,HOLD focus
+  class FADE outcome

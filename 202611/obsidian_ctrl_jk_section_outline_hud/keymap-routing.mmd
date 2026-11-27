@@ -1,0 +1,30 @@
+---
+title: "Which surface owns Ctrl+J?"
+accTitle: "Ctrl+J routing across Bob surfaces"
+accDescr: "Successor pickers pin, schema and bank cards jump fields, and only a vim-normal editor section jump shows the outline HUD."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 12
+    wrappingWidth: 260
+---
+flowchart TD
+  Q1{{"`**Successor picker open?**`"}}
+  Q2{{"`**Schema or bank card focused?**`"}}
+  Q3{{"`**Vim normal markdown editor?**`"}}
+  PIN["`**Successor pin**<br/>no section HUD`"]
+  FIELD["`**Field or group jump**<br/>no section HUD`"]
+  HEAD["`**Section header jump**<br/>HUD appears`"]
+  FALL["`**Fall through**<br/>no HUD`"]
+  Q1 -->|Yes| PIN
+  Q1 -->|No| Q2
+  Q2 -->|Yes| FIELD
+  Q2 -->|No| Q3
+  Q3 -->|Yes| HEAD
+  Q3 -->|No| FALL
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q1,Q2,Q3 decision
+  class HEAD outcome
+  class PIN,FIELD,FALL muted

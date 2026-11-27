@@ -1,0 +1,27 @@
+---
+title: "What does the HUD list?"
+accTitle: "Section HUD windowing rule"
+accDescr: "Notes with eight or fewer headings list every title. Longer notes show two neighbors each side of the current heading plus a tick rail of the whole file, and a wrap seam when the jump loops."
+config:
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 16
+    wrappingWidth: 260
+---
+flowchart TD
+  Q{{"`**How many headings?**`"}}
+  SHORT["`**Full outline**<br/>every title`"]
+  LONG["`**Window of five**<br/>two before, current, two after`"]
+  RAIL["`**Tick rail**<br/>one mark per heading`"]
+  WRAP["`**Wrap seam plus chip**<br/>when the jump loops`"]
+  Q -->|"8 or fewer"| SHORT
+  Q -->|"9 or more"| LONG
+  LONG --> RAIL
+  SHORT --> RAIL
+  RAIL --> WRAP
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class Q decision
+  class SHORT,LONG focus
+  class RAIL,WRAP outcome
