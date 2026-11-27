@@ -1,0 +1,23 @@
+---
+title: "Where does the walk rail sit on a property card?"
+accTitle: "Property-card stack with walk rail last"
+accDescr: "The card face stays on top. Cabinets stack next, Properties last among them. The walk rail pins after that whole stack so it sits below every cabinet."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 12
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TB
+  FACE["`**Card face**<br/>tile, title, crumbs, readouts`"]
+  STACK["`**Cabinet stack**<br/>Areas, Projects, Notebooks, Albums, then Properties`"]
+  RAIL["`**Walk rail last**<br/>prev · parent · N of M · next, then a group row when needed`"]
+  FACE --> STACK
+  STACK ==> RAIL
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  class FACE focus
+  class STACK muted
+  class RAIL outcome

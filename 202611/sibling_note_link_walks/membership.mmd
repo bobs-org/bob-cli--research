@@ -1,0 +1,39 @@
+---
+title: "Which notes does the sibling link walk visit?"
+accTitle: "Sibling link-walk membership"
+accDescr: "Same-type children of the current parent form the current group. Nested same-type trees expand to a cousin ring grouped by parent. Projects under an area split Open and Closed. Otherwise the walk is one parent group."
+config:
+  layout: dagre
+  flowchart:
+    rankSpacing: 10
+    nodeSpacing: 14
+    wrappingWidth: 220
+---
+flowchart TD
+  START["`**Current note**<br/>area, project, notebook, or prose`"]
+  TYPE{{"`**Same type and parent?**`"}}
+  NEST{{"`**Is the parent the same type?**`"}}
+  PRJ{{"`**Projects under an area?**`"}}
+  COUSIN["`**Cousin ring**<br/>grouped by parent`"]
+  STATUS["`**Open / Closed groups**`"]
+  SIBLING["`**One parent group**`"]
+  KEYS["`**Step or jump**<br/>step the ring, jump group heads`"]
+  SKIP["`**Out of this walk**`"]
+  START --> TYPE
+  TYPE -->|No| SKIP
+  TYPE -->|Yes| NEST
+  NEST -->|Yes| COUSIN
+  NEST -->|No| PRJ
+  PRJ -->|Yes| STATUS
+  PRJ -->|No| SIBLING
+  COUSIN --> KEYS
+  STATUS --> KEYS
+  SIBLING --> KEYS
+  classDef focus fill:#E8F1FB,stroke:#3B78C2,stroke-width:1.5px,color:#0F2E52
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class START focus
+  class TYPE,NEST,PRJ decision
+  class COUSIN,STATUS,KEYS outcome
+  class SKIP,SIBLING muted

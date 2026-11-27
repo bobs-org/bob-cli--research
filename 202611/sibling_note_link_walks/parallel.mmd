@@ -1,0 +1,28 @@
+---
+title: "What can land beside cabinets, and what must wait?"
+accTitle: "Parallel split with the cabinets epic"
+accDescr: "The sibling resolver and keymaps live in navGroups, which cabinets do not touch, so they can land now. The card rail mounts after the cabinet stack in files bob-cli-qq is still rewriting, so that paint waits for cabinets go-live."
+config:
+  flowchart:
+    rankSpacing: 14
+    nodeSpacing: 18
+    wrappingWidth: 260
+---
+flowchart TD
+  Q{{"`**Does the change touch 240 kit files?**`"}}
+  NOW["`**Land now**<br/>navGroups sibling route, keymap fill-in, links footer`"]
+  WAIT["`**Wait for bob-cli-qq go-live**<br/>dock the kit rail after the cabinet stack`"]
+  KEYS["`**]n / ]N work without a rail**<br/>status-bar links footer already paints the compass`"]
+  RAIL["`**Area, project, notebook, prose cards gain the rail**<br/>record and day rails move below cabinets`"]
+  Q -->|No| NOW
+  Q -->|Yes| WAIT
+  NOW ==> KEYS
+  WAIT -.-> RAIL
+  classDef decision fill:#FFF7E6,stroke:#C77C02,stroke-width:1.5px,color:#4A3000
+  classDef outcome fill:#E7F5EC,stroke:#2E7D4F,stroke-width:1.5px,color:#123D24
+  classDef muted fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#1F2937
+  class Q decision
+  class NOW,KEYS outcome
+  class WAIT muted
+  class RAIL muted
+  class RAIL proposed
